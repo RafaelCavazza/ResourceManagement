@@ -9,7 +9,8 @@
         {
             "taskName": "build",
             "args": [
-                "Presentation"
+                "Presentation", 
+                "Domain"
              ],
             "isBuildCommand": true,
             "showOutput": "silent",
