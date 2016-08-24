@@ -3,9 +3,14 @@
     "Microsoft.NETCore.App": {
       "version": "1.0.0",
       "type": "platform"
+    },
+    "Microsoft.EntityFrameworkCore.SqlServer" : "1.0.0",
+    "Microsoft.EntityFrameworkCore.Sqlite": "1.0.0",
+    "Microsoft.EntityFrameworkCore.Design": {
+      "version": "1.0.0-preview2-final",
+      "type": "build" 
     }
   },
-    
 
   "frameworks": {
     "netcoreapp1.0": {
@@ -14,6 +19,7 @@
         "portable-net45+win8"
       ],
       "dependencies": {
+        "Domain" :"1.0.0"
       }
     }
   },

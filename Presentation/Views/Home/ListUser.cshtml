@@ -1,0 +1,16 @@
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "ListUser Page";
+}
+
+@{
+    var users = (List<Domain.Entities.AplicationUser>)ViewData["Users"];   
+    foreach(var user in users)
+    {
+        <p> User Id: @user.UserId </p>
+        <p> Nome: @user.FirstName </p>
+        <p> Ultimo Nome: @user.LastName </p>
+    }
+}

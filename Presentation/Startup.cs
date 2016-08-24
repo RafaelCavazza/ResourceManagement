@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Data;
+using Infra.Data.Context;
 
 namespace Presentation
 {
@@ -17,6 +17,11 @@ namespace Presentation
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
+
+            using(var dbContext = new DataBaseContext())
+            {
+                dbContext.Database.EnsureCreated();
+            }
         }
 
         public IConfigurationRoot Configuration { get; }
@@ -25,7 +30,7 @@ namespace Presentation
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            services.AddEntityFrameworkSqlServer().AddDbContext<DataBaseContex>();
+            services.AddEntityFrameworkSqlite().AddDbContext<DataBaseContext>();
             services.AddMvc();
         }
 

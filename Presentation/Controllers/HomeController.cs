@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Infra.Data.Context;
 using Microsoft.AspNetCore.Mvc;
+using Domain.Entities;
 
 namespace Presentation.Controllers
 {
@@ -10,6 +12,15 @@ namespace Presentation.Controllers
     {
         public IActionResult Index()
         {
+            return View();
+        }
+
+        public IActionResult ListUser()
+        {
+            using(var dbContext = new DataBaseContext())
+            {
+                ViewData["Users"] =  dbContext.AplicationUser.ToList();
+            }
             return View();
         }
 

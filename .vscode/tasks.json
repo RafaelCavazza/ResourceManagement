@@ -9,8 +9,20 @@
         {
             "taskName": "build",
             "args": [
-                "Presentation", 
-                "Domain"
+                "Domain",
+                "Infra",
+                "Presentation" 
+             ],
+            "isBuildCommand": true,
+            "showOutput": "silent",
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "taskName": "restore",
+            "args": [
+                "Domain",
+                "Infra",
+                "Presentation" 
              ],
             "isBuildCommand": true,
             "showOutput": "silent",
