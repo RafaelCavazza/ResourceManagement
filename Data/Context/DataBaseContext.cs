@@ -1,5 +1,5 @@
 
-namespace Infra.Data.Context
+namespace Data.Context
 {
     public class DataBaseContext
     {

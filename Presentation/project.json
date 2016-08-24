@@ -38,7 +38,7 @@
         "portable-net45+win8"
       ],
       "dependencies": {
-        "Data" : "1.0.0"
+        "Infra" : "1.0.0"
       }
     }
   },
