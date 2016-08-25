@@ -8,6 +8,7 @@
 --suppress-warning:CS1705
 --optimize:False
 --debug-type:portable
+--emit-entry-point:True
 --output-name:Infra
 --file-version:1.0.0.0
 --version:1.0.0.0
@@ -119,5 +120,8 @@
 --reference:/home/rafael/.nuget/packages/System.Xml.XDocument/4.0.11/ref/netstandard1.3/System.Xml.XDocument.dll
 --reference:/home/rafael/NetCore/ResourceManagement/Domain/bin/Debug/netcoreapp1.0/Domain.dll
 --resource:"/home/rafael/NetCore/ResourceManagement/Infra/obj/Debug/netcoreapp1.0/Infradotnet-compile.deps.json",Infra.deps.json
-/home/rafael/NetCore/ResourceManagement/Infra/Class1.cs
+/home/rafael/NetCore/ResourceManagement/Infra/Program.cs
 /home/rafael/NetCore/ResourceManagement/Infra/Data/Context/DataBaseContext.cs
+/home/rafael/NetCore/ResourceManagement/Infra/Migrations/DataBaseContextModelSnapshot.cs
+/home/rafael/NetCore/ResourceManagement/Infra/Migrations/20160825031945_Migration1.cs
+/home/rafael/NetCore/ResourceManagement/Infra/Migrations/20160825031945_Migration1.Designer.cs

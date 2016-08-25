@@ -26,10 +26,22 @@
 
   "buildOptions": {
     "preserveCompilationContext": true,
-    "debugType": "portable"
+    "debugType": "portable",
+    "emitEntryPoint": true
   },
 
   "tooling": {
     "defaultNamespace": "Infra"
+  },
+
+  "tools": {
+    "Microsoft.EntityFrameworkCore.Tools": {
+        "version": "1.0.0-preview2-final",
+        "imports": [
+            "portable-net45+win8+dnxcore50",
+            "portable-net45+win8"
+        ]
+    }
   }
+  
 }

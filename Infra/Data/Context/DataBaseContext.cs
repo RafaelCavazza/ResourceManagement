@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using Domain.Entities;
-using Microsoft.AspNetCore.Builder;
 
 namespace Infra.Data.Context
 {
