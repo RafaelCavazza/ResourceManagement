@@ -3,13 +3,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Infra.Data.Context;
+using Infra.Context;
 
 namespace Infra.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20160825031945_Migration1")]
-    partial class Migration1
+    [Migration("20160825040209_Migration2")]
+    partial class Migration2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,8 @@ namespace Infra.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Email");
 
                     b.Property<string>("FirstName");
 

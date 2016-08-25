@@ -9,7 +9,7 @@
     var users = (List<Domain.Entities.AplicationUser>)ViewData["Users"];   
     foreach(var user in users)
     {
-        <p> User Id: @user.UserId </p>
+        <p> User Id: @user.Id </p>
         <p> Nome: @user.FirstName </p>
         <p> Ultimo Nome: @user.LastName </p>
     }
