@@ -17,10 +17,6 @@ namespace Presentation.Controllers
 
         public IActionResult ListUser()
         {
-            using(var dbContext = new DataBaseContext())
-            {
-                ViewData["Users"] =  dbContext.AplicationUser.ToList();
-            }
             return View();
         }
 
