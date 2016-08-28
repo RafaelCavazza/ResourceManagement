@@ -117,8 +117,7 @@
 -resource:"/home/rafael/NetCore/ResourceManagement/Infra/obj/Debug/netcoreapp1.0/Infradotnet-compile.deps.json",Infra.deps.json
 "/home/rafael/NetCore/ResourceManagement/Infra/Program.cs"
 "/home/rafael/NetCore/ResourceManagement/Infra/Context/DataBaseContext.cs"
-"/home/rafael/NetCore/ResourceManagement/Infra/Migrations/20160825040027_Migration1.cs"
+"/home/rafael/NetCore/ResourceManagement/Infra/EntityConfig/AplicationUserConfiguration.cs"
 "/home/rafael/NetCore/ResourceManagement/Infra/Migrations/DataBaseContextModelSnapshot.cs"
-"/home/rafael/NetCore/ResourceManagement/Infra/Migrations/20160825040027_Migration1.Designer.cs"
-"/home/rafael/NetCore/ResourceManagement/Infra/Migrations/20160825040209_Migration2.Designer.cs"
-"/home/rafael/NetCore/ResourceManagement/Infra/Migrations/20160825040209_Migration2.cs"
+"/home/rafael/NetCore/ResourceManagement/Infra/Migrations/20160828233632_Migration1.cs"
+"/home/rafael/NetCore/ResourceManagement/Infra/Migrations/20160828233632_Migration1.Designer.cs"

@@ -30,7 +30,6 @@ namespace Presentation
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            services.AddEntityFrameworkSqlite().AddDbContext<DataBaseContext>();
             services.AddMvc();
         }
 

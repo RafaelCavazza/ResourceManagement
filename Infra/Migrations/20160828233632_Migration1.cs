@@ -13,10 +13,12 @@ namespace Infra.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
-                    FirstName = table.Column<string>(nullable: true),
-                    Hash = table.Column<string>(nullable: true),
-                    LastName = table.Column<string>(nullable: true),
-                    Salt = table.Column<string>(nullable: true)
+                    CreatedOn = table.Column<DateTime>(nullable: false),
+                    Email = table.Column<string>(maxLength: 200, nullable: false),
+                    FirstName = table.Column<string>(maxLength: 50, nullable: false),
+                    Hash = table.Column<string>(maxLength: 500, nullable: false),
+                    LastName = table.Column<string>(maxLength: 50, nullable: false),
+                    Salt = table.Column<string>(maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
