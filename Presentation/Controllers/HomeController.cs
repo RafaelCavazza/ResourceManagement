@@ -8,7 +8,7 @@ using Domain.Entities;
 
 namespace Presentation.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         public IActionResult Index()
         {
