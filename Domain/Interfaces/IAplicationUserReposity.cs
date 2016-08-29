@@ -2,7 +2,7 @@ using Domain.Entities;
 
 namespace Domain.Interfaces
 {
-    interface IAplicationUserReposity : IRepositoryBase<AplicationUser>
+    public interface IAplicationUserReposity : IRepositoryBase<AplicationUser>
     {
     }
 }
