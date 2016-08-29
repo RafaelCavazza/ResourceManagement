@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Domain.Entities;
-using Infra.EntityConfig;
+using Infra.Data.EntityConfig;
 
-namespace Infra.Context
+namespace Infra.Data.Context
 {
     public class DataBaseContext : DbContext
     {
@@ -12,6 +12,7 @@ namespace Infra.Context
         protected override void OnConfiguring(DbContextOptionsBuilder optionBuilder)
         {
             optionBuilder.UseSqlite("Filename=database.db");
+            //optionBuilder.UseSqlServer("Server=ec2-52-67-98-128.sa-east-1.compute.amazonaws.com;Database=Aplication;User Id=appUser;Password=;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
