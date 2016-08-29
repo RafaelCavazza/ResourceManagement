@@ -7,6 +7,8 @@ namespace Infra.Data.Context
     public class DataBaseContext : DbContext
     {
         //Entidades do Domínio
+        
+        public DbSet<AplicationUser> Employee {get; set;}
         public DbSet<AplicationUser> AplicationUser {get; set;}
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionBuilder)
@@ -18,6 +20,7 @@ namespace Infra.Data.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             AplicationUserConfiguration.Configure(modelBuilder);
+            EmployeeConfiguration.Configure(modelBuilder);
             base.OnModelCreating(modelBuilder);
         }
 

@@ -12,9 +12,8 @@ namespace Infra.Data.EntityConfig
                     b.HasKey(p=> p.Id);
 
                     b.Property(p=> p.CreatedOn).IsRequired();
+                    b.Property(p=> p.ModifiedOn).IsRequired();
                     b.Property(p=> p.Email).HasMaxLength(200).IsRequired();
-                    b.Property(p=> p.FirstName).HasMaxLength(50).IsRequired();
-                    b.Property(p=> p.LastName).HasMaxLength(50).IsRequired();
                     b.Property(p=> p.Hash).HasMaxLength(500).IsRequired();
                     b.Property(p=> p.Salt).HasMaxLength(100).IsRequired();
                     b.Property(p=> p.Active).IsRequired();
