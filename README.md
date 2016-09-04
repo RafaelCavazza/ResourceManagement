@@ -5,7 +5,7 @@ de uma organização.
 
 Pode ser encontrado em: 
 
-http://ec2-52-67-98-128.sa-east-1.compute.amazonaws.com
+http://52.67.112.140
 
 Usuário: Teste1
 Senha: Teste1
