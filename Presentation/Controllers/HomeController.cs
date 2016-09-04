@@ -1,10 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Infra.Context;
 using Microsoft.AspNetCore.Mvc;
-using Domain.Entities;
 
 namespace Presentation.Controllers
 {

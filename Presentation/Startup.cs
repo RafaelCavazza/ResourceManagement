@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Infra.Context;
+using Infra.Data.Context;
 
 namespace Presentation
 {
@@ -16,6 +16,7 @@ namespace Presentation
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
+            
             Configuration = builder.Build();
 
             using(var dbContext = new DataBaseContext())
@@ -39,6 +40,9 @@ namespace Presentation
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
+            //Verificar Uso dessa congfiguração
+            app.UseDeveloperExceptionPage();
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
