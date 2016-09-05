@@ -18,7 +18,7 @@ namespace Presentation
                 .AddEnvironmentVariables();
             
             Configuration = builder.Build();
-
+ 
             using(var dbContext = new DataBaseContext())
             {
                 dbContext.Database.EnsureCreated();
