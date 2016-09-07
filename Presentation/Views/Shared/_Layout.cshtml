@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Gentellela Alela! | </title>
+    <title>@ViewData["Title"] - Presentation</title>
     <environment names="Development,Staging,Production">
         <!-- Bootstrap -->
         <link href="/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -141,16 +141,19 @@
       </div>
     </div>
 
-    <!-- jQuery -->
-    <script src="/lib/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap -->
-    <script src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- FastClick -->
-    <script src="/lib/fastclick/lib/fastclick.js"></script>
-    <!-- NProgress -->
-    <script src="/lib/nprogress/nprogress.js"></script>
-    
-    <!-- Custom Theme Scripts -->
-    <script src="/js/custom.min.js"></script>
+    <environment names="Development,Staging,Production">
+        <!-- jQuery -->
+        <script src="/lib/jquery/dist/jquery.min.js"></script>
+        <!-- Bootstrap -->
+        <script src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+        <!-- FastClick -->
+        <script src="/lib/fastclick/lib/fastclick.js"></script>
+        <!-- NProgress -->
+        <script src="/lib/nprogress/nprogress.js"></script>
+        
+        <!-- Custom Theme Scripts -->
+        <script src="/js/custom.min.js"></script>
+    </environment>
+
   </body>
 </html>
