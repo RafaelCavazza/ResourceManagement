@@ -6,6 +6,9 @@
     "jquery": "2.2.3",
     "jquery-validation": "1.15.0",
     "jquery-validation-unobtrusive": "3.2.6",
-    "font-awesome": "4.6.3"
+    "font-awesome": "4.6.3",
+    "animate.css": "^3.5.1",
+    "nprogress": "^0.2.0",
+    "fastclick": "^1.0.6"
   }
 }
