@@ -4,11 +4,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Infra.Data.Context;
+using Domain.Entities;
 
 namespace Presentation
 {
     public class Startup
     {
+        public IConfigurationRoot Configuration { get; }
+
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
@@ -24,14 +27,14 @@ namespace Presentation
                 dbContext.Database.EnsureCreated();
             }
         }
-
-        public IConfigurationRoot Configuration { get; }
-
+   
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
             services.AddMvc();
+            services.AddIdentity<AplicationUser,AplicationRole>()
+                .AddEntityFrameworkStores<DataBaseContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,12 +57,12 @@ namespace Presentation
             }
 
             app.UseStaticFiles();
+            
+            app.UseIdentity();
 
             app.UseMvc(routes =>
             {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                routes.MapRoute( name: "default", template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

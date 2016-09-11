@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,6 +13,8 @@ namespace Infra.Data.EntityConfig
                     b.Property(p=> p.FirstName).HasMaxLength(50).IsRequired();
                     b.Property(p=> p.LastName).HasMaxLength(50).IsRequired();
                 });
+            modelBuilder.Entity<Employee>().HasMany(p=> p.Users).WithOne(p=> p.Employee)
+                    .HasForeignKey(p=> p.EmployeeId);
         }
     }
 }

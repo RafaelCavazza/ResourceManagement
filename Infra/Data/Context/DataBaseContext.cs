@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Domain.Entities;
 using Infra.Data.EntityConfig;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Infra.Data.Context
 {
@@ -8,19 +9,20 @@ namespace Infra.Data.Context
     {
         //Entidades do Domínio
         
-        public DbSet<AplicationUser> Employee {get; set;}
-        public DbSet<AplicationUser> AplicationUser {get; set;}
+        public DbSet<Employee> Employee {get; set;}
+        public DbSet<User> User {get; set;}
+        public DbSet<Role> Role {get; set;}
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionBuilder)
         {
-            optionBuilder.UseSqlite("Filename=database.db");
-            //optionBuilder.UseSqlServer("Server=ec2-52-67-98-128.sa-east-1.compute.amazonaws.com;Database=Aplication;User Id=appUser;Password=;");
+            //optionBuilder.UseSqlite("Filename=database.db");
+            
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            AplicationUserConfiguration.Configure(modelBuilder);
             EmployeeConfiguration.Configure(modelBuilder);
+            IdentityConfiguration.Configure(modelBuilder);
             base.OnModelCreating(modelBuilder);
         }
 

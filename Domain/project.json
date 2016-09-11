@@ -5,15 +5,20 @@
     "Microsoft.NETCore.App": {
       "version": "1.0.0",
       "type": "platform"
-    }
+    },
+    "Microsoft.AspNetCore.Identity.EntityFrameworkCore" : "1.0.0"
   },
+  
 
   "frameworks": {
     "netcoreapp1.0": {
       "imports": [
         "dotnet5.6",
         "portable-net45+win8"
-      ]
+      ],
+      "dependencies": {
+        //Aqui etrão as dependencias de outras classes.
+      }
     }
   },
 

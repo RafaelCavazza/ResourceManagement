@@ -43,7 +43,8 @@
         "portable-net45+win8"
       ],
       "dependencies": {
-        "Infra" : "1.0.0"
+        "Infra" : "1.0.0",
+        "Domain" : "1.0.0"
       }
     }
   },
