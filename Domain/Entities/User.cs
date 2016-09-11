@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Domain.Entities
 {
-    public class User : IdentityUser<Guid, UserClaim, UserRole, UserLogin>
+    public class User : IdentityUser<Guid>
     {
         public DateTime CreatedOn {get; set;}
         public DateTime ModifiedOn {get; set;}
