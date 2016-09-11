@@ -39,7 +39,7 @@ namespace Infra.Data.Context
             var id = new Guid("5ff9b5a9-89aa-42d4-9296-be9a80ab4243");
             if(this.Employee.FirstOrDefault(p=> p.Id==id)==null)
             {
-                var employee = new Employee { Id = id, FirstName="Admin", LastName="" };
+                var employee = new Employee { Id = id, Name="Admin"};
                 this.Employee.Add(employee);
                 this.SaveChanges();
             }
