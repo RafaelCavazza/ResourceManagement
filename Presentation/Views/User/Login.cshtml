@@ -1,16 +1,16 @@
-﻿@{
-  Layout = "";
+﻿@model Presentation.ViewModel.LoginUserViewModel
+@{
+    Layout = "";
 }
 
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+<html>
+<head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <title>@ViewData["Title"] - Presentation</title>
     <environment names="Development,Staging,Production">
         <!-- Bootstrap -->
@@ -24,84 +24,43 @@
     </environment>
     <!-- Custom Theme Style -->
     <link href="/css/custom.min.css" rel="stylesheet">
-  </head>
-
-  <body class="login">
+</head>
+<body class="login">
     <div>
-      <a class="hiddenanchor" id="signup"></a>
-      <a class="hiddenanchor" id="signin"></a>
-
-      <div class="login_wrapper">
-        <div class="animate form login_form">
-          <section class="login_content">
-            <form>
-              <h1>Login</h1>
-              <div>
-                <input type="text" class="form-control" placeholder="Usuário" required="" />
-              </div>
-              <div>
-                <input type="password" class="form-control" placeholder="Senha" required="" />
-              </div>
-              <div>
-                <button type="submit" class="btn btn-default">Entrar</button>
-                <a class="reset_pass" href="#">Esqueci minha senha</a>
-              </div>
-
-              <div class="clearfix"></div>
-
-              <div class="separator">
-                <p class="change_link">Novo por aqui?
-                  <a href="#signup" class="to_register"> Criar conta </a>
-                </p>
-
-                <div class="clearfix"></div>
-                <br />
-
-                <div>
-                  <h1><i class="fa fa-th-large"></i> Resource Manager</h1>
-                  <p>©2016 All Rights Reserved. Privacy and Terms</p>
-                </div>
-              </div>
-            </form>
-          </section>
+        <a class="hiddenanchor" id="signup"></a>
+        <a class="hiddenanchor" id="signin"></a>
+        <div class="login_wrapper">
+            <div class="animate form login_form">
+                <section class="login_content">
+                    <form asp-action="Login">
+                        <h1>Login</h1>
+                        <div>
+                            <input asp-for="Email" type="text" class="form-control" placeholder="Email" required />
+                        </div>
+                        <div>
+                            <input asp-for="Password" type="password" class="form-control" placeholder="Senha" required />
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-default">Entrar</button>
+                            <input asp-for="RememberMe" type="checkbox" title="Lembrar de mim" />
+                            <label for="RememberMe">Lembrar de mim?</label>
+                        </div>
+                        <div>
+                            <a class="rtext-center" href="#">Esqueci minha senha</a>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="separator">
+                            <div class="clearfix"></div>
+                            <br />
+                            <div>
+                                <h1><i class="fa fa-th-large"></i> Resource Manager</h1>
+                                <p>©2016 All Rights Reserved. Privacy and Terms</p>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+            </div>
         </div>
-
-        <div id="register" class="animate form registration_form">
-          <section class="login_content">
-            <form>
-              <h1>Criar conta</h1>
-              <div>
-                <input type="text" class="form-control" placeholder="Usuário" required="" />
-              </div>
-              <div>
-                <input type="email" class="form-control" placeholder="Email" required="" />
-              </div>
-              <div>
-                <input type="password" class="form-control" placeholder="Senha" required="" />
-              </div>
-              <div>
-                  <button type="submit" class="btn btn-default submit">Enviar</button>
-              </div>
-
-              <div class="clearfix"></div>
-
-              <div class="separator">
-                <p class="change_link">Já é um membro ?
-                  <a href="#signin" class="to_register"> Entrar </a>
-                </p>
-
-                <div class="clearfix"></div>
-                <br />
-
-                <div>
-                  <h1><i class="fa fa-paw"></i> Resource Manager</h1>
-                  <p>©2016 All Rights Reserved. Privacy and Terms</p>
-                </div>
-              </div>
-            </form>
-          </section>
-        </div>
-      </div>
     </div>
-  </body>
+</body>
 </html>
