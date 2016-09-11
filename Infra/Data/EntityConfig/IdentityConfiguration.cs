@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Domain.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using System;
 
 namespace Infra.Data.EntityConfig
 {
@@ -12,36 +14,30 @@ namespace Infra.Data.EntityConfig
                 {
                     b.HasKey(p=> p.Id);
                 });
-            modelBuilder.Entity<User>().HasMany(p=> p.Roles).WithOne(p=> p.User)
-                    .HasForeignKey(p=> p.UserId);
-            modelBuilder.Entity<User>().HasMany(p=> p.Claims).WithOne(p=> p.User)
-                    .HasForeignKey(p=> p.UserId);
-            modelBuilder.Entity<User>().HasMany(p=> p.Logins).WithOne(p=> p.User)
-                    .HasForeignKey(p=> p.UserId);
-        
+
+            modelBuilder.Entity<Employee>().HasMany(p=> p.Users).WithOne(p=> p.Employee)
+                    .HasForeignKey(p=> p.EmployeeId);
+
             modelBuilder.Entity<Role>(b =>
                 {
                     b.HasKey(p=> p.Id);
                 });
-            modelBuilder.Entity<Role>().HasMany(p=> p.Users).WithOne(p=> p.Role)
-                .HasForeignKey(p=> p.RoleId);
-            modelBuilder.Entity<Role>().HasMany(p=> p.Claims).WithOne(p=> p.Role)
-                .HasForeignKey(p=> p.RoleId);
-        
-            modelBuilder.Entity<UserClaim>(b =>
+            
+            modelBuilder.Entity<IdentityUserRole<Guid>>(b =>
                 {
-                    b.HasKey(p=> new {p.Id});
+                    b.HasKey(p=> new { p.UserId, p.RoleId});
                 });
 
-            modelBuilder.Entity<RoleClaim>(b =>
+            modelBuilder.Entity<IdentityUserLogin<Guid>>(b =>
                 {
-                    b.HasKey(p=> p.Id);
+                    b.HasKey(p=> new { p.UserId, p.ProviderKey});
                 });
             
-            modelBuilder.Entity<UserLogin>(b =>
-                {
-                    b.HasKey(p=> p.Id);
-                });
+             modelBuilder.Entity<IdentityUserRole<Guid>>().ToTable("UserRole");
+             modelBuilder.Entity<IdentityUserLogin<Guid>>().ToTable("UserLogin");
+             modelBuilder.Entity<IdentityUserClaim<Guid>>().ToTable("UserClaim");
+             modelBuilder.Entity<IdentityRoleClaim<Guid>>().ToTable("RoleClaim");
+             
         }
     }
 }

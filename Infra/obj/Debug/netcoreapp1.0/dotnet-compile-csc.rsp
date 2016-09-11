@@ -136,9 +136,10 @@
 -resource:"/home/thais/NetCore/ResourceManagement/Infra/obj/Debug/netcoreapp1.0/Infradotnet-compile.deps.json",Infra.deps.json
 "/home/thais/NetCore/ResourceManagement/Infra/Program.cs"
 "/home/thais/NetCore/ResourceManagement/Infra/Migrations/DataBaseContextModelSnapshot.cs"
-"/home/thais/NetCore/ResourceManagement/Infra/Migrations/20160911000628_Migration1.Designer.cs"
-"/home/thais/NetCore/ResourceManagement/Infra/Migrations/20160911000628_Migration1.cs"
+"/home/thais/NetCore/ResourceManagement/Infra/Migrations/20160911143949_Migration1.Designer.cs"
+"/home/thais/NetCore/ResourceManagement/Infra/Migrations/20160911143949_Migration1.cs"
 "/home/thais/NetCore/ResourceManagement/Infra/Data/Repositories/UserRepository.cs"
+"/home/thais/NetCore/ResourceManagement/Infra/Data/Repositories/EmployeeRepository.cs"
 "/home/thais/NetCore/ResourceManagement/Infra/Data/Repositories/RepositoryBase.cs"
 "/home/thais/NetCore/ResourceManagement/Infra/Data/Extensions/EntityExtensions.cs"
 "/home/thais/NetCore/ResourceManagement/Infra/Data/EntityConfig/IdentityConfiguration.cs"

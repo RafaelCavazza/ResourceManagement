@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Infra.Data.Context;
 using Domain.Entities;
+using System;
 
 namespace Presentation
 {
@@ -21,10 +22,11 @@ namespace Presentation
                 .AddEnvironmentVariables();
             
             Configuration = builder.Build();
- 
+            
             using(var dbContext = new DataBaseContext())
             {
                 dbContext.Database.EnsureCreated();
+                dbContext.Seed(dbContext);
             }
         }
    
@@ -33,8 +35,13 @@ namespace Presentation
         {
             // Add framework services.
             services.AddMvc();
-            services.AddIdentity<AplicationUser,AplicationRole>()
-                .AddEntityFrameworkStores<DataBaseContext>();
+            services.AddDbContext<DataBaseContext>();
+            services.AddIdentity<User,Role>().AddEntityFrameworkStores<DataBaseContext, Guid>().AddDefaultTokenProviders();
+            services.AddLogging();
+
+            //Depois Adicionar os Serviços de SMS e Email -> SendGrid
+            //services.AddTransient<IEmailSender, AuthMessageSender>();
+            //services.AddTransient<ISmsSender, AuthMessageSender>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,6 +66,8 @@ namespace Presentation
             app.UseStaticFiles();
             
             app.UseIdentity();
+
+            //app.UseCookieAuthentication();
 
             app.UseMvc(routes =>
             {
