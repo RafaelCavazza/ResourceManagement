@@ -23,15 +23,11 @@ namespace Infra.Migrations
 
                     b.Property<DateTime>("CreatedOn");
 
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasAnnotation("MaxLength", 50);
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasAnnotation("MaxLength", 50);
-
                     b.Property<DateTime>("ModifiedOn");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasAnnotation("MaxLength", 150);
 
                     b.HasKey("Id");
 

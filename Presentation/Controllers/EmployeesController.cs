@@ -14,7 +14,7 @@ namespace Presentation.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(CreateEmplyeeViewModel model)
+        public IActionResult Create(CreateEmployeeViewModel model)
         {
             return View();
         }

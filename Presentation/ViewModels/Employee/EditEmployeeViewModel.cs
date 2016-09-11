@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Presentation.ViewModels.Employee
 {
-    public class CreateEmplyeeViewModel
+    public class EditEmployeeViewModel
     {
     }
 }

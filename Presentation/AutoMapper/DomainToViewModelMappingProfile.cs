@@ -1,14 +1,15 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using AutoMapper;
+using Domain.Entities;
+using Presentation.ViewModels.Employee;
 
 namespace Presentation.AutoMapper
 {
-    public class DomainToViewModelMappingProfile
+    public class DomainToViewModelMappingProfile : Profile
     {
         public DomainToViewModelMappingProfile()
         {
+            CreateMap<Employee, CreateEmployeeViewModel>();
+            CreateMap<Employee, EditEmployeeViewModel>();
         }
     }
 }

@@ -15,9 +15,8 @@ namespace Infra.Migrations
                 {
                     Id = table.Column<Guid>(nullable: false),
                     CreatedOn = table.Column<DateTime>(nullable: false),
-                    FirstName = table.Column<string>(maxLength: 50, nullable: false),
-                    LastName = table.Column<string>(maxLength: 50, nullable: false),
-                    ModifiedOn = table.Column<DateTime>(nullable: false)
+                    ModifiedOn = table.Column<DateTime>(nullable: false),
+                    Name = table.Column<string>(maxLength: 150, nullable: false)
                 },
                 constraints: table =>
                 {

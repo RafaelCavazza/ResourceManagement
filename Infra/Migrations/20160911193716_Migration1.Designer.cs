@@ -8,7 +8,7 @@ using Infra.Data.Context;
 namespace Infra.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20160911143949_Migration1")]
+    [Migration("20160911193716_Migration1")]
     partial class Migration1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,15 +24,11 @@ namespace Infra.Migrations
 
                     b.Property<DateTime>("CreatedOn");
 
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasAnnotation("MaxLength", 50);
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasAnnotation("MaxLength", 50);
-
                     b.Property<DateTime>("ModifiedOn");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasAnnotation("MaxLength", 150);
 
                     b.HasKey("Id");
 
