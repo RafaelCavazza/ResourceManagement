@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using Domain.Entities;
 using Infra.Data.EntityConfig;
 using System;
+using Infra.Data.Extensions;
+using System.Linq;
 
 namespace Infra.Data.Context
 {
@@ -11,10 +13,18 @@ namespace Infra.Data.Context
         public DbSet<User> User {get; set;}
         public DbSet<Role> Role {get; set;}
 
+        public DataBaseContext(DbContextOptions options) : base(options)
+        {
+        }
+
+        public DataBaseContext()
+        {
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionBuilder)
         {
             //optionBuilder.UseSqlite("Filename=database.db");
-            optionBuilder.UseSqlServer("Server=ec2-52-67-112-140.sa-east-1.compute.amazonaws.com;Database=Aplication;User Id=sa;Password=*****;");
+            optionBuilder.UseSqlServer("Server=ec2-52-67-112-140.sa-east-1.compute.amazonaws.com;Database=Aplication;User Id=sa;Password=A1a2$bcde;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -25,12 +35,16 @@ namespace Infra.Data.Context
         }
 
         //Refatorar Esse Código, o seed deve ficar em outro lugar 
-        public void Seed(DataBaseContext dbContext)
+        public void Seed()
         {
             var id = new Guid("5ff9b5a9-89aa-42d4-9296-be9a80ab4243");
-            var employee = new Employee { Id = id, FirstName="Admin", LastName="" };
-            dbContext.Employee.Add(employee);
-            dbContext.SaveChanges();
+
+            if(this.Employee.FirstOrDefault(p=> p.Id==id)==null)
+            {
+                var employee = new Employee { Id = id, FirstName="Admin", LastName="" };
+                this.Employee.Add(employee);
+                this.SaveChanges();
+            }
         }
 
         public override int SaveChanges()
