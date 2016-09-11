@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using Domain.Entities;
+using Infra.Data.Context;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -12,6 +13,7 @@ namespace Presentation.Controllers
     public class UserController : BaseController
     {
         private readonly UserManager<User> _userManager;
+        private readonly DataBaseContext _dbContext;
         private readonly SignInManager<User> _signInManager;
         //private readonly IEmailSender _emailSender;
         //private readonly ISmsSender _smsSender;
@@ -36,6 +38,7 @@ namespace Presentation.Controllers
         public IActionResult Create()
         {
             var model = new CreateUserViewModel();
+            model.EmployeeId = new Guid("5ff9b5a9-89aa-42d4-9296-be9a80ab4243");
             return View(model);
         }
 
@@ -46,7 +49,7 @@ namespace Presentation.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = model.Email, Email = model.Email };
+                var user = new User { UserName = model.Email, Email = model.Email, EmployeeId=model.EmployeeId };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

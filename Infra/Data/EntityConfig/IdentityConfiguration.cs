@@ -32,6 +32,12 @@ namespace Infra.Data.EntityConfig
                 {
                     b.HasKey(p=> new { p.UserId, p.ProviderKey});
                 });
+            
+             modelBuilder.Entity<IdentityUserRole<Guid>>().ToTable("UserRole");
+             modelBuilder.Entity<IdentityUserLogin<Guid>>().ToTable("UserLogin");
+             modelBuilder.Entity<IdentityUserClaim<Guid>>().ToTable("UserClaim");
+             modelBuilder.Entity<IdentityRoleClaim<Guid>>().ToTable("RoleClaim");
+             
         }
     }
 }
