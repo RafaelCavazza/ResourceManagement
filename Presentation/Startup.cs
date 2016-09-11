@@ -26,6 +26,11 @@ namespace Presentation
             using(var dbContext = new DataBaseContext())
             {
                 dbContext.Database.EnsureCreated();
+                try
+                {
+                    dbContext.Seed();
+                }
+                catch {  }
             }
         }
    
