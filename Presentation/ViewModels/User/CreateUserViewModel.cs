@@ -1,7 +1,8 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Presentation.ViewModel
+namespace Presentation.ViewModels.User
 {
     public class CreateUserViewModel
     {
@@ -35,8 +36,10 @@ namespace Presentation.ViewModel
         [Required]
         public string ConfirmPassword { get; set; }
 
-
         [Display(Name = "Funcionário Vinculado ao Usuáio: ID")]
+        public ICollection<Employee> Employee {get; set;}
+
+        
         [DataType(DataType.Text)]
         [Required]
         public Guid EmployeeId {get;set;}

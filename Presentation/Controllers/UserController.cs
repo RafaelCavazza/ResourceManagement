@@ -6,14 +6,13 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Presentation.ViewModel;
+using Presentation.ViewModels.User;
 
 namespace Presentation.Controllers
 {
     public class UserController : BaseController
     {
         private readonly UserManager<User> _userManager;
-        private readonly DataBaseContext _dbContext;
         private readonly SignInManager<User> _signInManager;
         //private readonly IEmailSender _emailSender;
         //private readonly ISmsSender _smsSender;
@@ -25,15 +24,13 @@ namespace Presentation.Controllers
             SignInManager<User> signInManager,
             //IEmailSender emailSender,
             //ISmsSender smsSender,
-            ILoggerFactory loggerFactory,
-            DataBaseContext dbContext)
+            ILoggerFactory loggerFactory)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             //_emailSender = emailSender;
             //_smsSender = smsSender;
             _logger = loggerFactory.CreateLogger<UserController>();
-            _dbContext = dbContext;
         }
 
         [AllowAnonymous]
@@ -41,8 +38,6 @@ namespace Presentation.Controllers
         {
             var model = new CreateUserViewModel();
             model.EmployeeId = new Guid("5ff9b5a9-89aa-42d4-9296-be9a80ab4243");
-
-            _dbContext.Seed();
 
             return View(model);
         }
