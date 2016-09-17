@@ -16,7 +16,7 @@ namespace Domain.Services
 
         void IServiceBase<TEntity>.Add(TEntity entity)
         {
-            throw new NotImplementedException();
+            _repository.Add(entity);
         }
 
         void IDisposable.Dispose()
@@ -26,22 +26,22 @@ namespace Domain.Services
 
         IEnumerable<TEntity> IServiceBase<TEntity>.GetAll()
         {
-            throw new NotImplementedException();
+            return _repository.GetAll();
         }
 
         TEntity IServiceBase<TEntity>.GetById(Guid id)
         {
-            throw new NotImplementedException();
+            return _repository.GetById(id);
         }
 
         void IServiceBase<TEntity>.Remove(TEntity entity)
         {
-            throw new NotImplementedException();
+            _repository.Remove(entity);
         }
 
         void IServiceBase<TEntity>.Update(TEntity entity)
         {
-            throw new NotImplementedException();
+            _repository.Update(entity);
         }
     }
 }
