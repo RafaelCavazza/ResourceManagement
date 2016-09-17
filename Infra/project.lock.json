@@ -3105,6 +3105,12 @@
         "dependencies": {
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "1.0.0",
           "Microsoft.NETCore.App": "1.0.0"
+        },
+        "compile": {
+          "netcoreapp1.0/Domain.dll": {}
+        },
+        "runtime": {
+          "netcoreapp1.0/Domain.dll": {}
         }
       }
     }
@@ -8655,7 +8661,8 @@
     },
     "Domain/1.0.0": {
       "type": "project",
-      "path": "../Domain/project.json"
+      "path": "../Domain/project.json",
+      "msbuildProject": "../Domain/Domain.xproj"
     }
   },
   "projectFileDependencyGroups": {

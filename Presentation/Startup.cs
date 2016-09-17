@@ -7,6 +7,8 @@ using Infra.Data.Context;
 using Domain.Entities;
 using System;
 using Microsoft.AspNetCore.Http;
+using AutoMapper;
+using Presentation.AutoMapper;
 
 namespace Presentation
 {
@@ -42,7 +44,7 @@ namespace Presentation
             services.AddDbContext<DataBaseContext>();
             services.AddIdentity<User,Role>().AddEntityFrameworkStores<DataBaseContext, Guid>().AddDefaultTokenProviders();
             services.AddLogging();
-
+            services.AddAutoMapper(p => AutoMapperConfig.RegisterMapping() );
             //Depois Adicionar os Serviços de SMS e Email -> SendGrid
             //services.AddTransient<IEmailSender, AuthMessageSender>();
             //services.AddTransient<ISmsSender, AuthMessageSender>();

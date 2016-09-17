@@ -25,8 +25,7 @@ namespace Presentation.Controllers
                 return View(model);
             
             //Exemplo de Como usar e configurar o AutoMapper RAFATORAR
-            //AutoMapperConfig.RegisterMapping();
-            //var mppedEntityTest = Mapper.Map<Employee>(model);
+            var mppedEntityTest = Mapper.Map<Employee>(model);
             return View();
         }
 

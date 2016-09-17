@@ -20,6 +20,5 @@ namespace Presentation.AutoMapper
         {
             get{ return "ViewModelToDomainMappingProfile"; }
         }
-
     }
 }
