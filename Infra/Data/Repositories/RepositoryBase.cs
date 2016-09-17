@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Data.Repositories
 {
-    public class RepositoryBase<TEntity> : IDisposable, IRepositoryBase<TEntity> where TEntity : class                                                    
+    public class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : class                                                    
     {
         protected DataBaseContext dbContext = new DataBaseContext();
 
@@ -20,6 +20,7 @@ namespace Infra.Data.Repositories
 
         public void Dispose()
         {
+            //TODO : Terminar implementação do Dispose
             dbContext.Dispose();
         }
 
