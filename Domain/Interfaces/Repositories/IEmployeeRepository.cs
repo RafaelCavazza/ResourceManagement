@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Domain.Entities;
 
-namespace Domain.Interfaces
+namespace Domain.Interfaces.Repositories
 {
     public interface IEmployeeRepository : IRepositoryBase<Employee>
     {

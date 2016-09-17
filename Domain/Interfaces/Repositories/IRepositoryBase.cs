@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Domain.Interfaces
+namespace Domain.Interfaces.Repositories
 {
     public interface IRepositoryBase<TEntity> where TEntity : class
     {
