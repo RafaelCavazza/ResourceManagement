@@ -8,7 +8,6 @@ namespace Presentation.Controllers
     {
         public IActionResult Index()
         {
-            var user  = User.Identity.Name;
             return View();
         }
 

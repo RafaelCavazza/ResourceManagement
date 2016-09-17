@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using Infra.Data.Context;
 using Domain.Entities;
 using System;
+using Microsoft.AspNetCore.Http;
 
 namespace Presentation
 {
@@ -34,7 +35,6 @@ namespace Presentation
             }
         }
    
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
@@ -71,7 +71,14 @@ namespace Presentation
             
             app.UseIdentity();
 
-            //app.UseCookieAuthentication();
+            app.UseCookieAuthentication(new CookieAuthenticationOptions()
+            {
+                AuthenticationScheme = "CookieMiddlewareInstance",
+                LoginPath = new PathString("/Users/Login/"),
+                AccessDeniedPath = new PathString("/Users/Login/"),
+                AutomaticAuthenticate = true,
+                AutomaticChallenge = true
+            });
 
             app.UseMvc(routes =>
             {

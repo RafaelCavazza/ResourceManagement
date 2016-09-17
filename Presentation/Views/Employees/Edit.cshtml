@@ -1,0 +1,33 @@
+@model Presentation.ViewModels.Employee.EditEmployeeViewModel
+
+@{
+
+}
+
+<div>  
+  
+  <h2> 
+      Editando o usuário @model.Name
+  </h2>
+
+  <form method="post" asp-controller="Employees" and asp-action="Edit">
+    
+    <input asp-for="Id" style="visible:hidden"/>
+
+    <div class="form-group">
+      <label asp-for="Name" class="col-md-2 control-label"></label>
+      <div class="col-md-10">
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-md-offset-2 col-md-10">
+        <input type="submit" value="Criar" class="btn btn-default" />
+      </div>
+    </div>
+    
+  </form>
+
+</div>

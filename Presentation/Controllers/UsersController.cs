@@ -1,7 +1,6 @@
 using System;
 using System.Threading.Tasks;
 using Domain.Entities;
-using Infra.Data.Context;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -10,7 +9,7 @@ using Presentation.ViewModels.User;
 
 namespace Presentation.Controllers
 {
-    public class UserController : BaseController
+    public class UsersController : BaseController
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
@@ -19,7 +18,7 @@ namespace Presentation.Controllers
         //private static bool _databaseChecked;
         private readonly ILogger _logger;
 
-        public UserController(
+        public UsersController(
             UserManager<User> userManager,
             SignInManager<User> signInManager,
             //IEmailSender emailSender,
@@ -30,7 +29,7 @@ namespace Presentation.Controllers
             _signInManager = signInManager;
             //_emailSender = emailSender;
             //_smsSender = smsSender;
-            _logger = loggerFactory.CreateLogger<UserController>();
+            _logger = loggerFactory.CreateLogger<UsersController>();
         }
 
         [AllowAnonymous]
@@ -109,13 +108,11 @@ namespace Presentation.Controllers
             return View(model);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> LogOff()
         {
             await _signInManager.SignOutAsync();
             _logger.LogInformation(4, "User logged out.");
-            return RedirectToAction(nameof(HomeController.Index), "Home");
+            return RedirectToAction("Login", "User");
         }
     }
 }

@@ -140,8 +140,10 @@
 --reference:/home/thais/NetCore/ResourceManagement/Domain/bin/Debug/netcoreapp1.0/Domain.dll
 --resource:"/home/thais/NetCore/ResourceManagement/Infra/obj/Debug/netcoreapp1.0/Infradotnet-compile.deps.json",Infra.deps.json
 /home/thais/NetCore/ResourceManagement/Infra/Program.cs
+/home/thais/NetCore/ResourceManagement/Infra/Migrations/20160917035655_Migration2.Designer.cs
 /home/thais/NetCore/ResourceManagement/Infra/Migrations/DataBaseContextModelSnapshot.cs
 /home/thais/NetCore/ResourceManagement/Infra/Migrations/20160911193716_Migration1.cs
+/home/thais/NetCore/ResourceManagement/Infra/Migrations/20160917035655_Migration2.cs
 /home/thais/NetCore/ResourceManagement/Infra/Migrations/20160911193716_Migration1.Designer.cs
 /home/thais/NetCore/ResourceManagement/Infra/Data/Repositories/UserRepository.cs
 /home/thais/NetCore/ResourceManagement/Infra/Data/Repositories/EmployeeRepository.cs

@@ -1,0 +1,66 @@
+@model Presentation.ViewModels.Employee.CreateEmployeeViewModel
+
+@{
+  ViewBag.Title = "Criar Novo Funcionário";
+}
+
+
+<h2> 
+  Criar Novo Funcionário 
+</h2>
+
+<div>  
+  
+  <form method="post" asp-controller="Employees" and asp-action="Create">
+    
+    <div class="form-group">
+      <div class="row">
+        <label asp-for="Name" class="col-md-2 control-label"></label>
+        <div class="col-md-6">
+          <input asp-for="Name" class="form-control" />
+          <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <div class="row">
+        <label asp-for="Cpf" class="col-md-2 control-label"></label>
+        <div class="col-md-6">
+          <input asp-for="Cpf" class="form-control" />
+          <span asp-validation-for="Cpf" class="text-danger"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <label asp-for="Identifier" class="col-md-2 control-label"></label>
+        <div class="col-md-6">
+          <input asp-for="Identifier" class="form-control" />
+          <span asp-validation-for="Identifier" class="text-danger"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <label asp-for="DateOfBirth" class="col-md-2 control-label"></label>
+        <div class="col-md-6">
+          <input asp-for="DateOfBirth" class="form-control" />
+          <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-offset-2 col-md-10">
+          <input type="submit" value="Cadastrar" class="btn btn-success" />
+        </div>
+      </div>
+    </div>
+    
+  </form>
+
+</div>
