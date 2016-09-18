@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using Domain.Interfaces.Repositories;
 using Infra.Data.Context;
 using Infra.Data.Extensions;
@@ -14,6 +15,18 @@ namespace Infra.Data.Repositories
 
         public void Add(TEntity entity)
         {
+            var type = entity.GetType();
+            var props = new List<PropertyInfo>(type.GetProperties());
+
+            foreach (PropertyInfo prop in props)
+            {
+                if(prop.Name=="Id")
+                {
+                    prop.SetValue(entity, Guid.NewGuid());
+                    continue;
+                }
+            }
+
             dbContext.Set<TEntity>().Add(entity);
             dbContext.SaveChanges();
         }

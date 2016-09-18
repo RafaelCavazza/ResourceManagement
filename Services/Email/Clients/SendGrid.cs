@@ -21,24 +21,35 @@ namespace Services.Email.Clients
             Sender = sender;
         }
 
-        void IEmailSender.Send(List<string> to, string subject, string body, EmailContentType contenType)
+        public void Send(List<string> to, string subject, string body, EmailContentType contenType)
         {
             throw new NotImplementedException();
         }
 
-        void IEmailSender.Send(List<string> to, List<string> cc, List<string> cco, string subject, string body, EmailContentType contenType)
+        public void Send(List<string> to, List<string> cc, List<string> cco, string subject, string body, EmailContentType contenType)
         {
             throw new NotImplementedException();
         }
 
-        void IEmailSender.Send(string sender, List<string> to, List<string> cc, List<string> cco, string subject, string body, EmailContentType contenType)
+        public void Send(string sender, List<string> to, List<string> cc, List<string> cco, string subject, string body, EmailContentType contenType)
         {
             throw new NotImplementedException();
         }
 
-        void IEmailSender.Send(string sender, List<string> to, List<string> cc, List<string> cco, string subject, string body, Attachment attachment, EmailContentType contenType)
+        public void Send(string sender, List<string> to, List<string> cc, List<string> cco, string subject, string body, Attachment attachment, EmailContentType contenType)
         {
             throw new NotImplementedException();
+        }
+
+        private string MountRequestBody()
+        {
+            return null;
+            //@"{"personalizations": [{"to": [{"email": "your.email@example.com"}]}],"from": {"email": "example@example.com"},"subject": "Hello, World!","content": [{"type": "text/plain", "value": "Heya!"}]}";            
+        }
+
+        private void SetRequestHeaders()
+        {
+
         }
 
         #region IDisposable Support
@@ -67,7 +78,7 @@ namespace Services.Email.Clients
         // }
 
         // This code added to correctly implement the disposable pattern.
-        void IDisposable.Dispose()
+        public void Dispose()
         {
             // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
             Dispose(true);
@@ -75,5 +86,6 @@ namespace Services.Email.Clients
             // GC.SuppressFinalize(this);
         }
         #endregion
+
     }
 }

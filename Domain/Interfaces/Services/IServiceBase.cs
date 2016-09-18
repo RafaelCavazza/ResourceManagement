@@ -10,6 +10,5 @@ namespace Domain.Interfaces.Services
         void Remove(TEntity entity);
         TEntity GetById(Guid id);    
         IEnumerable<TEntity> GetAll();   
-
     }
 }

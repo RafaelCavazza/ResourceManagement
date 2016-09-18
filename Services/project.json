@@ -5,7 +5,8 @@
     "Microsoft.NETCore.App": {
       "version": "1.0.0",
       "type": "platform"
-    }
+    },
+    "Newtonsoft.Json": "9.0.1"
   },
 
   "frameworks": {

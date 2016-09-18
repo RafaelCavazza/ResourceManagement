@@ -46,7 +46,8 @@
       ],
       "dependencies": {
         "Infra" : "1.0.0",
-        "Domain" : "1.0.0"
+        "Domain" : "1.0.0",
+        "Aplication" : "1.0.0"
       }
     }
   },
