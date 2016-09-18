@@ -14,32 +14,32 @@ namespace Domain.Services
             _repository = repository; 
         }
 
-        void IServiceBase<TEntity>.Add(TEntity entity)
+        public void Add(TEntity entity)
         {
             _repository.Add(entity);
         }
 
-        void IDisposable.Dispose()
+        public void Dispose()
         {
             throw new NotImplementedException();
         }
 
-        IEnumerable<TEntity> IServiceBase<TEntity>.GetAll()
+        public IEnumerable<TEntity> GetAll()
         {
             return _repository.GetAll();
         }
 
-        TEntity IServiceBase<TEntity>.GetById(Guid id)
+        public TEntity GetById(Guid id)
         {
             return _repository.GetById(id);
         }
 
-        void IServiceBase<TEntity>.Remove(TEntity entity)
+        public void Remove(TEntity entity)
         {
             _repository.Remove(entity);
         }
 
-        void IServiceBase<TEntity>.Update(TEntity entity)
+        public void Update(TEntity entity)
         {
             _repository.Update(entity);
         }
