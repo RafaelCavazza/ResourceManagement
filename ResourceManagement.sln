@@ -9,6 +9,8 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Domain", "Domain\Domain.xpr
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Infra", "Infra\Infra.xproj", "{AC0624E1-0983-4938-A94B-6A581670BD12}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Aplication", "Aplication\Aplication.xproj", "{4080D622-F952-4CE1-9194-F6043C15D6A1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{AC0624E1-0983-4938-A94B-6A581670BD12}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC0624E1-0983-4938-A94B-6A581670BD12}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC0624E1-0983-4938-A94B-6A581670BD12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4080D622-F952-4CE1-9194-F6043C15D6A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4080D622-F952-4CE1-9194-F6043C15D6A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4080D622-F952-4CE1-9194-F6043C15D6A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4080D622-F952-4CE1-9194-F6043C15D6A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
