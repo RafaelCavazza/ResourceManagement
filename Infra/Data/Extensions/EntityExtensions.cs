@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.Linq.Expressions;
+using Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 
@@ -12,7 +13,7 @@ namespace Infra.Data.Extensions
     {
         public static TEntity Find<TEntity>(this DbSet<TEntity> set, params object[] keyValues) where TEntity : class
         {
-            var context = ((IInfrastructure<IServiceProvider>)set).GetService<DbContext>();
+            var context = ((IInfrastructure<IServiceProvider>)set).GetService<DataBaseContext>();
 
             var entityType = context.Model.FindEntityType(typeof(TEntity));
             var key = entityType.FindPrimaryKey();

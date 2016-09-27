@@ -8,9 +8,10 @@ using Infra.Data.Context;
 namespace Infra.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    partial class DataBaseContextModelSnapshot : ModelSnapshot
+    [Migration("20160927023226_Migration4")]
+    partial class Migration4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")
@@ -27,11 +28,9 @@ namespace Infra.Migrations
 
                     b.Property<DateTime>("CreatedOn");
 
-                    b.Property<string>("DateOfBirth")
-                        .IsRequired();
+                    b.Property<string>("DateOfBirth");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasAnnotation("MaxLength", 200);
 
                     b.Property<string>("Identifier");
@@ -43,12 +42,6 @@ namespace Infra.Migrations
                         .HasAnnotation("MaxLength", 150);
 
                     b.HasKey("Id");
-
-                    b.HasIndex("Cpf")
-                        .IsUnique();
-
-                    b.HasIndex("Email")
-                        .IsUnique();
 
                     b.ToTable("Employee");
                 });

@@ -5,6 +5,7 @@ using Presentation.ViewModels.Employee;
 using Domain.Entities;
 using System;
 using Aplication.Interfaces;
+using System.Linq;
 
 namespace Presentation.Controllers
 {
@@ -20,7 +21,7 @@ namespace Presentation.Controllers
 
         public IActionResult Index()
         {
-            var employees = _employeeAppService.GetAll();
+            var employees = _employeeAppService.GetAll().OrderBy(p=> p.CreatedOn);
             return View(employees);            
         }
 

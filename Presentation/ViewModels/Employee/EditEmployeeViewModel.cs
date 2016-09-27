@@ -17,10 +17,16 @@ namespace Presentation.ViewModels.Employee
         [Required(ErrorMessage="O campo Cpf é obrigatório")]
         public string Cpf {get; set;}
 
-        [DisplayAttribute(Name="Identificador")]
+        [DisplayAttribute(Name="Matrícula")]
         [DataType(DataType.Text)]
-        [Required(ErrorMessage="O campo Identificador é obrigatório")]
+        [Required(ErrorMessage="O campo Matrícula é obrigatório")]
         public string Identifier {get; set;}
+
+
+        [DisplayAttribute(Name="E-mail")]
+        [DataType(DataType.EmailAddress)]
+        [Required(ErrorMessage="O campo E-mail é obrigatório")]
+        public string Email {get; set;}
 
         [DisplayAttribute(Name="Data de Nascimento")]
         [DataType(DataType.Date)]
