@@ -44,6 +44,12 @@ namespace Presentation.Controllers
             return RedirectToAction("Index");
         }
 
+
+        public IActionResult Import()
+        {
+            throw new NotImplementedException();
+        }
+
         public IActionResult Edit(Guid id)
         {
             var employee = _employeeAppService.GetById(id);
