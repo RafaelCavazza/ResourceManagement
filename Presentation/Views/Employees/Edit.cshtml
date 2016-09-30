@@ -1,13 +1,9 @@
 @model Presentation.ViewModels.Employee.EditEmployeeViewModel
 
-@{
-
-}
-
 <div>  
   
   <h2> 
-      Editando o usuário @model.Name
+      Editando o usuário: @Model.Name
   </h2>
 
   <form method="post" asp-controller="Employees" and asp-action="Edit">
