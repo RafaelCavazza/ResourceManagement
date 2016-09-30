@@ -41,7 +41,7 @@ namespace Presentation.Controllers
             var employee = Mapper.Map<Employee>(model);
             _employeeAppService.Add(employee);
 
-            return View("Index");
+            return RedirectToAction("Index");
         }
 
         public IActionResult Edit(Guid id)

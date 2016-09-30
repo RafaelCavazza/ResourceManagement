@@ -9,6 +9,7 @@ namespace Presentation.ViewModels.Employee
         [Required(ErrorMessage="O campo Nome é obrigatório")]
         public string Name {get; set;}
 
+        [RegularExpression(@"^([0-9]){3}\.([0-9]){3}\.([0-9]){3}-([0-9]){2}$", ErrorMessage = "O campo CPF deve estar no formato XXX.XXX.XXX-XX")]
         [DisplayAttribute(Name="Cpf")]
         [DataType(DataType.Text)]
         [Required(ErrorMessage="O campo Cpf é obrigatório")]
