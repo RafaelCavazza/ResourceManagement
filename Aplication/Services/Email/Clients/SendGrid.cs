@@ -36,7 +36,7 @@ namespace Aplication.Services.Email.Clients
             }
 
             jTo.Value = toArray;
-            jPersonalizations.Value = new JArray( new JObject(jTo), new JObject(jSubject));
+            jPersonalizations.Value = new JArray( new JObject(jTo,jSubject));
             
             if(type == EmailContentType.Text)
                 jType.Value = "text/plain";
@@ -49,7 +49,7 @@ namespace Aplication.Services.Email.Clients
             body.Add(jPersonalizations);
             body.Add(jFrom);
             body.Add(jContent);
-
+         
             return body.ToString();  
         }
 
@@ -59,21 +59,21 @@ namespace Aplication.Services.Email.Clients
             //-H "Authorization: Bearer YOUR_API_KEY" -H "Content-Type: application/json" -d "[YOUR DATA HERE]"
         }
 
-        public void Send(string from, List<string> to, string subject, string body, EmailContentType contenType)
+        public async void Send(string from, List<string> to, string subject, string body, EmailContentType contenType)
         {
             using (var client = new HttpClient())
             {
                 try
                 {
-                    client.BaseAddress = new Uri(_apiUrl);
-                    
                     var requestBody = GetRequestBody(from, to, subject, body, contenType);
-                    var request = new HttpRequestMessage(HttpMethod.Post,_apiUrl);
-                    request.Content = new StringContent(requestBody, Encoding.UTF8,"application/json");
-                    request.Method = HttpMethod.Post;
-                    SetRequestHeaders(request.Headers);
-                    
-                    client.SendAsync(request).Wait();
+                    var request = new HttpRequestMessage(HttpMethod.Post, _apiUrl);
+
+                    SetRequestHeaders(client.DefaultRequestHeaders);
+
+                    var content = new StringContent(requestBody, Encoding.UTF8, "application/json");
+                    var response = await client.PostAsync(_apiUrl, content);
+
+                    var responseString = await response.Content.ReadAsStringAsync();
                 }
                 catch (HttpRequestException e)
                 {
