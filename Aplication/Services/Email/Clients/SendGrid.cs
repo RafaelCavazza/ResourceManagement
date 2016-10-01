@@ -63,22 +63,12 @@ namespace Aplication.Services.Email.Clients
         {
             using (var client = new HttpClient())
             {
-                try
-                {
-                    var requestBody = GetRequestBody(from, to, subject, body, contenType);
-                    var request = new HttpRequestMessage(HttpMethod.Post, _apiUrl);
+                var requestBody = GetRequestBody(from, to, subject, body, contenType);
+                SetRequestHeaders(client.DefaultRequestHeaders);
 
-                    SetRequestHeaders(client.DefaultRequestHeaders);
-
-                    var content = new StringContent(requestBody, Encoding.UTF8, "application/json");
-                    var response = await client.PostAsync(_apiUrl, content);
-
-                    var responseString = await response.Content.ReadAsStringAsync();
-                }
-                catch (HttpRequestException e)
-                {
-                    Console.WriteLine($"Request exception: {e.Message}");
-                }
+                var content = new StringContent(requestBody, Encoding.UTF8, "application/json");
+                var response = await client.PostAsync(_apiUrl, content);
+                var responseString = await response.Content.ReadAsStringAsync();
             }
         }
     }
