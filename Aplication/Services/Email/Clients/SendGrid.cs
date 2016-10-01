@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
 using Aplication.Services.Email.Interaces;
-using Aplication.Services.Email.Objects;
+using Newtonsoft.Json.Linq;
 
 namespace Aplication.Services.Email.Clients
 {
@@ -9,84 +12,74 @@ namespace Aplication.Services.Email.Clients
     {
         private readonly string _apiUrl = "https://api.sendgrid.com/v3/mail/send";
         public string ApiKey {get; internal set;}
-        public string Sender {get; internal set;}
 
         public SendGrid(string apiKey)
         {
             ApiKey = apiKey;
         }
 
-        public SendGrid(string apiKey, string sender) : this(apiKey)
+        public string GetRequestBody(string from, List<string> to, string subject, string content, EmailContentType type)
         {
-            Sender = sender;
-        }
-        private void SetRequestBody()
-        {
-            var request = new 
+            var body = new JObject();
+            var jPersonalizations = new JProperty("personalizations");
+            var jFrom = new JProperty("from");
+            var jTo = new JProperty("to");
+            var jSubject = new JProperty("subject", subject);
+            var jContent = new JProperty("content");
+            var jValue = new JProperty("value",content);
+            var jType = new JProperty("type");
+
+            var toArray = new JArray();
+            foreach(var email in to)
             {
+                toArray.Add(new JObject(new JProperty("email", email)));
+            }
 
-            };
-            //@"{"personalizations": [{"to": [{"email": "your.email@example.com"}]}],"from": {"email": "example@example.com"},"subject": "Hello, World!","content": [{"type": "text/plain", "value": "Heya!"}]}";            
+            jTo.Value = toArray;
+            jPersonalizations.Value = new JArray( new JObject(jTo), new JObject(jSubject));
+            
+            if(type == EmailContentType.Text)
+                jType.Value = "text/plain";
+            else if(type == EmailContentType.Html)
+                jType.Value = "text/html";
+            
+            jContent.Value = new JArray( new JObject( jType,jValue ) );
+            jFrom.Value = new JObject( new JProperty("email",from)) ;
+
+            body.Add(jPersonalizations);
+            body.Add(jFrom);
+            body.Add(jContent);
+
+            return body.ToString();  
         }
 
-        private void SetRequestHeaders()
+        private void SetRequestHeaders(HttpRequestHeaders header)
         {
-
+            header.Add("Authorization","Bearer "+ ApiKey);
+            //-H "Authorization: Bearer YOUR_API_KEY" -H "Content-Type: application/json" -d "[YOUR DATA HERE]"
         }
 
-        public void Send(List<string> to, string subject, string body, EmailContentType contenType)
+        public void Send(string from, List<string> to, string subject, string body, EmailContentType contenType)
         {
-            throw new NotImplementedException();
-        }
-
-        public void Send(List<string> to, List<string> cc, List<string> cco, string subject, string body, EmailContentType contenType)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Send(string sender, List<string> to, List<string> cc, List<string> cco, string subject, string body, EmailContentType contenType)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Send(string sender, List<string> to, List<string> cc, List<string> cco, string subject, string body, Attachment attachment, EmailContentType contenType)
-        {
-            throw new NotImplementedException();
-        }
-
-        #region IDisposable Support
-        private bool disposedValue = false; // To detect redundant calls
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!disposedValue)
+            using (var client = new HttpClient())
             {
-                if (disposing)
+                try
                 {
-                    // TODO: dispose managed state (managed objects).
+                    client.BaseAddress = new Uri(_apiUrl);
+                    
+                    var requestBody = GetRequestBody(from, to, subject, body, contenType);
+                    var request = new HttpRequestMessage(HttpMethod.Post,_apiUrl);
+                    request.Content = new StringContent(requestBody, Encoding.UTF8,"application/json");
+                    request.Method = HttpMethod.Post;
+                    SetRequestHeaders(request.Headers);
+                    
+                    client.SendAsync(request).Wait();
                 }
-
-                // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
-                // TODO: set large fields to null.
-
-                disposedValue = true;
+                catch (HttpRequestException e)
+                {
+                    Console.WriteLine($"Request exception: {e.Message}");
+                }
             }
         }
-
-        // TODO: override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources.
-        // ~SendGrid() {
-        //   // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
-        //   Dispose(false);
-        // }
-
-        // This code added to correctly implement the disposable pattern.
-        public void Dispose()
-        {
-            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
-            Dispose(true);
-            // TODO: uncomment the following line if the finalizer is overridden above.
-            // GC.SuppressFinalize(this);
-        }
-        #endregion
     }
 }

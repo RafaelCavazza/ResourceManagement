@@ -6,6 +6,9 @@ using Domain.Entities;
 using System;
 using Aplication.Interfaces;
 using System.Linq;
+using Aplication.Services.Email.Clients;
+using Aplication.Services.Email.Interaces;
+using System.Collections.Generic;
 
 namespace Presentation.Controllers
 {
@@ -21,6 +24,8 @@ namespace Presentation.Controllers
 
         public IActionResult Index()
         {
+            var email = new SendGrid("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");
+            email.Send("dontreply@resoucemanager.com",  new List<string> {"rafaelcavazza@gmail.com"}, "Teste", "<h1> Olá! </h1>", EmailContentType.Html);
             var employees = _employeeAppService.GetAll().OrderBy(p=> p.CreatedOn);
             return View(employees);            
         }
