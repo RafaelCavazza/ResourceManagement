@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.Linq;
 
-namespace Services.Email.Objects
+namespace Aplication.Services.Email.Objects
 {
     public class Attachment
     {

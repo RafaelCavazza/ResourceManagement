@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Services.Email.Objects;
 
-namespace Services.Email.Interaces
+namespace Aplication.Services.Email.Interaces
 {
     public interface IEmailSender : IDisposable 
     {

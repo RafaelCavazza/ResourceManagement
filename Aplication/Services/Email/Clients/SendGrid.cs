@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Services.Email.Interaces;
 using Services.Email.Objects;
 
-namespace Services.Email.Clients
+namespace Aplication.Services.Email.Clients
 {
     public class SendGrid : IEmailSender
     {
