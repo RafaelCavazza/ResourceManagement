@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
-using Services.Email.Interaces;
-using Services.Email.Objects;
+using Aplication.Services.Email.Interaces;
+using Aplication.Services.Email.Objects;
 
 namespace Aplication.Services.Email.Clients
 {
@@ -19,6 +19,19 @@ namespace Aplication.Services.Email.Clients
         public SendGrid(string apiKey, string sender) : this(apiKey)
         {
             Sender = sender;
+        }
+        private void SetRequestBody()
+        {
+            var request = new 
+            {
+
+            };
+            //@"{"personalizations": [{"to": [{"email": "your.email@example.com"}]}],"from": {"email": "example@example.com"},"subject": "Hello, World!","content": [{"type": "text/plain", "value": "Heya!"}]}";            
+        }
+
+        private void SetRequestHeaders()
+        {
+
         }
 
         public void Send(List<string> to, string subject, string body, EmailContentType contenType)
@@ -39,17 +52,6 @@ namespace Aplication.Services.Email.Clients
         public void Send(string sender, List<string> to, List<string> cc, List<string> cco, string subject, string body, Attachment attachment, EmailContentType contenType)
         {
             throw new NotImplementedException();
-        }
-
-        private string MountRequestBody()
-        {
-            return null;
-            //@"{"personalizations": [{"to": [{"email": "your.email@example.com"}]}],"from": {"email": "example@example.com"},"subject": "Hello, World!","content": [{"type": "text/plain", "value": "Heya!"}]}";            
-        }
-
-        private void SetRequestHeaders()
-        {
-
         }
 
         #region IDisposable Support
@@ -86,6 +88,5 @@ namespace Aplication.Services.Email.Clients
             // GC.SuppressFinalize(this);
         }
         #endregion
-
     }
 }

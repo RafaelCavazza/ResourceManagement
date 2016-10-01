@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Services.Email.Objects;
+using Aplication.Services.Email.Objects;
 
 namespace Aplication.Services.Email.Interaces
 {
