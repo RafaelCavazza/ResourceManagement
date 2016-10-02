@@ -5,6 +5,7 @@ using Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using Presentation.ViewModels.User;
 
@@ -40,7 +41,8 @@ namespace Presentation.Controllers
         public IActionResult Create()
         {
             var model = new CreateUserViewModel();
-            model.Employee = _employeeAppService.GetAll().Where(p=> p.Active); 
+            var employees = _employeeAppService.GetAll().Where(p=> p.Active).ToList();
+            model.Employee = new SelectList(employees,"Id", "Name"); 
             return View(model);
         }
 

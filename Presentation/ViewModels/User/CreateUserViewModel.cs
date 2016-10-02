@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Presentation.ViewModels.User
 {
@@ -36,11 +37,12 @@ namespace Presentation.ViewModels.User
         [Required]
         public string ConfirmPassword { get; set; }
 
-        [Display(Name = "Funcionário Vinculado ao Usuáio:")]
-        public IEnumerable<Domain.Entities.Employee> Employee {get; set;}
+        [Display(Name = "Usuáio Vinculado ao Funcionário:")]
+        [DataType(DataType.Text)]
+        public IEnumerable<SelectListItem> Employee {get; set;}
         
         [DataType(DataType.Text)]
-        [Required]
+        [Required(ErrorMessage="Não é possível criar um usuário sem vinculo a um Funcionário.")]
         public Guid EmployeeId {get;set;}
     }
 }
