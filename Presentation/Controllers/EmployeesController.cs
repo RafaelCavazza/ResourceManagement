@@ -44,9 +44,16 @@ namespace Presentation.Controllers
         public IActionResult Create(CreateEmployeeViewModel model)
         {
             if(!ModelState.IsValid)
-                return View(model);
+                return View(model);        
             
             var employee = Mapper.Map<Employee>(model);
+
+            var isDuplicated = _employeeAppService.IsDuplicatedEmployee(employee);
+            if(isDuplicated.Item1)
+            {
+                ViewBag.CustomErrors = isDuplicated.Item2;
+                return View(model);
+            }
             _employeeAppService.Add(employee);
 
             return RedirectToAction("Index");

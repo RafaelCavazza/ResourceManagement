@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -56,7 +55,6 @@ namespace Aplication.Services.Email.Clients
         private void SetRequestHeaders(HttpRequestHeaders header)
         {
             header.Add("Authorization","Bearer "+ ApiKey);
-            //-H "Authorization: Bearer YOUR_API_KEY" -H "Content-Type: application/json" -d "[YOUR DATA HERE]"
         }
 
         public async void Send(string from, List<string> to, string subject, string body, EmailContentType contenType)
