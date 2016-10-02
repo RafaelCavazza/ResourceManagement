@@ -37,7 +37,7 @@ namespace Presentation.ViewModels.User
         public string ConfirmPassword { get; set; }
 
         [Display(Name = "Funcionário Vinculado ao Usuáio:")]
-        public ICollection<Domain.Entities.Employee> Employee {get; set;}
+        public IEnumerable<Domain.Entities.Employee> Employee {get; set;}
         
         [DataType(DataType.Text)]
         [Required]

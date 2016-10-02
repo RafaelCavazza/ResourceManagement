@@ -1,4 +1,6 @@
+using System.Linq;
 using System.Threading.Tasks;
+using Aplication.Interfaces;
 using Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -12,6 +14,7 @@ namespace Presentation.Controllers
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
+        private readonly IEmployeeAppService _employeeAppService;
         //private readonly IEmailSender _emailSender;
         //private readonly ISmsSender _smsSender;
         //private static bool _databaseChecked;
@@ -22,19 +25,22 @@ namespace Presentation.Controllers
             SignInManager<User> signInManager,
             //IEmailSender emailSender,
             //ISmsSender smsSender,
-            ILoggerFactory loggerFactory)
+            ILoggerFactory loggerFactory,
+            IEmployeeAppService employeeAppService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             //_emailSender = emailSender;
             //_smsSender = smsSender;
             _logger = loggerFactory.CreateLogger<UsersController>();
+            _employeeAppService = employeeAppService;
         }
 
         [AllowAnonymous]
         public IActionResult Create()
         {
             var model = new CreateUserViewModel();
+            model.Employee = _employeeAppService.GetAll().Where(p=> p.Active); 
             return View(model);
         }
 
@@ -45,11 +51,11 @@ namespace Presentation.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = model.Email, Email = model.Email, EmployeeId=model.EmployeeId };
+                var user = new User { UserName = model.UserName, Email = model.Email, EmployeeId=model.EmployeeId };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
                     //await _emailSender.SendEmailAsync(model.Email, "Confirm your account",
                     //    "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");

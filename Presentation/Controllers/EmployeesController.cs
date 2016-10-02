@@ -6,9 +6,6 @@ using Domain.Entities;
 using System;
 using Aplication.Interfaces;
 using System.Linq;
-using Aplication.Services.Email.Clients;
-using Aplication.Services.Email.Interaces;
-using System.Collections.Generic;
 
 namespace Presentation.Controllers
 {
@@ -25,8 +22,8 @@ namespace Presentation.Controllers
         public IActionResult Index()
         {
             //-----> Teste Para envio de Email
-            var email = new SendGrid("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");
-            email.Send("dontreply@resoucemanager.com",  new List<string> {"rafaelcavazza@gmail.com"}, "Teste", "<h1> Olá! </h1>", EmailContentType.Html);
+            //var email = new SendGrid("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");
+            //email.Send("dontreply@resoucemanager.com",  new List<string> {"rafaelcavazza@gmail.com"}, "Teste", "<h1> Olá! </h1>", EmailContentType.Html);
             //-----> Teste Para envio de Email
             
             var employees = _employeeAppService.GetAll().OrderBy(p=> p.CreatedOn);
@@ -78,7 +75,20 @@ namespace Presentation.Controllers
         {
             var employee = Mapper.Map<Employee>(model);
             _employeeAppService.Update(employee);
-            return View("Index");
+
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Disable(Guid id)
+        {
+            _employeeAppService.Disable(id);   
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Enable(Guid id)
+        {
+            _employeeAppService.Enable(id);   
+            return RedirectToAction("Index");
         }
     }
 }

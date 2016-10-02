@@ -14,6 +14,16 @@ namespace Domain.Services
             _employeeRepository = employeeRepository;
         }
 
+        public void Disable(Guid id)
+        {
+            _employeeRepository.Disable(id);
+        }
+
+        public void Enable(Guid id)
+        {
+            _employeeRepository.Enable(id);
+        }
+
         public Tuple<bool, string> IsDuplicatedEmployee(Employee employee)
         {
             return _employeeRepository.IsDuplicatedEmployee(employee);

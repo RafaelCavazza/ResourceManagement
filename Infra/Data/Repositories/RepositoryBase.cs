@@ -13,7 +13,7 @@ namespace Infra.Data.Repositories
     {
         protected DataBaseContext dbContext = new DataBaseContext();
 
-        public void Add(TEntity entity)
+        public virtual void Add(TEntity entity)
         {
             var type = entity.GetType();
             var props = new List<PropertyInfo>(type.GetProperties());
@@ -30,23 +30,23 @@ namespace Infra.Data.Repositories
             dbContext.Set<TEntity>().Add(entity);
             dbContext.SaveChanges();
         }
-        public IEnumerable<TEntity> GetAll()
+        public virtual IEnumerable<TEntity> GetAll()
         {
             return dbContext.Set<TEntity>().ToList();
         }
 
-        public TEntity GetById(Guid id)
+        public virtual TEntity GetById(Guid id)
         {
             return dbContext.Set<TEntity>().Find(id);
         }
 
-        public void Remove(TEntity entity)
+        public virtual void Remove(TEntity entity)
         {
             dbContext.Set<TEntity>().Remove(entity);
             dbContext.SaveChanges();
         }
 
-        public void Update(TEntity entity)
+        public virtual void Update(TEntity entity)
         {
             dbContext.Entry(entity).State = EntityState.Modified;
             dbContext.SaveChanges();

@@ -13,6 +13,16 @@ namespace Aplication
             _employeeService = employeeService;
         }
 
+        public void Disable(Guid id)
+        {
+            _employeeService.Disable(id);
+        }
+
+        public void Enable(Guid id)
+        {
+            _employeeService.Enable(id);
+        }
+
         public Tuple<bool, string> IsDuplicatedEmployee(Employee employee)
         {
             return _employeeService.IsDuplicatedEmployee(employee);

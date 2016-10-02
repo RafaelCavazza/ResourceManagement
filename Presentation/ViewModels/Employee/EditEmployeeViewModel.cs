@@ -31,6 +31,7 @@ namespace Presentation.ViewModels.Employee
         [DisplayAttribute(Name="Data de Nascimento")]
         [DataType(DataType.Date)]
         [Required(ErrorMessage="O campo Date de Nascimento é obrigatório")]
-        public string DateOfBirth {get; set;}
+        public DateTime DateOfBirth {get; set;}
+        
     }
 }

@@ -33,7 +33,7 @@
         @{
             foreach(var employee in @Model)
             {
-                <tr>
+                <tr style="background-color:@(!employee.Active ? "#D3D3D3":"");">
                   <td>@employee.Name</td>
                   <td>@employee.Cpf</td>
                   <td>@employee.Identifier</td>
@@ -44,7 +44,23 @@
                   <td>
                     <i class="fa fa-pencil" aria-hidden="true">
                       <a asp-controller="Employees" asp-action="Edit" asp-route-id="@employee.Id">Editar</a>
-                    </i> 
+                    </i>
+
+                    @{
+                      if(employee.Active)
+                      {
+                        <i class="fa fa-ban" aria-hidden="true">
+                          <a asp-controller="Employees" onclick="return confirm('Confirma desabilitar o registro?');" asp-action="Disable" asp-route-id="@employee.Id">Desabilitar</a>
+                        </i> 
+                      }
+                      else
+                      {
+                        <i class="fa fa-history" aria-hidden="true">
+                          <a asp-controller="Employees" asp-action="Enable" asp-route-id="@employee.Id">Habilitar</a>
+                        </i>
+                      }
+                    } 
+                    
                   </td>
                 </tr>
             }
