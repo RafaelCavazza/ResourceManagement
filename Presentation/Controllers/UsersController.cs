@@ -36,8 +36,6 @@ namespace Presentation.Controllers
         public IActionResult Create()
         {
             var model = new CreateUserViewModel();
-            model.EmployeeId = new Guid("5ff9b5a9-89aa-42d4-9296-be9a80ab4243");
-
             return View(model);
         }
 
