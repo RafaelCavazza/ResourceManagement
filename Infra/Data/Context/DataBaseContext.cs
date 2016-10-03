@@ -30,6 +30,7 @@ namespace Infra.Data.Context
         {
             EmployeeConfiguration.Configure(modelBuilder);
             IdentityConfiguration.Configure(modelBuilder);
+            BranchConfiguration.Configure(modelBuilder);
             base.OnModelCreating(modelBuilder);
         }
 

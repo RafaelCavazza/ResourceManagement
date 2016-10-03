@@ -9,7 +9,7 @@ namespace Domain.Entities
         public string Name {get; set;}
         public string Cpf {get; set;}
         public string Identifier {get; set;}
-        public DateTime DateOfBirth {get; set;}
+        public DateTime AdmissionDate {get; set;}
         public DateTime CreatedOn {get; set;}
         public DateTime ModifiedOn {get; set;}
         public String Email {get; set;}

@@ -14,7 +14,7 @@ namespace Infra.Data.EntityConfig
                     b.Property(p=> p.Email).HasMaxLength(200).IsRequired();
                     b.Property(p=> p.Cpf).HasMaxLength(20).IsRequired();
 
-                    b.Property(p=> p.DateOfBirth).IsRequired();
+                    b.Property(p=> p.AdmissionDate).IsRequired();
                     b.Property(p=> p.CreatedOn).IsRequired();
                     b.Property(p=> p.ModifiedOn).IsRequired();
                 });
