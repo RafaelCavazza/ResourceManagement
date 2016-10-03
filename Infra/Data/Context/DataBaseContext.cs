@@ -11,6 +11,7 @@ namespace Infra.Data.Context
         public DbSet<Employee> Employee {get; set;}
         public DbSet<User> User {get; set;}
         public DbSet<Role> Role {get; set;}
+        public DbSet<Branch> Branch {get; set;}
 
         public DataBaseContext(DbContextOptions options) : base(options)
         {

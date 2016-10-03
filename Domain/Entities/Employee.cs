@@ -15,6 +15,9 @@ namespace Domain.Entities
         public String Email {get; set;}
         public bool Active {get; set;}
 
+        public Guid BranchId {get; set;}
+        public Branch Branch {get; set;}
+
         public virtual ICollection<User> Users {get; set;}
     }
 }

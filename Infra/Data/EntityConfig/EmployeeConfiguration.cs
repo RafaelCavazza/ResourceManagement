@@ -17,6 +17,7 @@ namespace Infra.Data.EntityConfig
                     b.Property(p=> p.AdmissionDate).IsRequired();
                     b.Property(p=> p.CreatedOn).IsRequired();
                     b.Property(p=> p.ModifiedOn).IsRequired();
+                    b.Property(p=> p.BranchId).IsRequired();
                 });
             
             modelBuilder.Entity<Employee>().HasIndex(p=> p.Cpf).IsUnique();
