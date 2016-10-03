@@ -73,6 +73,9 @@ namespace Presentation.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(EditEmployeeViewModel model)
         {
+            if(!ModelState.IsValid)
+                return View(model);
+                
             var employee = Mapper.Map<Employee>(model);
             _employeeAppService.Update(employee);
 

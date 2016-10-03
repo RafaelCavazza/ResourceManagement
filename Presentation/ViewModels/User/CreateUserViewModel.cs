@@ -13,6 +13,6 @@ namespace Presentation.ViewModels.User
         
         [DataType(DataType.Text)]
         [Required(ErrorMessage="Não é possível criar um usuário sem vinculo a um Funcionário.")]
-        public Guid EmployeeId {get;set;}
+        public Guid? EmployeeId {get;set;}
     }
 }
