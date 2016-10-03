@@ -52,14 +52,18 @@ namespace Presentation
             services.AddLogging();
             services.AddAutoMapper(p => AutoMapperConfig.RegisterMapping() );
 
+            //Custom DI
             services.AddScoped(typeof(IAppServiceBase<>), typeof(AppServiceBase<>));
             services.AddScoped(typeof(IEmployeeAppService), typeof(EmployeeAppService));
+            services.AddScoped(typeof(IBranchAppService), typeof(BranchAppService));
 
             services.AddScoped(typeof(IServiceBase<>), typeof(ServiceBase<>));
             services.AddScoped(typeof(IEmployeeService), typeof(EmployeeService));
+            services.AddScoped(typeof(IBranchService), typeof(BranchService));
 
             services.AddScoped(typeof(IRepositoryBase<>), typeof(RepositoryBase<>));
             services.AddScoped(typeof(IEmployeeRepository), typeof(EmployeeRepository));
+            services.AddScoped(typeof(IBranchRepository), typeof(BranchRepository));
             
             //Depois Adicionar os Serviços de SMS e Email -> SendGrid
             //services.AddTransient<IEmailSender, AuthMessageSender>();

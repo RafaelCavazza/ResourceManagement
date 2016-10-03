@@ -13,10 +13,12 @@ namespace Presentation.Controllers
     public class EmployeesController : BaseController
     {
         private readonly IEmployeeAppService _employeeAppService;
+        private readonly IBranchAppService _branchAppService;
 
-        public EmployeesController(IEmployeeAppService employeeAppService)
+        public EmployeesController(IEmployeeAppService employeeAppService, IBranchAppService branchAppService)
         {
             _employeeAppService = employeeAppService;
+            _branchAppService = branchAppService;
         }
 
         public IActionResult Index()
