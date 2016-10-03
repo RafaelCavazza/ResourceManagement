@@ -8,13 +8,8 @@ namespace Presentation.AutoMapper
     {
         public ViewModelToDomainMappingProfile()
         {
-            CreateMap<CreateEmployeeViewModel, Employee>();
-            CreateMap<EditEmployeeViewModel, Employee>();
-        }
-
-        public override string ProfileName
-        {
-            get{ return "ViewModelToDomainMappingProfile"; }
+            CreateMap<CreateEmployeeViewModel, Employee>().ForMember(x => x.Branch, opt => opt.Ignore());
+            CreateMap<EditEmployeeViewModel, Employee>().ForMember(x => x.Branch, opt => opt.Ignore());
         }
     }
 }

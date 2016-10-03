@@ -8,7 +8,7 @@ namespace Presentation.AutoMapper
     {
         public DomainToViewModelMappingProfile()
         {
-            CreateMap<Employee, CreateEmployeeViewModel>();
+            CreateMap<Employee, CreateEmployeeViewModel>().ForMember(x => x.Branch, opt => opt.Ignore());
             CreateMap<Employee, EditEmployeeViewModel>().ForMember(x => x.Branch, opt => opt.Ignore());
         }
     }

@@ -53,14 +53,14 @@ namespace Presentation.Controllers
         {
             if (ModelState.IsValid)
             {
-                var employee = _employeeAppService.GetById(model.EmployeeId);
+                var employee = _employeeAppService.GetById(model.EmployeeId.Value);
                 @ViewBag.UserEmail = employee.Email;
 
                 var user = new User 
                 { 
                     UserName = employee.Name.Replace(" ",""), 
                     Email = employee.Email, 
-                    EmployeeId=model.EmployeeId 
+                    EmployeeId= model.EmployeeId.Value
                 };
 
                 var password = Domain.Entities.User.GenerateRandomPassword();

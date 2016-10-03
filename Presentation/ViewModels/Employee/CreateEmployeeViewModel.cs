@@ -32,7 +32,7 @@ namespace Presentation.ViewModels.Employee
         [DisplayAttribute(Name="Data de Admissão")]
         [DataType(DataType.Date)]
         [Required(ErrorMessage="O campo Data de Admissão é obrigatório")]
-        public string AdmissionDate {get; set;}
+        public DateTime AdmissionDate {get; set;}
 
 
         [Display(Name = "Filial:")]

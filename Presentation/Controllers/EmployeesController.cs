@@ -6,6 +6,7 @@ using Domain.Entities;
 using System;
 using Aplication.Interfaces;
 using System.Linq;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Presentation.Controllers
 {
@@ -43,7 +44,11 @@ namespace Presentation.Controllers
         public IActionResult Create(CreateEmployeeViewModel model)
         {
             if(!ModelState.IsValid)
-                return View(model);        
+            {
+                var branchs = _branchAppService.GetAll().ToList();
+                model.Branch = new SelectList(branchs,"Id", "Name"); 
+                return View(model);
+            }        
             
             var employee = Mapper.Map<Employee>(model);
             var isDuplicated = _employeeAppService.IsDuplicatedEmployee(employee);
@@ -64,10 +69,19 @@ namespace Presentation.Controllers
             throw new NotImplementedException();
         }
 
+        public IActionResult Details(Guid id)
+        {
+            return null;
+        }
+
         public IActionResult Edit(Guid id)
         {
             var employee = _employeeAppService.GetById(id);
             var employeeViewModel = Mapper.Map<EditEmployeeViewModel>(employee);
+            
+            var branchs = _branchAppService.GetAll().ToList();
+            employeeViewModel.Branch = new SelectList(branchs,"Id", "Name", employeeViewModel.BranchId); 
+            
             return View(employeeViewModel);
         }
 
@@ -76,8 +90,12 @@ namespace Presentation.Controllers
         public IActionResult Edit(EditEmployeeViewModel model)
         {
             if(!ModelState.IsValid)
+            {
+                var branchs = _branchAppService.GetAll().ToList();
+                model.Branch = new SelectList(branchs,"Id", "Name", model.BranchId); 
                 return View(model);
-                
+            } 
+
             var employee = Mapper.Map<Employee>(model);
             _employeeAppService.Update(employee);
 
