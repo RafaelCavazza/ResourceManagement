@@ -11,7 +11,8 @@
             "args": [
                 "Domain",
                 "Infra",
-                "Presentation" 
+                "Presentation",
+                "Aplication" 
              ],
             "isBuildCommand": true,
             "showOutput": "silent",
@@ -22,7 +23,8 @@
             "args": [
                 "Domain",
                 "Infra",
-                "Presentation" 
+                "Presentation",
+                "Aplication"
              ],
             "isBuildCommand": true,
             "showOutput": "silent",

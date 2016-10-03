@@ -16,7 +16,7 @@
             "name": ".NET Core Launch (web)",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "",
+            "preLaunchTask": "build",
             "program": "${workspaceRoot}/Presentation/bin/Debug/netcoreapp1.0/Presentation.dll",
             "args": [],
             "cwd": "${workspaceRoot}/Presentation",
