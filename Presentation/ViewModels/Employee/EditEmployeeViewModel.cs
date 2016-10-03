@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Presentation.ViewModels.Employee
 {
@@ -28,10 +30,19 @@ namespace Presentation.ViewModels.Employee
         [Required(ErrorMessage="O campo E-mail é obrigatório")]
         public string Email {get; set;}
 
-        [DisplayAttribute(Name="Data de Nascimento")]
+        [DisplayAttribute(Name="Data de Admissão")]
         [DataType(DataType.Date)]
-        [Required(ErrorMessage="O campo Date de Nascimento é obrigatório")]
-        public DateTime DateOfBirth {get; set;}
+        [Required(ErrorMessage="O campo Data de Admissão é obrigatório")]
+        public string AdmissionDate {get; set;}
+
+
+        [Display(Name = "Filial:")]
+        [DataType(DataType.Text)]
+        public IEnumerable<SelectListItem> Branch {get; set;}
+        
+        [DataType(DataType.Text)]
+        [Required(ErrorMessage="Não é possível criar um usuário sem filial.")]
+        public Guid BranchId {get;set;}
         
     }
 }
