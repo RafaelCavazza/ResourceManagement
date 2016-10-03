@@ -29,7 +29,7 @@ namespace Presentation.Controllers
             //email.Send("dontreply@resoucemanager.com",  new List<string> {"rafaelcavazza@gmail.com"}, "Teste", "<h1> Olá! </h1>", EmailContentType.Html);
             //-----> Teste Para envio de Email
             
-            var employees = _employeeAppService.GetAll().OrderByDescending(p=> p.Name);
+            var employees = _employeeAppService.GetAll().OrderBy(p=> p.Name);
             return View(employees);            
         }
 
