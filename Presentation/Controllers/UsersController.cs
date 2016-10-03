@@ -58,12 +58,13 @@ namespace Presentation.Controllers
 
                 var user = new User 
                 { 
-                    UserName = model.UserName, 
+                    UserName = employee.Name.Replace(" ",""), 
                     Email = employee.Email, 
                     EmployeeId=model.EmployeeId 
                 };
 
-                var result = await _userManager.CreateAsync(user, model.Password);
+                var password = Domain.Entities.User.GenerateRandomPassword();
+                var result = await _userManager.CreateAsync(user, password);
                 if (result.Succeeded)
                 {
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
@@ -71,11 +72,10 @@ namespace Presentation.Controllers
                     //await _emailSender.SendEmailAsync(model.Email, "Confirm your account",
                     //    "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
                     _logger.LogInformation(3, "User created a new account with password.");
-                    return RedirectToAction("Success");
+                    return View("Success");
                 }
                 //AddErrors(result); //Trabalhar com erros depois
             }
-            return View("Success");
             return View(model);
         }
 
