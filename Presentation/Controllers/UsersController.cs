@@ -53,7 +53,16 @@ namespace Presentation.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = model.UserName, Email = model.Email, EmployeeId=model.EmployeeId };
+                var employee = _employeeAppService.GetById(model.EmployeeId);
+                @ViewBag.UserEmail = employee.Email;
+
+                var user = new User 
+                { 
+                    UserName = model.UserName, 
+                    Email = employee.Email, 
+                    EmployeeId=model.EmployeeId 
+                };
+
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -61,13 +70,12 @@ namespace Presentation.Controllers
                     //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
                     //await _emailSender.SendEmailAsync(model.Email, "Confirm your account",
                     //    "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
-                    await _signInManager.SignInAsync(user, isPersistent: false);
                     _logger.LogInformation(3, "User created a new account with password.");
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Success");
                 }
                 //AddErrors(result); //Trabalhar com erros depois
             }
-            // If we got this far, something failed, redisplay form
+            return View("Success");
             return View(model);
         }
 

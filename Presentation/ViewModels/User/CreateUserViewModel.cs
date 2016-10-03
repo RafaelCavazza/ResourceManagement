@@ -8,16 +8,6 @@ namespace Presentation.ViewModels.User
     public class CreateUserViewModel
     {
         [Required]
-        [Display(Name = "E-mail")]
-        [DataType(DataType.EmailAddress)]
-        public string Email { get; set; }
-
-        [Required]
-        [Display(Name = "Confirme o E-mail")]
-        [DataType(DataType.EmailAddress)]
-        public string EmailConfirm { get; set; }
-        
-        [Required]
         [Display(Name = "Telefone Celular")]
         [DataType(DataType.PhoneNumber)]
         public string PhoneNumber { get; set; }
