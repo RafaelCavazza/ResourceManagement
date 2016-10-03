@@ -9,7 +9,7 @@ namespace Presentation.AutoMapper
         public DomainToViewModelMappingProfile()
         {
             CreateMap<Employee, CreateEmployeeViewModel>();
-            CreateMap<Employee, EditEmployeeViewModel>();
+            CreateMap<Employee, EditEmployeeViewModel>().ForMember(x => x.Branch, opt => opt.Ignore());
         }
     }
 }
