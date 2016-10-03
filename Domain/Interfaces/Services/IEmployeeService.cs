@@ -10,6 +10,5 @@ namespace Domain.Interfaces.Services
         void Disable(Guid id);
 
         void Enable(Guid id);
-        
     }
 }

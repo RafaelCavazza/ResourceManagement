@@ -29,13 +29,15 @@ namespace Presentation.Controllers
             //email.Send("dontreply@resoucemanager.com",  new List<string> {"rafaelcavazza@gmail.com"}, "Teste", "<h1> Olá! </h1>", EmailContentType.Html);
             //-----> Teste Para envio de Email
             
-            var employees = _employeeAppService.GetAll().OrderBy(p=> p.CreatedOn);
+            var employees = _employeeAppService.GetAll().OrderByDescending(p=> p.Name);
             return View(employees);            
         }
 
         public IActionResult Create()
         {
             var model = new CreateEmployeeViewModel();
+            var branchs = _branchAppService.GetAll().ToList();
+            model.Branch = new SelectList(branchs,"Id", "Name"); 
             return View(model);
         }
 
@@ -71,7 +73,11 @@ namespace Presentation.Controllers
 
         public IActionResult Details(Guid id)
         {
-            return null;
+            var employee = _employeeAppService.GetById(id);
+            var employeeViewModel = Mapper.Map<DetailsEmployeeViewModel>(employee);
+            employeeViewModel.Branch = employee.Branch.Name; 
+            
+            return View(employeeViewModel);
         }
 
         public IActionResult Edit(Guid id)
@@ -95,8 +101,17 @@ namespace Presentation.Controllers
                 model.Branch = new SelectList(branchs,"Id", "Name", model.BranchId); 
                 return View(model);
             } 
-
+        
             var employee = Mapper.Map<Employee>(model);
+            var isDuplicated = _employeeAppService.IsDuplicatedEmployee(employee);
+            if(isDuplicated.Item1)
+            {
+                ViewBag.CustomErrors = isDuplicated.Item2;
+                var branchs = _branchAppService.GetAll().ToList();
+                model.Branch = new SelectList(branchs,"Id", "Name", model.BranchId); 
+                return View(model);
+            }
+            
             _employeeAppService.Update(employee);
 
             return RedirectToAction("Index");

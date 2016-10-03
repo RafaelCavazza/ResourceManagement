@@ -46,7 +46,7 @@
                       <i class="fa fa-pencil" aria-hidden="true">
                         <a asp-controller="Employees" asp-action="Edit" asp-route-id="@employee.Id">Editar</a>
                       </i>
-
+                      @*
                       @{
                         if(employee.Active)
                         {
@@ -61,7 +61,10 @@
                           </i>
                         }
                       } 
-                      
+                      *@
+                      <i class="fa fa-info" aria-hidden="true">
+                        <a asp-controller="Employees" asp-action="Details" asp-route-id="@employee.Id">Detalhes</a>
+                      </i>
                     </td>
                   </tr>
               }

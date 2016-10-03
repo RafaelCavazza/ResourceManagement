@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Domain.Entities;
 using Domain.Interfaces.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Data.Repositories
 {
@@ -16,9 +17,13 @@ namespace Infra.Data.Repositories
         public Tuple<bool, string> IsDuplicatedEmployee(Employee employee)
         {
             var _employee = dbContext.Employee.FirstOrDefault( p=> 
-            p.Identifier == employee.Identifier ||
-            p.Cpf == employee.Cpf ||
-            p.Email == employee.Email);
+                (
+                    p.Identifier == employee.Identifier ||
+                    p.Cpf == employee.Cpf ||
+                    p.Email == employee.Email
+                )
+                && p.Id != employee.Id
+            );
 
             if(_employee == null)
                 return Tuple.Create(false,"");
@@ -56,6 +61,11 @@ namespace Infra.Data.Repositories
             var employee = GetById(id);
             employee.Active = true;
             base.Update(employee);
+        }
+
+        public override Employee GetById(Guid id)
+        {
+            return dbContext.Employee.Include(p=> p.Branch).FirstOrDefault(p=> p.Id==id);
         }
     }
 }

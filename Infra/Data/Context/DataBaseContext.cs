@@ -85,6 +85,8 @@ namespace Infra.Data.Context
                 {
                     if(entry.Property("ModifiedOn") != null)
                         entry.Property("ModifiedOn").CurrentValue = System.DateTime.Now;
+                    if(entry.Property("CreatedOn") != null)
+                        entry.Property("CreatedOn").IsModified =false;
                 }
                 else
                 {
