@@ -4,91 +4,92 @@
   ViewBag.Title = "Criar Novo Funcionário";
 }
 
-<h2> 
-  Cadastrar Novo Funcionário 
-</h2>
-
-<div>  
-  
-  <form method="post" asp-controller="Employees" and asp-action="Create">
+<div class="x_panel">
+  <div class="x_title">
+    <h2>
+        Cadastrar Novo Funcionário 
+    </h2>
     
-    <div class="form-group">
-      <div class="row">
-        <label asp-for="Name" class="col-md-2 control-label"></label>
-        <div class="col-md-6">
-          <input asp-for="Name" class="form-control" />
-          <span asp-validation-for="Name" class="text-danger"></span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="x_content"> 
+    <form method="post" asp-controller="Employees" and asp-action="Create">  
+      <div class="form-group">
+        <div class="row">
+          <label asp-for="Name" class="col-md-2 control-label"></label>
+          <div class="col-md-6">
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+          </div>
         </div>
       </div>
-    </div>
-    
-    <div class="form-group">
-      <div class="row">
-        <label asp-for="Cpf" class="col-md-2 control-label"></label>
-        <div class="col-md-6">
-          <input asp-for="Cpf" class="form-control" />
-          <span asp-validation-for="Cpf" class="text-danger"></span>
+      
+      <div class="form-group">
+        <div class="row">
+          <label asp-for="Cpf" class="col-md-2 control-label"></label>
+          <div class="col-md-6">
+            <input asp-for="Cpf" class="form-control" />
+            <span asp-validation-for="Cpf" class="text-danger"></span>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="form-group">
-      <div class="row">
-        <label asp-for="Identifier" class="col-md-2 control-label"></label>
-        <div class="col-md-6">
-          <input asp-for="Identifier" class="form-control" />
-          <span asp-validation-for="Identifier" class="text-danger"></span>
+      <div class="form-group">
+        <div class="row">
+          <label asp-for="Identifier" class="col-md-2 control-label"></label>
+          <div class="col-md-6">
+            <input asp-for="Identifier" class="form-control" />
+            <span asp-validation-for="Identifier" class="text-danger"></span>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="form-group">
-      <div class="row">
-        <label asp-for="Email" class="col-md-2 control-label"></label>
-        <div class="col-md-6">
-          <input asp-for="Email" class="form-control" />
-          <span asp-validation-for="Email" class="text-danger"></span>
+      <div class="form-group">
+        <div class="row">
+          <label asp-for="Email" class="col-md-2 control-label"></label>
+          <div class="col-md-6">
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="form-group">
-      <div class="row">
-        <label asp-for="AdmissionDate" class="col-md-2 control-label"></label>
-        <div class="col-md-6">
-          <input asp-for="AdmissionDate" class="form-control" />
-          <span asp-validation-for="AdmissionDate" class="text-danger"></span>
+      <div class="form-group">
+        <div class="row">
+          <label asp-for="AdmissionDate" class="col-md-2 control-label"></label>
+          <div class="col-md-6">
+            <input asp-for="AdmissionDate" class="form-control" />
+            <span asp-validation-for="AdmissionDate" class="text-danger"></span>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="form-group">
-      <div class="row">
-        <label asp-for="Branch" class="col-md-2 control-label"></label>
-        <div class="col-md-6">
-          <select class="form-control" asp-for="BranchId" asp-items="@Model.Branch"></select>
-          <span asp-validation-for="BranchId" class="text-danger"></span>
+      <div class="form-group">
+        <div class="row">
+          <label asp-for="Branch" class="col-md-2 control-label"></label>
+          <div class="col-md-6">
+            <select class="form-control" asp-for="BranchId" asp-items="@Model.Branch"></select>
+            <span asp-validation-for="BranchId" class="text-danger"></span>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Custom Erros -->
-    <div class="form-group" style="display:@(string.IsNullOrWhiteSpace(ViewBag.CustomErrors) ? "none" : "block")">
-      <div class="row">
-        <div class="col-md-offset-2 col-md-10">
-          <span class="text-danger"> @ViewBag.CustomErrors </span>
+      <!-- Custom Erros -->
+      <div class="form-group" style="display:@(string.IsNullOrWhiteSpace(ViewBag.CustomErrors) ? "none" : "block")">
+        <div class="row">
+          <div class="col-md-offset-2 col-md-10">
+            <span class="text-danger"> @ViewBag.CustomErrors </span>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="form-group">
-      <div class="row">
-        <div class="col-md-offset-2 col-md-10">
-          <input type="submit" value="Cadastrar" class="btn btn-success" />
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Cadastrar" class="btn btn-success" />
+          </div>
         </div>
       </div>
-    </div>
-    
-  </form>
-
+    </form>
+  </div>
 </div>

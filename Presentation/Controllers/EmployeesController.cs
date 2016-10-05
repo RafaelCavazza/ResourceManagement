@@ -68,7 +68,7 @@ namespace Presentation.Controllers
 
         public IActionResult Import()
         {
-            throw new NotImplementedException();
+            return View();
         }
 
         public IActionResult Details(Guid id)
