@@ -9,12 +9,7 @@ using System;
 using Microsoft.AspNetCore.Http;
 using AutoMapper;
 using Presentation.AutoMapper;
-using Aplication.Interfaces;
-using Aplication;
-using Domain.Interfaces.Services;
-using Domain.Services;
-using Infra.Data.Repositories;
-using Domain.Interfaces.Repositories;
+using Presentation.StartupExtensions;
 
 namespace Presentation
 {
@@ -53,17 +48,10 @@ namespace Presentation
             services.AddAutoMapper(p => AutoMapperConfig.RegisterMapping() );
 
             //Custom DI
-            services.AddScoped(typeof(IAppServiceBase<>), typeof(AppServiceBase<>));
-            services.AddScoped(typeof(IEmployeeAppService), typeof(EmployeeAppService));
-            services.AddScoped(typeof(IBranchAppService), typeof(BranchAppService));
-
-            services.AddScoped(typeof(IServiceBase<>), typeof(ServiceBase<>));
-            services.AddScoped(typeof(IEmployeeService), typeof(EmployeeService));
-            services.AddScoped(typeof(IBranchService), typeof(BranchService));
-
-            services.AddScoped(typeof(IRepositoryBase<>), typeof(RepositoryBase<>));
-            services.AddScoped(typeof(IEmployeeRepository), typeof(EmployeeRepository));
-            services.AddScoped(typeof(IBranchRepository), typeof(BranchRepository));
+            services.AplicationDi();
+            services.DomainDi();
+            services.InfraDi();
+            
             
             //Depois Adicionar os Serviços de SMS e Email -> SendGrid
             //services.AddTransient<IEmailSender, AuthMessageSender>();

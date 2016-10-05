@@ -45,13 +45,16 @@ namespace Infra.Data.Repositories
 
         public override void Update(Employee employee)
         {
-            employee.Active = true;
+            var dbEmployee = base.GetById(employee.Id);
+            dbContext.Entry(dbEmployee).State = EntityState.Detached;
+
+            employee.Active = dbEmployee.Active;
             base.Update(employee);
         }
 
         public void Disable(Guid id)
         {
-            var employee = GetById(id);
+            var employee = base.GetById(id);
             employee.Active = false;
             base.Update(employee);
         }

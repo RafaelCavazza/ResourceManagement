@@ -83,6 +83,7 @@ namespace Presentation.Controllers
         public IActionResult Edit(Guid id)
         {
             var employee = _employeeAppService.GetById(id);
+            
             var employeeViewModel = Mapper.Map<EditEmployeeViewModel>(employee);
             
             var branchs = _branchAppService.GetAll().ToList();
@@ -103,6 +104,7 @@ namespace Presentation.Controllers
             } 
         
             var employee = Mapper.Map<Employee>(model);
+            
             var isDuplicated = _employeeAppService.IsDuplicatedEmployee(employee);
             if(isDuplicated.Item1)
             {
