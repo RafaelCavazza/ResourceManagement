@@ -46,6 +46,7 @@ namespace Presentation
             services.AddIdentity<User,Role>().AddEntityFrameworkStores<DataBaseContext, Guid>().AddDefaultTokenProviders();
             services.AddLogging();
             services.AddAutoMapper(p => AutoMapperConfig.RegisterMapping() );
+            services.AddSession();
 
             //Custom DI
             services.AplicationDi();
@@ -80,6 +81,8 @@ namespace Presentation
             app.UseStaticFiles();
             
             app.UseIdentity();
+
+            app.UseSession();
 
             app.UseCookieAuthentication(new CookieAuthenticationOptions()
             {

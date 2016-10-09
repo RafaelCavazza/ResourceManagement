@@ -1,7 +1,7 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-      "/home/rafael/.nuget/packages"
+      "/home/welbert/.nuget/packages"
     ]
   }
 }

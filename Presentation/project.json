@@ -11,6 +11,7 @@
       "type": "build"
     },
     "AutoMapper" : "5.1.1",
+    "Microsoft.AspNetCore.Session": "1.0.0-*",
     "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0",
     "Microsoft.AspNetCore.Server.Kestrel": "1.0.0",
     "Microsoft.AspNetCore.StaticFiles": "1.0.0",
