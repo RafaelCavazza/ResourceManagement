@@ -1,3 +1,11 @@
+#Diretórios de Ambiente
+
 bin/
 obj/
 .vs/
+.vscode/
+
+#Extensões de Arquivos de Ambiente
+.lock.json
+.xproj
+.sln

@@ -1,6 +1,8 @@
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using Aplication.Services.Email.Enums;
 using Aplication.Services.Email.Interaces;
 using Newtonsoft.Json.Linq;
 
