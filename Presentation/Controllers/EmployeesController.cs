@@ -45,20 +45,18 @@ namespace Presentation.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(CreateEmployeeViewModel model)
         {
+            var employee = Mapper.Map<Employee>(model);
+            var isDuplicated = _employeeAppService.IsDuplicatedEmployee(employee);
+
+            if(isDuplicated.Item1)
+                ModelState.AddModelError("CustomErrors",isDuplicated.Item2);
+
             if(!ModelState.IsValid)
             {
                 var branchs = _branchAppService.GetAll().ToList();
                 model.Branch = new SelectList(branchs,"Id", "Name"); 
                 return View(model);
             }        
-            
-            var employee = Mapper.Map<Employee>(model);
-            var isDuplicated = _employeeAppService.IsDuplicatedEmployee(employee);
-            if(isDuplicated.Item1)
-            {
-                ViewBag.CustomErrors = isDuplicated.Item2;
-                return View(model);
-            }
             
             _employeeAppService.Add(employee);
 
@@ -96,6 +94,12 @@ namespace Presentation.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(EditEmployeeViewModel model)
         {
+            var employee = Mapper.Map<Employee>(model);
+            var isDuplicated = _employeeAppService.IsDuplicatedEmployee(employee);
+
+            if(isDuplicated.Item1)
+                ModelState.AddModelError("CustomErrors",isDuplicated.Item2);
+
             if(!ModelState.IsValid)
             {
                 var branchs = _branchAppService.GetAll().ToList();
@@ -103,17 +107,6 @@ namespace Presentation.Controllers
                 return View(model);
             } 
         
-            var employee = Mapper.Map<Employee>(model);
-            
-            var isDuplicated = _employeeAppService.IsDuplicatedEmployee(employee);
-            if(isDuplicated.Item1)
-            {
-                ViewBag.CustomErrors = isDuplicated.Item2;
-                var branchs = _branchAppService.GetAll().ToList();
-                model.Branch = new SelectList(branchs,"Id", "Name", model.BranchId); 
-                return View(model);
-            }
-            
             _employeeAppService.Update(employee);
 
             return RedirectToAction("Index");

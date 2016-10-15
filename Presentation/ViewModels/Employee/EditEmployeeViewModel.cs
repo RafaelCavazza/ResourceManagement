@@ -43,6 +43,7 @@ namespace Presentation.ViewModels.Employee
         [DataType(DataType.Text)]
         [Required(ErrorMessage="Não é possível criar um usuário sem filial.")]
         public Guid? BranchId {get;set;}
+        public string CustomErrors {get;set;}
         
     }
 }
