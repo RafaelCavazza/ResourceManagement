@@ -1,8 +1,0 @@
-#:D:\Source\Workspaces\ResourceManagement\Aplication\Aplication.xproj
-D:\Source\Workspaces\ResourceManagement\Aplication\Aplication.xproj|D:\Source\Workspaces\ResourceManagement\Domain\Domain.xproj
-#:D:\Source\Workspaces\ResourceManagement\Presentation\Presentation.xproj
-D:\Source\Workspaces\ResourceManagement\Presentation\Presentation.xproj|D:\Source\Workspaces\ResourceManagement\Aplication\Aplication.xproj
-D:\Source\Workspaces\ResourceManagement\Presentation\Presentation.xproj|D:\Source\Workspaces\ResourceManagement\Domain\Domain.xproj
-D:\Source\Workspaces\ResourceManagement\Presentation\Presentation.xproj|D:\Source\Workspaces\ResourceManagement\Infra\Infra.xproj
-D:\Source\Workspaces\ResourceManagement\Aplication\Aplication.xproj|D:\Source\Workspaces\ResourceManagement\Domain\Domain.xproj
-D:\Source\Workspaces\ResourceManagement\Infra\Infra.xproj|D:\Source\Workspaces\ResourceManagement\Domain\Domain.xproj
