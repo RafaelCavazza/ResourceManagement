@@ -6,7 +6,7 @@
 <div class="x_panel">
   <div class="x_title">
     <h2>
-      Ususários Cadastrados 
+      Ususários 
     </h2>
 
     <div style="float: right;">
@@ -25,7 +25,7 @@
         <tr>
           <th>Nome</th>
           <th>Email</th>
-          <th>Ativo</th>
+          <th>Status</th>
           <th>Permissões</th>
           <th>Data de Criação</th>
         </tr>
@@ -35,8 +35,8 @@
               foreach(var user in @Model)
               {
                   <tr style="background-color:@(!user.Active ? "#D3D3D3":"");">
-                    <td>@user.Employee?.Name</td>
-                    <td>@user.Employee?.Email</td>
+                    <td>@user.Employee.Name</td>
+                    <td>@user.Employee.Email</td>
                     <td>@(user.Active ? "Ativo" : "Inativo")</td>
                     <td> Permissões </td>
                     <td>@user.CreatedOn.ToString("dd/MM/yyyy")</td>

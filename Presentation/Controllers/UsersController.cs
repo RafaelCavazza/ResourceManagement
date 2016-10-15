@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Aplication.Interfaces;
@@ -38,7 +37,7 @@ namespace Presentation.Controllers
         [Authorize]
         public IActionResult Index()
         {
-            var usres = new List<User>();
+            var usres = _userAppService.GetAll();
             return View(usres);
         }
 
@@ -65,7 +64,8 @@ namespace Presentation.Controllers
                 { 
                     UserName = employee.Name.Replace(" ",""), 
                     Email = employee.Email, 
-                    EmployeeId= model.EmployeeId.Value
+                    EmployeeId= model.EmployeeId.Value,
+                    Active = true
                 };
 
                 var password = Domain.Entities.User.GenerateRandomPassword();

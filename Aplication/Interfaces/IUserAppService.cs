@@ -1,4 +1,3 @@
-using System;
 using Domain.Entities;
 
 namespace Aplication.Interfaces
