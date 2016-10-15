@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Aplication.Interfaces;
@@ -16,25 +17,26 @@ namespace Presentation.Controllers
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly IEmployeeAppService _employeeAppService;
-        //private readonly IEmailSender _emailSender;
-        //private readonly ISmsSender _smsSender;
-        //private static bool _databaseChecked;
         private readonly ILogger _logger;
 
         public UsersController(
             UserManager<User> userManager,
             SignInManager<User> signInManager,
-            //IEmailSender emailSender,
-            //ISmsSender smsSender,
             ILoggerFactory loggerFactory,
             IEmployeeAppService employeeAppService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
-            //_emailSender = emailSender;
-            //_smsSender = smsSender;
             _logger = loggerFactory.CreateLogger<UsersController>();
             _employeeAppService = employeeAppService;
+        }
+
+
+        [Authorize]
+        public IActionResult Index()
+        {
+            var usres = new List<User>();
+            return View(usres);
         }
 
         [AllowAnonymous]
