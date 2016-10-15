@@ -15,6 +15,7 @@ namespace Presentation.StartupExtensions
             services.AddScoped(typeof(IServiceBase<>), typeof(ServiceBase<>));
             services.AddScoped(typeof(IEmployeeService), typeof(EmployeeService));
             services.AddScoped(typeof(IBranchService), typeof(BranchService));
+            services.AddScoped(typeof(IUserService), typeof(UserService));
         }
 
         public static void InfraDi(this IServiceCollection services)
@@ -22,6 +23,7 @@ namespace Presentation.StartupExtensions
             services.AddScoped(typeof(IRepositoryBase<>), typeof(RepositoryBase<>));
             services.AddScoped(typeof(IEmployeeRepository), typeof(EmployeeRepository));
             services.AddScoped(typeof(IBranchRepository), typeof(BranchRepository));
+            services.AddScoped(typeof(IUserRepository), typeof(UserRepository));
         }
 
         public static void AplicationDi(this IServiceCollection services)
@@ -29,6 +31,7 @@ namespace Presentation.StartupExtensions
             services.AddScoped(typeof(IAppServiceBase<>), typeof(AppServiceBase<>));
             services.AddScoped(typeof(IEmployeeAppService), typeof(EmployeeAppService));
             services.AddScoped(typeof(IBranchAppService), typeof(BranchAppService));
+            services.AddScoped(typeof(IUserAppService), typeof(UserAppService));
         }
     }
 }

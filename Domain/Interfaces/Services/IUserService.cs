@@ -2,7 +2,7 @@ using Domain.Entities;
 
 namespace Domain.Interfaces.Services
 {
-    interface IUserService : IServiceBase<User>
+    public interface IUserService : IServiceBase<User>
     {
     }
 }

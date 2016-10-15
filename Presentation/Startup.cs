@@ -26,16 +26,6 @@ namespace Presentation
                 .AddEnvironmentVariables();
             
             Configuration = builder.Build();
-            
-            using(var dbContext = new DataBaseContext())
-            {
-                dbContext.Database.EnsureCreated();
-                try
-                {
-                    dbContext.Seed();
-                }
-                catch {  }
-            }
         }
    
         public void ConfigureServices(IServiceCollection services)
@@ -52,7 +42,6 @@ namespace Presentation
             services.AplicationDi();
             services.DomainDi();
             services.InfraDi();
-            
             
             //Depois Adicionar os Serviços de SMS e Email -> SendGrid
             //services.AddTransient<IEmailSender, AuthMessageSender>();

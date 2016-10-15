@@ -17,18 +17,21 @@ namespace Presentation.Controllers
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly IEmployeeAppService _employeeAppService;
+        private readonly IUserAppService _userAppService;
         private readonly ILogger _logger;
 
         public UsersController(
             UserManager<User> userManager,
             SignInManager<User> signInManager,
             ILoggerFactory loggerFactory,
-            IEmployeeAppService employeeAppService)
+            IEmployeeAppService employeeAppService,
+            IUserAppService userAppService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = loggerFactory.CreateLogger<UsersController>();
             _employeeAppService = employeeAppService;
+            _userAppService = userAppService;
         }
 
 
@@ -92,9 +95,7 @@ namespace Presentation.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
-                // This doesn't count login failures towards account lockout
-                // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
+                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: true);
                 if (result.Succeeded)
                 {
                     _logger.LogInformation(1, "User logged in.");
