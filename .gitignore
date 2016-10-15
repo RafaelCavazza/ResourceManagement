@@ -6,6 +6,6 @@ obj/
 .vscode/
 
 #Extensões de Arquivos de Ambiente
-.lock.json
-.xproj
-.sln
+*.lock.json
+*.xproj
+*.sln
