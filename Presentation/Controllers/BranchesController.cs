@@ -55,10 +55,10 @@ namespace Presentation.Controllers
         public IActionResult Delete(Guid id)
         {
             var branch = _branchAppService.GetById(id);
-            if(branch.Employees.Any())
+            if (branch.Employees.Any())
             {
                 TempData["Error"] = "Não é possível deletar uma Unidade que está associada a um Funcionário";
-                return RedirectToAction("Details", id);
+                return RedirectToAction("Details", new { id = id });
             }
 
             _branchAppService.Remove(branch);
@@ -78,7 +78,7 @@ namespace Presentation.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(EditBranchViewModel model)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
                 return View("Edit", model);
 
             var branch = Mapper.Map<Branch>(model);
