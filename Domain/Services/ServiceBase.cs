@@ -11,7 +11,7 @@ namespace Domain.Services
 
         public ServiceBase(IRepositoryBase<TEntity> repository)
         {
-            _repository = repository; 
+            _repository = repository;
         }
 
         public void Add(TEntity entity)
@@ -22,6 +22,11 @@ namespace Domain.Services
         public IEnumerable<TEntity> GetAll()
         {
             return _repository.GetAll();
+        }
+
+        public IEnumerable<TEntity> GetPaged(int pageIndex, int pageSize)
+        {
+            return _repository.GetPaged(pageSize, pageIndex);
         }
 
         public TEntity GetById(Guid id)

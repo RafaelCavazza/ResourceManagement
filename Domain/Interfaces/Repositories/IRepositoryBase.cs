@@ -8,7 +8,8 @@ namespace Domain.Interfaces.Repositories
         void Add(TEntity entity);
         void Update(TEntity entity);
         void Remove(TEntity entity);
-        TEntity GetById(Guid id);    
-        IEnumerable<TEntity> GetAll();        
-    } 
+        TEntity GetById(Guid id);
+        IEnumerable<TEntity> GetAll();
+        IEnumerable<TEntity> GetPaged(int pageIndex, int pageSize);
+    }
 }

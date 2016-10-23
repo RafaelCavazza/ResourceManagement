@@ -6,10 +6,11 @@ using Domain.Interfaces.Repositories;
 using Infra.Data.Context;
 using Infra.Data.Extensions;
 using Microsoft.EntityFrameworkCore;
+using Sakura.AspNetCore;
 
 namespace Infra.Data.Repositories
 {
-    public class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : class                                                    
+    public class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : class
     {
         protected DataBaseContext dbContext = new DataBaseContext();
 
@@ -20,7 +21,7 @@ namespace Infra.Data.Repositories
 
             foreach (PropertyInfo prop in props)
             {
-                if(prop.Name=="Id")
+                if (prop.Name == "Id")
                 {
                     prop.SetValue(entity, Guid.NewGuid());
                     continue;
@@ -38,6 +39,11 @@ namespace Infra.Data.Repositories
         public virtual TEntity GetById(Guid id)
         {
             return dbContext.Set<TEntity>().Find(id);
+        }
+
+        public virtual IEnumerable<TEntity> GetPaged(int pageIndex, int pageSize)
+        {
+            return dbContext.Set<TEntity>().ToPagedList(pageSize, pageIndex);
         }
 
         public virtual void Remove(TEntity entity)

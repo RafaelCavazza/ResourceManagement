@@ -35,18 +35,18 @@ namespace Presentation.Controllers
 
 
         [Authorize]
-        public IActionResult Index()
+        public IActionResult Index(int page = 1)
         {
-            var usres = _userAppService.GetAll();
-            return View(usres);
+            var users = _userAppService.GetPaged(page);
+            return View(users);
         }
 
         [AllowAnonymous]
         public IActionResult Create()
         {
             var model = new CreateUserViewModel();
-            var employees = _employeeAppService.GetAll().Where(p=> p.Active).ToList();
-            model.Employee = new SelectList(employees,"Id", "Name"); 
+            var employees = _employeeAppService.GetAll().Where(p => p.Active).ToList();
+            model.Employee = new SelectList(employees, "Id", "Name");
             return View(model);
         }
 
@@ -60,11 +60,11 @@ namespace Presentation.Controllers
                 var employee = _employeeAppService.GetById(model.EmployeeId.Value);
                 @ViewBag.UserEmail = employee.Email;
 
-                var user = new User 
-                { 
-                    UserName = employee.Name.Replace(" ",""), 
-                    Email = employee.Email, 
-                    EmployeeId= model.EmployeeId.Value,
+                var user = new User
+                {
+                    UserName = employee.Name.Replace(" ", ""),
+                    Email = employee.Email,
+                    EmployeeId = model.EmployeeId.Value,
                     Active = true
                 };
 

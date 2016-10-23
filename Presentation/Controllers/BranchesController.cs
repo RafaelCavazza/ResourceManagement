@@ -19,9 +19,9 @@ namespace Presentation.Controllers
             _branchAppService = branchAppService;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int page = 1)
         {
-            var branches = _branchAppService.GetAll().OrderBy(p => p.Name);
+            var branches = _branchAppService.GetPaged(page);
             return View(branches);
         }
 

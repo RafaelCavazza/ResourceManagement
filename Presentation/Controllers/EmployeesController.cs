@@ -22,15 +22,15 @@ namespace Presentation.Controllers
             _branchAppService = branchAppService;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int page = 1)
         {
             //-----> Teste Para envio de Email
             //var email = new SendGrid("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");
             //email.Send("dontreply@resoucemanager.com",  new List<string> {"rafaelcavazza@gmail.com"}, "Teste", "<h1> Olá! </h1>", EmailContentType.Html);
             //-----> Teste Para envio de Email
             
-            var employees = _employeeAppService.GetAll().OrderBy(p=> p.Name);
-            return View(employees);            
+            var employees = _employeeAppService.GetPaged(page);
+            return View(employees);
         }
 
         public IActionResult Create()
