@@ -2,56 +2,55 @@
 @model IEnumerable<Employee>
 @{ ViewBag.Title = "Funcionários"; }
 
-<div class="x_panel">
-  <div class="x_title">
-    <h2>
-      Funcionários Cadastrados
-    </h2>
+<div class="container">
+	<div class="x_title">
+		<h2>
+			Funcionários Cadastrados
+		</h2>
+		<div class="text-right">
+			<i class="fa fa-plus" aria-hidden="true">
+				<a asp-controller="Employees" asp-action="Create">
+				Adicionar Novo Usuário
+				</a>
+			</i>
+		</div>
+		<div class="clearfix"></div>
+	</div>
 
-    <div style="float: right;">
-      <i class="fa fa-plus" aria-hidden="true">
-        <a asp-controller="Employees" asp-action="Create" asp-route-id="">
-          Adicionar Novo Usuário
-        </a>
-      </i>
-    </div>
-
-    <div class="clearfix"></div>
-  </div>
-  
-  <div class="x_content">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Nome</th>
-          <th>Cpf</th>
-          <th>Matrícula</th>
-          <th>E-mail</th>
-          <th>Data de Admissão</th>
-          <th>Ações</th>
-        </tr>
-      </thead>
-      <tbody>
-        @foreach(var employee in Model) 
-        {
-          <tr style="background-color:@(!employee.Active ? " #D3D3D3 ":" ");">
-            <td>@employee.Name</td>
-            <td>@employee.Cpf</td>
-            <td>@employee.Identifier</td>
-            <td>@employee.Email</td>
-            <td>@employee.AdmissionDate.ToString("dd/MM/yyyy")</td>
-            <td>
-              <i class="fa fa-pencil" aria-hidden="true">
-                <a asp-controller="Employees" asp-action="Edit" asp-route-id="@employee.Id">Editar</a>
-              </i>
-              <i class="fa fa-info" aria-hidden="true">
-                <a asp-controller="Employees" asp-action="Details" asp-route-id="@employee.Id">Detalhes</a>
-              </i>
-            </td>
-          </tr>
-        }
-      </tbody>
-    </table>
-    <pager />
-  </div>
+	<div class="x_content">
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Nome</th>
+					<th>Cpf</th>
+					<th>Matrícula</th>
+					<th>E-mail</th>
+					<th>Data de Admissão</th>
+					<th>Ações</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach(var employee in Model) {
+				<tr class="@(!employee.Active ? " danger " : " ")">
+					<td>@employee.Name</td>
+					<td>@employee.Cpf</td>
+					<td>@employee.Identifier</td>
+					<td>@employee.Email</td>
+					<td>@employee.AdmissionDate.ToString("dd/MM/yyyy")</td>
+					<td>
+						<i class="fa fa-pencil" aria-hidden="true">
+							<a asp-controller="Employees" asp-action="Edit" asp-route-id="@employee.Id">Editar</a>
+						</i>
+						<i class="fa fa-info" aria-hidden="true">
+							<a asp-controller="Employees" asp-action="Details" asp-route-id="@employee.Id">Detalhes</a>
+						</i>
+					</td>
+				</tr>
+				}
+			</tbody>
+		</table>
+		<div class="col-md-offset-5">
+			<pager />
+		</div>
+	</div>
 </div>
