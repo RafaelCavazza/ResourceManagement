@@ -6,10 +6,11 @@ using Domain.Interfaces.Repositories;
 using Infra.Data.Context;
 using Infra.Data.Extensions;
 using Microsoft.EntityFrameworkCore;
+using Sakura.AspNetCore;
 
 namespace Infra.Data.Repositories
 {
-    public class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : class                                                    
+    public class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : class
     {
         protected DataBaseContext dbContext = new DataBaseContext();
 
@@ -20,7 +21,7 @@ namespace Infra.Data.Repositories
 
             foreach (PropertyInfo prop in props)
             {
-                if(prop.Name=="Id")
+                if (prop.Name == "Id")
                 {
                     prop.SetValue(entity, Guid.NewGuid());
                     continue;
@@ -85,6 +86,11 @@ namespace Infra.Data.Repositories
             Dispose(true);
             // TODO: uncomment the following line if the finalizer is overridden above.
             //GC.SuppressFinalize(this);
+        }
+
+        public IPagedList<TEntity> GetAllPaged(int pageIndex, int pageSize = 10)
+        {
+            return dbContext.Set<TEntity>().ToPagedList(pageSize, pageIndex);
         }
         #endregion
     }

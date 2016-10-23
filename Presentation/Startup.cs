@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Http;
 using AutoMapper;
 using Presentation.AutoMapper;
 using Presentation.StartupExtensions;
+using Sakura.AspNetCore.Mvc;
 
 namespace Presentation
 {
@@ -24,28 +25,34 @@ namespace Presentation
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
-            
+
             Configuration = builder.Build();
         }
-   
+
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
             services.AddMvc();
             services.AddDbContext<DataBaseContext>();
-            services.AddIdentity<User,Role>().AddEntityFrameworkStores<DataBaseContext, Guid>().AddDefaultTokenProviders();
+            services.AddIdentity<User, Role>().AddEntityFrameworkStores<DataBaseContext, Guid>().AddDefaultTokenProviders();
             services.AddLogging();
-            services.AddAutoMapper(p => AutoMapperConfig.RegisterMapping() );
+            services.AddAutoMapper(p => AutoMapperConfig.RegisterMapping());
             services.AddSession();
 
             //Custom DI
             services.AplicationDi();
             services.DomainDi();
             services.InfraDi();
-            
+
             //Depois Adicionar os Serviços de SMS e Email -> SendGrid
             //services.AddTransient<IEmailSender, AuthMessageSender>();
             //services.AddTransient<ISmsSender, AuthMessageSender>();
+
+            services.AddBootstrapPagerGenerator(options =>
+            {
+                // Use default pager options.
+                options.ConfigureDefault();
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,7 +63,7 @@ namespace Presentation
 
             //Verificar Uso dessa congfiguração
             app.UseDeveloperExceptionPage();
-            
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -68,7 +75,7 @@ namespace Presentation
             }
 
             app.UseStaticFiles();
-            
+
             app.UseIdentity();
 
             app.UseSession();
@@ -84,7 +91,7 @@ namespace Presentation
 
             app.UseMvc(routes =>
             {
-                routes.MapRoute( name: "default", template: "{controller=Home}/{action=Index}/{id?}");
+                routes.MapRoute(name: "default", template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
