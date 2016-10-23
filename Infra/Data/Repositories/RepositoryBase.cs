@@ -88,7 +88,7 @@ namespace Infra.Data.Repositories
             //GC.SuppressFinalize(this);
         }
 
-        public IPagedList<TEntity> GetAllPaged(int pageIndex, int pageSize = 10)
+        public IEnumerable<TEntity> GetPaged(int pageIndex, int pageSize = 10)
         {
             return dbContext.Set<TEntity>().ToPagedList(pageSize, pageIndex);
         }

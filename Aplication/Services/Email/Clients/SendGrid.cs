@@ -3,7 +3,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using Aplication.Services.Email.Enums;
-using Aplication.Services.Email.Interaces;
+using Aplication.Services.Email.Interfaces;
 using Newtonsoft.Json.Linq;
 
 namespace Aplication.Services.Email.Clients

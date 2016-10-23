@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Sakura.AspNetCore;
 
 namespace Domain.Interfaces.Repositories
 {
@@ -11,7 +10,6 @@ namespace Domain.Interfaces.Repositories
         void Remove(TEntity entity);
         TEntity GetById(Guid id);
         IEnumerable<TEntity> GetAll();
-
-        IPagedList<TEntity> GetAllPaged(int pageIndex, int pageSize);
+        IEnumerable<TEntity> GetPaged(int pageIndex, int pageSize);
     }
 }

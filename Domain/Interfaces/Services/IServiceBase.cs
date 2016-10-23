@@ -9,6 +9,7 @@ namespace Domain.Interfaces.Services
         void Update(TEntity entity);
         void Remove(TEntity entity);
         TEntity GetById(Guid id);    
-        IEnumerable<TEntity> GetAll();   
+        IEnumerable<TEntity> GetAll();
+        IEnumerable<TEntity> GetPaged(int pageIndex, int pageSize);      
     }
 }

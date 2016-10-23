@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Aplication.Services.Email.Enums;
 
-namespace Aplication.Services.Email.Interaces
+namespace Aplication.Services.Email.Interfaces
 {
     public interface IEmailSender 
     {

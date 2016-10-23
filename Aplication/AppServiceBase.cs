@@ -8,7 +8,7 @@ namespace Aplication
     public class AppServiceBase<TEntity> : IAppServiceBase<TEntity> where TEntity : class
     {
         public readonly IServiceBase<TEntity> _serviceBase;
-        
+
         public AppServiceBase(IServiceBase<TEntity> serviceBase)
         {
             _serviceBase = serviceBase;
@@ -27,6 +27,11 @@ namespace Aplication
         public TEntity GetById(Guid id)
         {
             return _serviceBase.GetById(id);
+        }
+
+        public IEnumerable<TEntity> GetPaged(int pageIndex, int pageSize = 10)
+        {
+            return _serviceBase.GetPaged(pageSize, pageIndex);
         }
 
         public void Remove(TEntity entity)
