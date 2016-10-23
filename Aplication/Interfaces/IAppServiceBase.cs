@@ -10,6 +10,6 @@ namespace Aplication.Interfaces
         void Remove(TEntity entity);
         TEntity GetById(Guid id);    
         IEnumerable<TEntity> GetAll();
-        IEnumerable<TEntity> GetPaged(int pageIndex, int pageSize);   
+        IEnumerable<TEntity> GetPaged(int pageIndex, int pageSize = 10);   
     }
 }

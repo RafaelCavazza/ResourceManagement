@@ -29,7 +29,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					@foreach(var user in @Model) 
+					@foreach(var user in Model) 
 					{
 						<tr style="background-color:@(!user.Active ? " #D3D3D3 ":" ");">
 							<td>@user.Employee.Name</td>
@@ -38,8 +38,9 @@
 							<td> Permissões </td>
 							<td>@user.CreatedOn.ToString("dd/MM/yyyy")</td>
 						</tr>
-					} 	
+					}
 				</tbody>
 			</table>
+			<pager />
 		</div>
 	</div>

@@ -41,6 +41,11 @@ namespace Infra.Data.Repositories
             return dbContext.Set<TEntity>().Find(id);
         }
 
+        public virtual IEnumerable<TEntity> GetPaged(int pageIndex, int pageSize)
+        {
+            return dbContext.Set<TEntity>().ToPagedList(pageSize, pageIndex);
+        }
+
         public virtual void Remove(TEntity entity)
         {
             dbContext.Set<TEntity>().Remove(entity);
@@ -86,11 +91,6 @@ namespace Infra.Data.Repositories
             Dispose(true);
             // TODO: uncomment the following line if the finalizer is overridden above.
             //GC.SuppressFinalize(this);
-        }
-
-        public IEnumerable<TEntity> GetPaged(int pageIndex, int pageSize = 10)
-        {
-            return dbContext.Set<TEntity>().ToPagedList(pageSize, pageIndex);
         }
         #endregion
     }

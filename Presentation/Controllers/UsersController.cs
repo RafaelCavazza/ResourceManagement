@@ -35,9 +35,9 @@ namespace Presentation.Controllers
 
 
         [Authorize]
-        public IActionResult Index()
+        public IActionResult Index(int page = 1)
         {
-            var users = _userAppService.GetAll();
+            var users = _userAppService.GetPaged(page);
             return View(users);
         }
 
