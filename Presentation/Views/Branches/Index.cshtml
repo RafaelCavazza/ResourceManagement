@@ -1,51 +1,50 @@
-@model System.Collections.Generic.IEnumerable<Domain.Entities.Branch>
-@{
-    ViewBag.Title = "Unidades";
-}
+@using Domain.Entities 
+@model IEnumerable<Branch>
+@{ ViewBag.Title = "Unidades"; }
 
+	<div class="x_panel">
+		<div class="x_title">
+			<h2>
+				Unidades Cadastradas
+			</h2>
 
-<div class="x_panel">
-  <div class="x_title">
-    <h2>
-      Unidades Cadastradas 
-    </h2>
-
-    <div style="float: right;">
-      <i class="fa fa-plus" aria-hidden="true">
-          <a asp-controller="Branches" asp-action="Create" asp-route-id="">
+			<div style="float: right;">
+				<i class="fa fa-plus" aria-hidden="true">
+          <a asp-controller="Branches" asp-action="Create">
             Adicionar Nova Unidade
           </a>
       </i>
-    </div>
-    
-    <div class="clearfix"></div>
-  </div>
-  <div class="x_content"> 
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Nome</th>
-          <th>Cnpj</th>
-          <th>Ações</th>
-        </tr>
-      </thead>
-      <tbody>
-            @foreach(var branch in @Model)
-            {
-                <tr>
-                  <td>@branch.Name</td>
-                  <td>@branch.Cnpj</td>
-                  <td>
-                    <i class="fa fa-pencil" aria-hidden="true">
-                      <a asp-controller="Branches" asp-action="Edit" asp-route-id="@branch.Id">Editar</a>
-                    </i>
-                    <i class="fa fa-info" aria-hidden="true">
-                      <a asp-controller="Branches" asp-action="Details" asp-route-id="@branch.Id">Detalhes</a>
-                    </i>
-                  </td>
-                </tr>
-            }     
-      </tbody>
-    </table>  
-  </div>
-</div>
+			</div>
+
+			<div class="clearfix"></div>
+		</div>
+		<div class="x_content">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Nome</th>
+						<th>Cnpj</th>
+						<th>Ações</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach(var branch in Model) 
+          {
+            <tr>
+              <td>@branch.Name</td>
+              <td>@branch.Cnpj</td>
+              <td>
+                <i class="fa fa-pencil" aria-hidden="true">
+                  <a asp-controller="Branches" asp-action="Edit" asp-route-id="@branch.Id">Editar</a>
+                </i>
+                <i class="fa fa-info" aria-hidden="true">
+                  <a asp-controller="Branches" asp-action="Details" asp-route-id="@branch.Id">Detalhes</a>
+                </i>
+              </td>
+            </tr>
+					}
+				</tbody>
+			</table>
+			<pager />
+		</div>
+	</div>
