@@ -25,12 +25,7 @@ namespace Aplication.Services.Email.Objects
             Mimetype = mimetype;
             Content = content;
         }
-
-        public Attachment(string name, string mimetype, Stream content) : this (name, mimetype, ReadStream(content))
-        {
-
-        }
-
+        
         private static byte[] ReadStream(Stream input)
         {
             using (MemoryStream ms = new MemoryStream())

@@ -60,20 +60,10 @@ namespace Presentation.Controllers
                 var employee = _employeeAppService.GetById(model.EmployeeId.Value);
                 @ViewBag.UserEmail = employee.Email;
 
-                var user = new User
-                {
-                    UserName = employee.Name.Replace(" ", ""),
-                    Email = employee.Email,
-                    EmployeeId = model.EmployeeId.Value,
-                    Active = true
-                };
+                var result = await _userAppService.Register(employee.Id);
 
-                var password = Domain.Entities.User.GenerateRandomPassword();
-                var result = await _userManager.CreateAsync(user, password);
-                if (result.Succeeded)
+                if(result.Succeeded)
                 {
-                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    _logger.LogInformation(3, "User created a new account with password.");
                     return View("Success");
                 }
                 //AddErrors(result); //Trabalhar com erros depois
