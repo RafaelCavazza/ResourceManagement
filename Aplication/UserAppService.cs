@@ -7,7 +7,6 @@ using Aplication.Services.Email.Interfaces;
 using Aplication.Services.Email.Templates;
 using Domain.Entities;
 using Domain.Interfaces.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 
 namespace Aplication
@@ -22,12 +21,14 @@ namespace Aplication
 
         public UserAppService(IUserService userService, 
                               IEmployeeService employeeService,
-                              UserManager<User> userManager
+                              UserManager<User> userManager,
+                              IEmailSender emailSender
                               ) : base(userService)
         {
             _userService = userService;
             _employeeService = employeeService;
             _userManager = userManager;
+            _emailSender = emailSender;
         }
 
         public async Task<IdentityResult> Register(Guid employeeId)
