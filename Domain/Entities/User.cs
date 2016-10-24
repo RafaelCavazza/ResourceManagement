@@ -16,11 +16,10 @@ namespace Domain.Entities
         public static string GenerateRandomPassword()
         {
             var random = new Random();
-            var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            var lowerCase = "abcdefghijklmnopqrstuvwxyz";
+            var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
             var numbers = "0123456789";
             var specialCaracters = "!@#$%*()_+{}[]?/:;><.,\\|'"; 
-            var passwordCharacters = upperCase + lowerCase + numbers + specialCaracters;
+            var passwordCharacters = letters + numbers + specialCaracters;
             return new string(Enumerable.Repeat(passwordCharacters, 250).Select(s => s[random.Next(s.Length)]).ToArray());
         }
     }
