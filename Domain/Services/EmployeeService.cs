@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Domain.Entities;
 using Domain.Interfaces.Repositories;
 using Domain.Interfaces.Services;
@@ -22,6 +23,11 @@ namespace Domain.Services
         public void Enable(Guid id)
         {
             _employeeRepository.Enable(id);
+        }
+
+        public IEnumerable<Employee> GetAllWithoutUser()
+        {
+            return _employeeRepository.GetAllWithoutUser();
         }
 
         public Tuple<bool, string> IsDuplicatedEmployee(Employee employee)

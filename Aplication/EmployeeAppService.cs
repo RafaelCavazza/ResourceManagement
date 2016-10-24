@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Aplication.Interfaces;
 using Domain.Entities;
 using Domain.Interfaces.Services;
@@ -21,6 +22,11 @@ namespace Aplication
         public void Enable(Guid id)
         {
             _employeeService.Enable(id);
+        }
+
+        public IEnumerable<Employee> GetAllWithoutUser()
+        {
+            return _employeeService.GetAllWithoutUser();
         }
 
         public Tuple<bool, string> IsDuplicatedEmployee(Employee employee)

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Domain.Entities;
 using Domain.Interfaces.Repositories;
@@ -63,6 +64,11 @@ namespace Infra.Data.Repositories
         public override Employee GetById(Guid id)
         {
             return dbContext.Employee.Include(p=> p.Branch).FirstOrDefault(p=> p.Id==id);
+        }
+
+        public IEnumerable<Employee> GetAllWithoutUser()
+        {
+            return dbContext.Employee.Where(p=> !p.Users.Any());
         }
     }
 }

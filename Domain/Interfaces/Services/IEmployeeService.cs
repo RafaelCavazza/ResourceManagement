@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Domain.Entities;
 
 namespace Domain.Interfaces.Services
@@ -10,5 +11,7 @@ namespace Domain.Interfaces.Services
         void Disable(Guid id);
 
         void Enable(Guid id);
+
+        IEnumerable<Employee> GetAllWithoutUser();
     }
 }

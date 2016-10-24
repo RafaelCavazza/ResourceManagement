@@ -46,7 +46,7 @@ namespace Presentation.Controllers
         public IActionResult Create()
         {
             var model = new CreateUserViewModel();
-            var employees = _employeeAppService.GetAll().Where(p => p.Active).ToList();
+            var employees = _employeeAppService.GetAllWithoutUser().Where(p => p.Active).ToList();
             model.Employee = new SelectList(employees, "Id", "Name");
             return View(model);
         }
@@ -64,12 +64,10 @@ namespace Presentation.Controllers
                 var result = await _userAppService.Register(employee.Id);
 
                 if(result.Succeeded)
-                {
                     return View("Success");
-                }
                 //AddErrors(result); //Trabalhar com erros depois
             }
-            return View(model);
+            return Redirect("Create");
         }
 
         [AllowAnonymous]
