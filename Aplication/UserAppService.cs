@@ -58,7 +58,7 @@ namespace Aplication
         {
             var user = _userService.GetById(userId);
             var employee = _employeeService.GetById(user.EmployeeId);
-            var aplicationUrl = "http://localhost:5000/User/Confirm?token=" + confirmationToken;
+            var aplicationUrl = "http://localhost:5000/Users/ResetPassword?userId=" + userId +"&token=" + confirmationToken;
 
             var parameters = new Dictionary<string,string>();
             parameters.Add("UserName", employee.Name);

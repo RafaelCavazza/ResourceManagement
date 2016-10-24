@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Aplication.Interfaces;
@@ -73,6 +74,12 @@ namespace Presentation.Controllers
 
         [AllowAnonymous]
         public IActionResult Login()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        public IActionResult ResetPassword(Guid userId, string confirmationToken)
         {
             return View();
         }
