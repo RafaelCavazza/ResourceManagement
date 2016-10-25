@@ -13,12 +13,12 @@ namespace Aplication.Services.Email.Clients
         private readonly string _apiUrl = "https://api.sendgrid.com/v3/mail/send";
         public string ApiKey {get; internal set;}
 
-        public SendGrid(string apiKey)
+        public SendGrid()
         {
-            ApiKey = apiKey;
+            ApiKey = "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";
         }
 
-        public string GetRequestBody(string from, List<string> to, string subject, string content, EmailContentType type)
+        public string MountRequestBody(string from, List<string> to, string subject, string content, EmailContentType type)
         {
             var body = new JObject();
             var jPersonalizations = new JProperty("personalizations");
@@ -62,7 +62,7 @@ namespace Aplication.Services.Email.Clients
         {
             using (var client = new HttpClient())
             {
-                var requestBody = GetRequestBody(from, to, subject, body, contenType);
+                var requestBody = MountRequestBody(from, to, subject, body, contenType);
                 SetRequestHeaders(client.DefaultRequestHeaders);
 
                 var content = new StringContent(requestBody, Encoding.UTF8, "application/json");

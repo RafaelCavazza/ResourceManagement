@@ -1,4 +1,6 @@
+using System;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using Aplication.Interfaces;
 using Domain.Entities;
@@ -45,7 +47,7 @@ namespace Presentation.Controllers
         public IActionResult Create()
         {
             var model = new CreateUserViewModel();
-            var employees = _employeeAppService.GetAll().Where(p => p.Active).ToList();
+            var employees = _employeeAppService.GetAllWithoutUser().Where(p => p.Active).ToList();
             model.Employee = new SelectList(employees, "Id", "Name");
             return View(model);
         }
@@ -55,36 +57,68 @@ namespace Presentation.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(CreateUserViewModel model)
         {
-            if (ModelState.IsValid)
-            {
-                var employee = _employeeAppService.GetById(model.EmployeeId.Value);
-                @ViewBag.UserEmail = employee.Email;
+            if (!ModelState.IsValid)
+                return Redirect("Create");
 
-                var user = new User
-                {
-                    UserName = employee.Name.Replace(" ", ""),
-                    Email = employee.Email,
-                    EmployeeId = model.EmployeeId.Value,
-                    Active = true
-                };
+            var employee = _employeeAppService.GetById(model.EmployeeId.Value);
+            @ViewBag.UserEmail = employee.Email;
 
-                var password = Domain.Entities.User.GenerateRandomPassword();
-                var result = await _userManager.CreateAsync(user, password);
-                if (result.Succeeded)
-                {
-                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    _logger.LogInformation(3, "User created a new account with password.");
-                    return View("Success");
-                }
-                //AddErrors(result); //Trabalhar com erros depois
-            }
-            return View(model);
+            var result = await _userAppService.Register(employee.Id);
+
+            if(result.Succeeded)
+                return View("Success");
+            else
+                return Redirect("Create");
         }
 
         [AllowAnonymous]
         public IActionResult Login()
         {
             return View();
+        }
+
+        [AllowAnonymous]
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        public async Task<IActionResult> ForgotPassword(string email)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+            _userAppService.ForgotPassword(user.Id);
+            return Redirect("Login");
+        }
+
+        [AllowAnonymous]
+        public IActionResult ResetPassword(Guid userId, string resetPasswordToken)
+        {
+            var user = _userAppService.GetById(userId);
+            if(user == null)
+                return RedirectToAction("Login");
+
+            return View(new ResetPasswordUserViewModel{ ResetPasswordToken = WebUtility.UrlEncode(resetPasswordToken) });
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        public async Task<IActionResult> ResetPassword(ResetPasswordUserViewModel model)
+        {
+            if(!ModelState.IsValid || model.Password != model.ConfirmPassword)
+                return View(model);
+
+            var user = await _userManager.FindByEmailAsync(model.Email);
+            var result = await _userManager.ResetPasswordAsync(user,model.ResetPasswordToken, model.Password);
+            if(result.Succeeded)
+                return RedirectToAction("Login");
+            else
+            {
+                foreach(var erro in result.Errors)
+                    ModelState.AddModelError("CustomErros", erro.Description);                
+                return View(model);
+            }
         }
 
         [HttpPost]
@@ -95,7 +129,9 @@ namespace Presentation.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
-                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: true);
+                var user = await _userManager.FindByEmailAsync(model.Email);
+                var result = await _signInManager.PasswordSignInAsync(user.UserName, model.Password, model.RememberMe, lockoutOnFailure: true);
+
                 if (result.Succeeded)
                 {
                     _logger.LogInformation(1, "User logged in.");

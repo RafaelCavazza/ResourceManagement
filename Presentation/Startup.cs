@@ -11,6 +11,8 @@ using AutoMapper;
 using Presentation.AutoMapper;
 using Presentation.StartupExtensions;
 using Sakura.AspNetCore.Mvc;
+using Aplication.Services.Email.Clients;
+using Aplication.Services.Email.Interfaces;
 
 namespace Presentation
 {
@@ -45,7 +47,7 @@ namespace Presentation
             services.InfraDi();
 
             //Depois Adicionar os Serviços de SMS e Email -> SendGrid
-            //services.AddTransient<IEmailSender, AuthMessageSender>();
+            services.AddTransient<IEmailSender, SendGrid>();
             //services.AddTransient<ISmsSender, AuthMessageSender>();
 
             services.AddBootstrapPagerGenerator(options =>
