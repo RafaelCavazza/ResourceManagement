@@ -16,5 +16,10 @@ namespace Presentation.ViewModels.User
         [DataType(DataType.Text)]
         [Required]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        public string ResetPasswordToken { get; set; }
+
+        public string CustomErros { get; set; }
     }
 }

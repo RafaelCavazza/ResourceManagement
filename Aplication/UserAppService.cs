@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Net;
 using System.Threading.Tasks;
 using Aplication.Interfaces;
 using Aplication.Services.Email.Enums;
@@ -49,26 +48,35 @@ namespace Aplication
             if (result.Succeeded)
             {
                 var resetPasswordToken = await _userManager.GeneratePasswordResetTokenAsync(user);
-                SendRegisterEmail(user.Id, resetPasswordToken);
+                SendRecoverPasswordEmail(user, resetPasswordToken);
             }
 
             return result;
         }
 
-        private void SendRegisterEmail(Guid userId, string resetPasswordToken)
+        public async void ForgotPassword(Guid userId)
         {
             var user = _userService.GetById(userId);
+
+            var password = User.GenerateRandomPassword();
+            var resetPasswordToken = await _userManager.GeneratePasswordResetTokenAsync(user);
+
+            SendRecoverPasswordEmail(user, resetPasswordToken);
+        }
+
+        private void SendRecoverPasswordEmail(User user, string resetPasswordToken)
+        {
             var employee = _employeeService.GetById(user.EmployeeId);
-            resetPasswordToken = WebUtility.HtmlEncode(resetPasswordToken);
-            var aplicationUrl = "http://localhost:5000/Users/ResetPassword?userId=" + userId +"&resetPasswordToken=" + resetPasswordToken;
+            var encodedToken = System.Net.WebUtility.UrlEncode(resetPasswordToken);
+            var aplicationUrl = "http://localhost:5000/Users/ResetPassword?userId=" + user.Id +"&resetPasswordToken=" + encodedToken;
 
             var parameters = new Dictionary<string,string>();
             parameters.Add("UserName", employee.Name);
             parameters.Add("Link", aplicationUrl);
 
-            var body = EmailTemplate.GetTemplate("Register", parameters );
+            var body = EmailTemplate.GetTemplate("ResetPassword", parameters );
             var to = new List<string>() {user.Email};
-            var subject =  "Bem vindo ao Resource Manager";
+            var subject =  "Email Para Redefinição de Senha";
             var from = "donotreply@resourcemanager.com";
             _emailSender.Send(from, to, subject, body, EmailContentType.Html); 
         }
