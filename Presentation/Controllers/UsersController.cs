@@ -77,9 +77,25 @@ namespace Presentation.Controllers
         }
 
         [AllowAnonymous]
-        public IActionResult ResetPassword(Guid userId, string confirmationToken)
+        public IActionResult ResetPassword(Guid userId, string resetPasswordToken)
         {
+            var user = _userAppService.GetById(userId);
+            if(user == null)
+                return RedirectToAction("Login");
+
             return View();
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        public async Task<IActionResult> ResetPassword(ResetPasswordUserViewModel model)
+        {
+            if(!ModelState.IsValid)
+                return View(model);
+                
+            var user =_userManager.FindByEmailAsync(model.Email);
+
+            return null;
         }
 
         [HttpPost]

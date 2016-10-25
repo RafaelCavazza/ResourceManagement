@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Threading.Tasks;
 using Aplication.Interfaces;
 using Aplication.Services.Email.Enums;
@@ -47,18 +48,19 @@ namespace Aplication
 
             if (result.Succeeded)
             {
-                var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                SendRegisterEmail(user.Id, code);
+                var resetPasswordToken = await _userManager.GeneratePasswordResetTokenAsync(user);
+                SendRegisterEmail(user.Id, resetPasswordToken);
             }
 
             return result;
         }
 
-        private void SendRegisterEmail(Guid userId, string confirmationToken)
+        private void SendRegisterEmail(Guid userId, string resetPasswordToken)
         {
             var user = _userService.GetById(userId);
             var employee = _employeeService.GetById(user.EmployeeId);
-            var aplicationUrl = "http://localhost:5000/Users/ResetPassword?userId=" + userId +"&token=" + confirmationToken;
+            resetPasswordToken = WebUtility.HtmlEncode(resetPasswordToken);
+            var aplicationUrl = "http://localhost:5000/Users/ResetPassword?userId=" + userId +"&resetPasswordToken=" + resetPasswordToken;
 
             var parameters = new Dictionary<string,string>();
             parameters.Add("UserName", employee.Name);
