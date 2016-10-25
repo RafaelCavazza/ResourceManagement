@@ -48,7 +48,7 @@ namespace Aplication
             if (result.Succeeded)
             {
                 var resetPasswordToken = await _userManager.GeneratePasswordResetTokenAsync(user);
-                SendRecoverPasswordEmail(user, resetPasswordToken);
+                SendResetPasswordEmail(user, resetPasswordToken);
             }
 
             return result;
@@ -61,24 +61,28 @@ namespace Aplication
             var password = User.GenerateRandomPassword();
             var resetPasswordToken = await _userManager.GeneratePasswordResetTokenAsync(user);
 
-            SendRecoverPasswordEmail(user, resetPasswordToken);
+            SendResetPasswordEmail(user, resetPasswordToken);
         }
 
-        private void SendRecoverPasswordEmail(User user, string resetPasswordToken)
+        private void SendResetPasswordEmail(User user, string resetPasswordToken)
+        {
+            var body = EmailTemplate.GetTemplate("ResetPassword", ResetPasswordParameters(user, resetPasswordToken) );
+            var to = new List<string>() {user.Email};
+            var subject =  "Email Para Redefinição de Senha";
+            var from = "donotreply@resourcemanager.com";
+            _emailSender.Send(from, to, subject, body, EmailContentType.Html); 
+        }        
+
+        private Dictionary<string,string> ResetPasswordParameters(User user, string resetPasswordToken)
         {
             var employee = _employeeService.GetById(user.EmployeeId);
             var encodedToken = System.Net.WebUtility.UrlEncode(resetPasswordToken);
             var aplicationUrl = "http://localhost:5000/Users/ResetPassword?userId=" + user.Id +"&resetPasswordToken=" + encodedToken;
 
-            var parameters = new Dictionary<string,string>();
-            parameters.Add("UserName", employee.Name);
-            parameters.Add("Link", aplicationUrl);
-
-            var body = EmailTemplate.GetTemplate("ResetPassword", parameters );
-            var to = new List<string>() {user.Email};
-            var subject =  "Email Para Redefinição de Senha";
-            var from = "donotreply@resourcemanager.com";
-            _emailSender.Send(from, to, subject, body, EmailContentType.Html); 
+            return new Dictionary<string,string>(){
+                {"UserName", employee.Name},
+                {"Link", aplicationUrl}
+            };
         }
     }
 }
