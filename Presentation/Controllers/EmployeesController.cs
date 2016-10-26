@@ -80,11 +80,10 @@ namespace Presentation.Controllers
 
         public IActionResult Edit(Guid id)
         {
-            var employee = _employeeAppService.GetById(id);
-            
+            var employee = _employeeAppService.GetById(id);            
             var employeeViewModel = Mapper.Map<EditEmployeeViewModel>(employee);
-            
             var branchs = _branchAppService.GetAll().ToList();
+            
             employeeViewModel.Branch = new SelectList(branchs,"Id", "Name", employeeViewModel.BranchId); 
             
             return View(employeeViewModel);
