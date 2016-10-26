@@ -33,47 +33,45 @@ namespace Aplication
 
         public async Task<IdentityResult> Register(Guid employeeId)
         {
+            var user = InstantiateUserFromEmployee(employeeId);
+            var result = await _userManager.CreateAsync(user, User.GenerateRandomPassword());
+
+            if (result.Succeeded)
+                SendResetPasswordEmail(user, await _userManager.GeneratePasswordResetTokenAsync(user));
+
+            return result;
+        }
+
+        public User InstantiateUserFromEmployee(Guid employeeId)
+        {
             var employee = _employeeService.GetById(employeeId);
-            var user = new User
+            return new User
             {
                 UserName = employee.Name.Replace(" ", ""),
                 Email = employee.Email,
                 EmployeeId = employeeId,
                 Active = true
             };
-
-            var password = User.GenerateRandomPassword();
-            var result = await _userManager.CreateAsync(user, password);
-
-            if (result.Succeeded)
-            {
-                var resetPasswordToken = await _userManager.GeneratePasswordResetTokenAsync(user);
-                SendResetPasswordEmail(user, resetPasswordToken);
-            }
-
-            return result;
         }
 
         public async void ForgotPassword(Guid userId)
         {
             var user = _userService.GetById(userId);
-
             var password = User.GenerateRandomPassword();
             var resetPasswordToken = await _userManager.GeneratePasswordResetTokenAsync(user);
-
             SendResetPasswordEmail(user, resetPasswordToken);
         }
 
         private void SendResetPasswordEmail(User user, string resetPasswordToken)
         {
-            var body = EmailTemplate.GetTemplate("ResetPassword", ResetPasswordParameters(user, resetPasswordToken) );
+            var body = EmailTemplate.GetTemplate("ResetPassword", ResetPasswordEmailParameters(user, resetPasswordToken) );
             var to = new List<string>() {user.Email};
             var subject =  "Email Para Redefinição de Senha";
             var from = "donotreply@resourcemanager.com";
             _emailSender.Send(from, to, subject, body, EmailContentType.Html); 
         }        
 
-        private Dictionary<string,string> ResetPasswordParameters(User user, string resetPasswordToken)
+        private Dictionary<string,string> ResetPasswordEmailParameters(User user, string resetPasswordToken)
         {
             var employee = _employeeService.GetById(user.EmployeeId);
             var encodedToken = System.Net.WebUtility.UrlEncode(resetPasswordToken);
