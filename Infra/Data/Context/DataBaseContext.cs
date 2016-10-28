@@ -10,6 +10,7 @@ namespace Infra.Data.Context
         public DbSet<User> User {get; set;}
         public DbSet<Role> Role {get; set;}
         public DbSet<Branch> Branch {get; set;}
+        public DbSet<Item> Item {get; set;}
 
         public DataBaseContext()
         {
