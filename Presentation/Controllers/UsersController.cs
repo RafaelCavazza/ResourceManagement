@@ -127,34 +127,35 @@ namespace Presentation.Controllers
         public async Task<IActionResult> Login(LoginUserViewModel model, string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
+                return View(model);
+            
+            var user = await _userManager.FindByEmailAsync(model.Email);
+            
+            if(user==null)
+                return View(model);
+
+            var result = await _signInManager.PasswordSignInAsync(user.UserName, model?.Password, model.RememberMe, lockoutOnFailure: true);
+
+            if (result.Succeeded)
             {
-                var user = await _userManager.FindByEmailAsync(model.Email);
-                var result = await _signInManager.PasswordSignInAsync(user.UserName, model.Password, model.RememberMe, lockoutOnFailure: true);
-
-                if (result.Succeeded)
-                {
-                    _logger.LogInformation(1, "User logged in.");
-                    return RedirectToLocal(returnUrl);
-                }
-                //if (result.RequiresTwoFactor)
-                //{
-                //    return RedirectToAction(nameof(SendCode), new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-                //}
-                if (result.IsLockedOut)
-                {
-                    _logger.LogWarning(2, "User account locked out.");
-                    return View("Lockout");
-                }
-                else
-                {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                    return View(model);
-                }
+                _logger.LogInformation(1, "User logged in.");
+                return RedirectToLocal(returnUrl);
             }
-
-            // If we got this far, something failed, redisplay form
-            return View(model);
+            //if (result.RequiresTwoFactor)
+            //{
+            //    return RedirectToAction(nameof(SendCode), new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+            //}
+            if (result.IsLockedOut)
+            {
+                _logger.LogWarning(2, "User account locked out.");
+                return View("Lockout");
+            }
+            else
+            {
+                ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                return View(model);
+            }
         }
 
         public async Task<IActionResult> LogOff()
