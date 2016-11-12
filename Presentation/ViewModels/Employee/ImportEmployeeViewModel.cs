@@ -8,6 +8,6 @@ namespace Presentation.ViewModels.Employee
         [DisplayAttribute(Name="Arquivo Para Importação")]
         [DataType(DataType.Upload)]
         [Required(ErrorMessage="O arquivo para Importação é obrigatório.")]
-        public IFormFile file {get; set;}
+        public IFormFile FiletToImport {get; set;}
     }
 }
