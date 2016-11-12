@@ -7,8 +7,6 @@ using System;
 using Aplication.Interfaces;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Http;
-using System.IO;
 
 namespace Presentation.Controllers
 {
@@ -67,12 +65,10 @@ namespace Presentation.Controllers
         }
 
         [HttpPost]
-        public IActionResult Import(ImportEmployeeViewModel model)
+        public IActionResult Import(ImportEmployeeViewModel file)
         {
             if(!ModelState.IsValid)
                 return View();
-
-
 
             return View();
         }

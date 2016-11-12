@@ -13,14 +13,14 @@
     <div class="clearfix"></div>
   </div>
   <div class="x_content"> 
-    <form method="post" asp-controller="Employees" and asp-action="Import">  
+  <form asp-antiforgery="true" method="post" asp-controller="Employees" asp-action="Import" enctype="multipart/form-data">  
 
       <div class="form-group">
         <div class="row">
-          <label asp-for="FiletToImport" class="col-md-2 control-label"></label>
+          <label asp-for="FileToImport" class="col-md-2 control-label"></label>
           <div class="col-md-6">
-            <input asp-for="FiletToImport" class="form-control" accept=".csv"/>
-            <span asp-validation-for="FiletToImport" class="text-danger"></span>
+            <input asp-for="FileToImport" class="form-control"/>
+            <span asp-validation-for="FileToImport" class="text-danger"></span>
           </div>
         </div>
       </div>
