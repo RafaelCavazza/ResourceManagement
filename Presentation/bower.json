@@ -9,6 +9,8 @@
     "font-awesome": "4.6.3",
     "animate.css": "^3.5.1",
     "nprogress": "^0.2.0",
-    "fastclick": "^1.0.6"
+    "fastclick": "^1.0.6",
+    "angular": "1.*",
+    "angular-input-masks": "^2.5.0"
   }
 }

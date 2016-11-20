@@ -1,0 +1,1 @@
+angular.module('resourceManagement', ['ui.utils.masks']);

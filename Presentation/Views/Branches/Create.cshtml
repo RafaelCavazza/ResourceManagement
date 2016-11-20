@@ -29,7 +29,7 @@
         <div class="row">
           <label asp-for="Cnpj" class="col-md-2 control-label"></label>
           <div class="col-md-6">
-            <input asp-for="Cnpj" class="form-control" />
+            <input asp-for="Cnpj" class="form-control" ng-model="initializedCnpj" ui-br-cnpj-mask />
             <span asp-validation-for="Cnpj" class="text-danger"></span>
           </div>
         </div>

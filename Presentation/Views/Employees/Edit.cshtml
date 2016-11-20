@@ -24,7 +24,7 @@
         <div class="row">
           <label asp-for="Cpf" class="col-md-2 control-label"></label>
           <div class="col-md-6">
-            <input asp-for="Cpf" class="form-control" />
+            <input asp-for="Cpf" class="form-control" ng-model="initializedCpf" ui-br-cpf-mask />
             <span asp-validation-for="Cpf" class="text-danger"></span>
           </div>
         </div>
