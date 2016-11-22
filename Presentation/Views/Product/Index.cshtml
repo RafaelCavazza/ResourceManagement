@@ -1,0 +1,50 @@
+@using Domain.Entities
+@model IEnumerable<Product>
+@{ ViewBag.Title = "Produtos"; }
+
+<div class="container">
+	<div class="x_title">
+		<h2>
+			Produtos Cadastradas
+		</h2>
+		<div class="text-right">
+			<i class="fa fa-plus" aria-hidden="true">
+			<a asp-controller="Branches" asp-action="Create">
+				Adicionar Novo Produto
+			</a>
+		</i>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+
+	<div class="x_content">
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Nome</th>
+					<th>Cnpj</th>
+					<th>Ações</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach(var product in Model) 
+				{
+					<tr>
+						<td>@product.Name</td>
+						<td>
+							<i class="fa fa-pencil" aria-hidden="true">
+								<a asp-controller="Branches" asp-action="Edit" asp-route-id="@product.Id">Editar</a>
+							</i>
+							<i class="fa fa-info" aria-hidden="true">
+								<a asp-controller="Branches" asp-action="Details" asp-route-id="@product.Id">Detalhes</a>
+							</i>
+						</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+		<div class="col-md-offset-5">
+			<pager />
+		</div>
+	</div>
+</div>

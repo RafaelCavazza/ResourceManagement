@@ -6,6 +6,7 @@ using Domain.Interfaces.Repositories;
 using Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Sakura.AspNetCore;
+using Infra.Data.Extensions;
 
 namespace Infra.Data.Repositories
 {

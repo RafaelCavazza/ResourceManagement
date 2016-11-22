@@ -16,7 +16,7 @@ namespace Presentation.StartupExtensions
             services.AddScoped(typeof(IEmployeeService), typeof(EmployeeService));
             services.AddScoped(typeof(IBranchService), typeof(BranchService));
             services.AddScoped(typeof(IUserService), typeof(UserService));
-            services.AddScoped(typeof(IItemService), typeof(IItemService));
+            services.AddScoped(typeof(IItemService), typeof(ItemService));
             services.AddScoped(typeof(IProductService), typeof(ProductService));
         }
 
