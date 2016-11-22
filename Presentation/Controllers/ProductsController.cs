@@ -4,6 +4,7 @@ using System;
 using System.Linq;
 using Aplication.Interfaces;
 using Domain.Entities;
+using Presentation.ViewModels.Product;
 
 namespace Presentation.Controllers
 {
@@ -25,7 +26,7 @@ namespace Presentation.Controllers
 
         public IActionResult Create()
         {
-            return View();
+            return View(new ProductViewModel());
         }
 
         [HttpPost]

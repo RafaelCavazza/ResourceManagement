@@ -9,7 +9,7 @@ namespace Aplication
         public readonly IItemService _itemService;
 
         public ItemAppService(IItemService itemService) : base(itemService)
-        {
+        { 
             _itemService = itemService;
         }
     }

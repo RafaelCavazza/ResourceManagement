@@ -9,7 +9,7 @@
 		</h2>
 		<div class="text-right">
 			<i class="fa fa-plus" aria-hidden="true">
-			<a asp-controller="Branches" asp-action="Create">
+			<a asp-controller="Products" asp-action="Create">
 				Adicionar Novo Produto
 			</a>
 		</i>
@@ -22,7 +22,7 @@
 			<thead>
 				<tr>
 					<th>Nome</th>
-					<th>Cnpj</th>
+					<th>Descrição</th>
 					<th>Ações</th>
 				</tr>
 			</thead>
@@ -31,6 +31,7 @@
 				{
 					<tr>
 						<td>@product.Name</td>
+						<td>@product.Description</td>
 						<td>
 							<i class="fa fa-pencil" aria-hidden="true">
 								<a asp-controller="Branches" asp-action="Edit" asp-route-id="@product.Id">Editar</a>
