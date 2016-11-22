@@ -4,7 +4,6 @@ using System.Linq;
 using System.Reflection;
 using Domain.Interfaces.Repositories;
 using Infra.Data.Context;
-using Infra.Data.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Sakura.AspNetCore;
 
