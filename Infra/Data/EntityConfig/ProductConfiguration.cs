@@ -11,6 +11,7 @@ namespace Infra.Data.EntityConfig
                 {
                     b.HasKey(p=> p.Id);
                     b.Property(p=> p.Description).HasMaxLength(150).IsRequired();
+                    b.Property(p=> p.Name).HasMaxLength(100).IsRequired();
                     b.Property(p=> p.ProductDepreciationTimeInMonths).IsRequired();
                     b.Property(p=> p.CreatedOn).IsRequired();
                     b.Property(p=> p.ModifiedOn).IsRequired();
