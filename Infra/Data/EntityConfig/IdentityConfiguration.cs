@@ -37,7 +37,6 @@ namespace Infra.Data.EntityConfig
              modelBuilder.Entity<IdentityUserLogin<Guid>>().ToTable("UserLogin");
              modelBuilder.Entity<IdentityUserClaim<Guid>>().ToTable("UserClaim");
              modelBuilder.Entity<IdentityRoleClaim<Guid>>().ToTable("RoleClaim");
-             
         }
     }
 }

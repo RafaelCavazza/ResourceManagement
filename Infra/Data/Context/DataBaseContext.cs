@@ -11,10 +11,7 @@ namespace Infra.Data.Context
         public DbSet<Role> Role {get; set;}
         public DbSet<Branch> Branch {get; set;}
         public DbSet<Item> Item {get; set;}
-
-        public DataBaseContext()
-        {
-        }
+        public DbSet<Product> Product {get; set;}
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionBuilder)
         {
@@ -27,6 +24,8 @@ namespace Infra.Data.Context
             EmployeeConfiguration.Configure(modelBuilder);
             IdentityConfiguration.Configure(modelBuilder);
             BranchConfiguration.Configure(modelBuilder);
+            ItemConfiguration.Configure(modelBuilder);
+            ProductConfiguration.Configure(modelBuilder);
             base.OnModelCreating(modelBuilder);
         }
 

@@ -17,8 +17,7 @@ namespace Infra.Data.EntityConfig
             modelBuilder.Entity<Branch>().HasIndex(p=> p.Name).IsUnique();
             modelBuilder.Entity<Branch>().HasIndex(p=> p.Cnpj).IsUnique();
 
-            modelBuilder.Entity<Branch>().HasMany(p=> p.Employees).WithOne(p=> p.Branch)
-                    .HasForeignKey(p=> p.BranchId);
+            modelBuilder.Entity<Branch>().HasMany(p=> p.Employees).WithOne(p=> p.Branch).HasForeignKey(p=> p.BranchId);
         }
     }
 }

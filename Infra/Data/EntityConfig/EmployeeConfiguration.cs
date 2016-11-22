@@ -23,8 +23,7 @@ namespace Infra.Data.EntityConfig
             modelBuilder.Entity<Employee>().HasIndex(p=> p.Cpf).IsUnique();
             modelBuilder.Entity<Employee>().HasIndex(p=> p.Email).IsUnique();
 
-            modelBuilder.Entity<Employee>().HasMany(p=> p.Users).WithOne(p=> p.Employee)
-                    .HasForeignKey(p=> p.EmployeeId);
+            modelBuilder.Entity<Employee>().HasMany(p=> p.Users).WithOne(p=> p.Employee).HasForeignKey(p=> p.EmployeeId);
         }
     }
 }
