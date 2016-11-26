@@ -5,6 +5,7 @@ using System.Linq;
 using Aplication.Interfaces;
 using Domain.Entities;
 using Presentation.ViewModels.Product;
+using AutoMapper;
 
 namespace Presentation.Controllers
 {
@@ -35,8 +36,11 @@ namespace Presentation.Controllers
         {
             if(!ModelState.IsValid)
                 return View(model);
+            
+            var product = Mapper.Map<Product>(model);
+            _productsAppService.Add(product);     
 
-            return View();
+            return View("Index");
         }
 
         public IActionResult Edit(Guid id)
