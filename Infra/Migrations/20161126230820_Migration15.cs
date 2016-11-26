@@ -36,7 +36,7 @@ namespace Infra.Migrations
                 name: "Status",
                 table: "Item",
                 nullable: false,
-                defaultValue: ItemStatus.0);
+                defaultValue: 1);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
