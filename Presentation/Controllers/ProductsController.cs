@@ -33,6 +33,9 @@ namespace Presentation.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(ProductViewModel model)
         {
+            if(!ModelState.IsValid)
+                return View(model);
+
             return View();
         }
 
