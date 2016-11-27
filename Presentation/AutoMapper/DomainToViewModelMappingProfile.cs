@@ -21,11 +21,13 @@ namespace Presentation.AutoMapper
             CreateMap<Branch, DetailsBranchViewModel>();
             CreateMap<Branch, EditBranchViewModel>();
 
+            //Product
             CreateMap<Product, EditProductViewModel>();
             CreateMap<Product, ProductViewModel>()
             .ForSourceMember(x => x.CreatedOn , opt => opt.Ignore())
             .ForSourceMember(x => x.ModifiedOn , opt => opt.Ignore());
 
+            //Item
             CreateMap<Item, CreateItemViewModel>().ForMember(x => x.Products, opt => opt.Ignore());
             CreateMap<Item, CreateItemViewModel>().ForMember(x => x.Itens, opt => opt.Ignore());
             CreateMap<Item, EditItemViewModel>();

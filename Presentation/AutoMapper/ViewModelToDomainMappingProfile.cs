@@ -19,12 +19,12 @@ namespace Presentation.AutoMapper
             CreateMap<CreateBranchViewModel, Branch>().ForMember(x => x.Employees, opt => opt.Ignore());
             CreateMap<EditBranchViewModel, Branch>().ForMember(x => x.Employees, opt => opt.Ignore());
 
+            //Product
+            CreateMap<ProductViewModel, Product>();
+            CreateMap<EditProductViewModel, Product>();
+
             //Item
             CreateMap<CreateItemViewModel, Item>().ForMember(x => x.Product, opt => opt.Ignore());
-
-            CreateMap<ProductViewModel, Product>();
-
-            CreateMap<EditProductViewModel, Product>();
             CreateMap<EditItemViewModel, Item>().ForMember(x => x.Product, opt => opt.Ignore());
         }
     }
