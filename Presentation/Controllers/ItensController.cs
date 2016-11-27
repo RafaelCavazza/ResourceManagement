@@ -73,7 +73,8 @@ namespace Presentation.Controllers
             if (!ModelState.IsValid)
                 return View("Edit", model);
 
-            var item = Mapper.Map<Item>(model);
+            var dataBaseItem = _itemAppService.GetById(model.Id);
+            var item = Mapper.Map<EditItemViewModel, Item>(model, dataBaseItem);
             _itemAppService.Update(item);
 
             return RedirectToAction("Index");
