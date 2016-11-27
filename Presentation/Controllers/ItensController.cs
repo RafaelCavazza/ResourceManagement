@@ -40,13 +40,19 @@ namespace Presentation.Controllers
         {
             if (!ModelState.IsValid)
                 return View("Create", model);
+            
+            foreach(var item in model.Itens){
+                var mappedItem = Mapper.Map<Item>(model);
 
-            var item = Mapper.Map<Item>(model);
-            
-            //RN: Um item sempre é criado com o status Disponível
-            item.Status = ItemStatus.Avaliable;
-            
-            _itemAppService.Add(item);
+                //RN: Um item sempre é criado com o status Disponível
+                mappedItem.Status = ItemStatus.Avaliable;
+
+                mappedItem.NF = item.NF;
+                mappedItem.SerialNumber = item.SerialNumber;
+                mappedItem.Patrimonio = item.Patrimonio;
+
+                _itemAppService.Add(mappedItem);
+            }
 
             return RedirectToAction("Index");
         }

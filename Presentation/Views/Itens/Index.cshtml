@@ -21,16 +21,20 @@
 		<table class="table table-bordered">
 			<thead>
 				<tr>
+					<th>Produto</th>
 					<th>Número Serial</th>
 					<th>Patrimônio</th>
+					<th>Status</th>
 					<th>Ações</th>
 				</tr>
 			</thead>
 			<tbody>
 				@foreach(var item in Model) {
 				<tr>
+					<td>@item.Product.Name</td>
 					<td>@item.SerialNumber</td>
 					<td>@item.Patrimonio</td>
+					<td>@item.Status</td>
 					<td>
 						<i class="fa fa-pencil" aria-hidden="true">
 							<a asp-controller="Itens" asp-action="Edit" asp-route-id="@item.Id">Editar</a>

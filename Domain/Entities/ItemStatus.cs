@@ -1,6 +1,3 @@
-using System;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-
 namespace Domain.Entities
 {
     public enum ItemStatus
