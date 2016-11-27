@@ -1,0 +1,76 @@
+@model Presentation.ViewModels.Item.CreateItemViewModel
+@{ 
+	ViewBag.Title = "Criar Novo Ativo";
+}
+
+<div class="x_panel">
+	<div class="x_title">
+		<h2>
+			Cadastrar Novo Ativo
+		</h2>
+
+		<div class="clearfix"></div>
+	</div>
+	<div class="x_content">
+		<form method="post" asp-controller="Itens" and asp-action="Create">
+
+			<div class="form-group">
+				<div class="row">
+					<label asp-for="ProductId" class="col-md-2 control-label"></label>
+					<div class="col-md-6">
+						<select class="form-control" asp-for="ProductId" asp-items="@Model.Products"></select>
+						<span asp-validation-for="ProductId" class="text-danger"></span>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="row">
+					<label asp-for="PurchasedOn" class="col-md-2 control-label"></label>
+					<div class="col-md-6">
+						<input type="date" asp-for="PurchasedOn" class="form-control" />
+						<span asp-validation-for="PurchasedOn" class="text-danger"></span>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="row">
+					<label asp-for="NF" class="col-md-2 control-label"></label>
+					<div class="col-md-6">
+						<input type="text" asp-for="NF" class="form-control" />
+						<span asp-validation-for="NF" class="text-danger"></span>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="row">
+					<label asp-for="SerialNumber" class="col-md-2 control-label"></label>
+					<div class="col-md-6">
+						<input type="text" asp-for="SerialNumber" class="form-control" />
+						<span asp-validation-for="SerialNumber" class="text-danger"></span>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="row">
+					<label asp-for="Patrimonio" class="col-md-2 control-label"></label>
+					<div class="col-md-6">
+						<input type="text" asp-for="Patrimonio" class="form-control" />
+						<span asp-validation-for="Patrimonio" class="text-danger"></span>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="row">
+					<div class="col-md-offset-2 col-md-10">
+						<input type="submit" value="Cadastrar" class="btn btn-success" />
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
