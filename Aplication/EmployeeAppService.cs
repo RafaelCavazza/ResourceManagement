@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Aplication.Interfaces;
 using Domain.Entities;
 using Domain.Interfaces.Services;
+using Microsoft.AspNetCore.Http;
 
 namespace Aplication
 {
@@ -32,6 +33,15 @@ namespace Aplication
         public Tuple<bool, string> IsDuplicatedEmployee(Employee employee)
         {
             return _employeeService.IsDuplicatedEmployee(employee);
+        }
+
+        public IEnumerable<Tuple<string,bool>> ImportEmployees(IFormFile file)
+        {
+            return new List<Tuple<string,bool>>(){
+                new Tuple<string,bool> ("José", true),
+                new Tuple<string,bool> ("Maria", true),
+                new Tuple<string,bool> ("Antonio", true)
+            };
         }
     }
 }

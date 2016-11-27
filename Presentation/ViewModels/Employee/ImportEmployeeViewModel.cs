@@ -8,7 +8,7 @@ namespace Presentation.ViewModels.Employee
         [Required(ErrorMessage="O arquivo para Importação é obrigatório.")]
         [Display(Name="Arquivo Para Importação")]
         [DataType(DataType.Upload)]
-        [FileExtensions(Extensions = "csv")]
+        //[FileExtensions(ErrorMessage = "O arquivo deve ser uma extensão '{1}' ",Extensions = "csv,txt")]
         public IFormFile FileToImport {get; set;}
     }
 }
