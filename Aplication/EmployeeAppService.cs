@@ -4,6 +4,7 @@ using Aplication.Interfaces;
 using Domain.Entities;
 using Domain.Interfaces.Services;
 using Microsoft.AspNetCore.Http;
+using Aplication.Services.FileOperations;
 
 namespace Aplication
 {
@@ -37,6 +38,13 @@ namespace Aplication
 
         public IEnumerable<Tuple<string,bool>> ImportEmployees(IFormFile file)
         {
+            var content = FileUpload.ReadStringFormFile(file);
+            Console.WriteLine(content);
+
+            //Separar o arquivo em uma lista de Objetos com os valores
+            //Validar os Valores de cada elemento da lista
+            //Pupular essa lista com os valore de referência a outra entidade
+            //Enviar a lista para atualzação no banco
             return new List<Tuple<string,bool>>(){
                 new Tuple<string,bool> ("José", true),
                 new Tuple<string,bool> ("Maria", true),
