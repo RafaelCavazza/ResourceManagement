@@ -2,6 +2,7 @@ using AutoMapper;
 using Domain.Entities;
 using Presentation.ViewModels.Branch;
 using Presentation.ViewModels.Employee;
+using Presentation.ViewModels.Product;
 
 namespace Presentation.AutoMapper
 {
@@ -16,6 +17,11 @@ namespace Presentation.AutoMapper
             CreateMap<Branch, CreateBranchViewModel>();
             CreateMap<Branch, DetailsBranchViewModel>();
             CreateMap<Branch, EditBranchViewModel>();
+
+            CreateMap<Product, EditProductViewModel>();
+            CreateMap<Product, ProductViewModel>()
+            .ForSourceMember(x => x.CreatedOn , opt => opt.Ignore())
+            .ForSourceMember(x => x.ModifiedOn , opt => opt.Ignore());
         }
     }
 }

@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Linq;
 using Aplication.Interfaces;
 using Domain.Entities;
 using Presentation.ViewModels.Product;
@@ -40,24 +39,31 @@ namespace Presentation.Controllers
             var product = Mapper.Map<Product>(model);
             _productsAppService.Add(product);     
 
-            return View("Index");
+            return RedirectToAction("Index");
         }
 
         public IActionResult Edit(Guid id)
-        {
-            return View();
+        { 
+            var product = _productsAppService.GetById(id);
+            var model = Mapper.Map<EditProductViewModel>(product);
+            return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(ProductViewModel model)
+        public IActionResult Edit(EditProductViewModel model)
         {
-            return View();
+            var product = _productsAppService.GetById(model.Id);
+            var domainProduct = Mapper.Map<EditProductViewModel, Product>(model, product);
+            _productsAppService.Update(domainProduct);
+            return RedirectToAction("Index");
         }
 
         public IActionResult Details(Guid id)
         {
-            return View();
+            var product = _productsAppService.GetById(id);
+            var model = Mapper.Map<ProductViewModel>(product);
+            return View(model);
         }
     }
 }

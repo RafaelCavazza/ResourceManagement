@@ -3,8 +3,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Presentation.ViewModels.Product
 {
-    public class ProductViewModel
+    public class EditProductViewModel
     {
+        [Required]
         public Guid Id {get; set;}
 
         [DisplayAttribute(Name="Nome")]
@@ -22,11 +23,5 @@ namespace Presentation.ViewModels.Product
         [DataType(DataType.Duration)]
         [Required(ErrorMessage="O campo Tempo de Depreciação é obrigatório")]
         public int? ProductDepreciationTimeInMonths {get; set;}
-
-        [DisplayAttribute(Name = "Criado em")]
-        public DateTime CreatedOn { get; set; }
-
-        [DisplayAttribute(Name = "Modificado em")]
-        public DateTime ModifiedOn { get; set; }
     }
 }
