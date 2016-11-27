@@ -1,3 +1,4 @@
+using System;
 using Aplication.Interfaces;
 using AutoMapper;
 using Domain.Entities;
@@ -53,6 +54,27 @@ namespace Presentation.Controllers
 
                 _itemAppService.Add(mappedItem);
             }
+
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Edit(Guid id)
+        {
+            var item = _itemAppService.GetById(id);
+            var model = Mapper.Map<EditItemViewModel>(item);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(EditItemViewModel model)
+        {
+            if (!ModelState.IsValid)
+                return View("Edit", model);
+
+            var item = Mapper.Map<Item>(model);
+            _itemAppService.Update(item);
 
             return RedirectToAction("Index");
         }
