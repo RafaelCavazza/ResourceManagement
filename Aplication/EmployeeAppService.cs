@@ -5,6 +5,7 @@ using Domain.Entities;
 using Domain.Interfaces.Services;
 using Microsoft.AspNetCore.Http;
 using Aplication.Services.FileOperations;
+using System.Linq;
 
 namespace Aplication
 {
@@ -39,8 +40,22 @@ namespace Aplication
         public IEnumerable<Tuple<string,bool>> ImportEmployees(IFormFile file)
         {
             var content = FileReader.ReadStringFormFile(file);
-            Console.WriteLine(content);
+            
+            //TODO: TEMINAR DE IMPLEMENTAR A IMPORTAÇÃO DE FUNCIONÁRIOS.
+            var lines = content.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
+            var header = new[] { "FILIAL", "MATRICULA", "NOME", "CPF", "DATA", "ADMISSAO", "E-MAIL", "COORDENADOR" };
+            foreach(var line in lines)
+            {
+                if(header.Any(c => line.Contains(c)) )
+                    continue;
 
+                var collumns = line.Split(new [] {';',','});
+                foreach(var collumn in collumns)
+                {
+                    Console.WriteLine(collumn);
+                }
+            }
+            
             //Separar o arquivo em uma lista de Objetos com os valores
             //Validar os Valores de cada elemento da lista
             //Pupular essa lista com os valore de referência a outra entidade
