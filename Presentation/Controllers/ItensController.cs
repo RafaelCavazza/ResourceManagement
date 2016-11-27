@@ -1,3 +1,4 @@
+using System;
 using Aplication.Interfaces;
 using AutoMapper;
 using Domain.Entities;
@@ -40,9 +41,41 @@ namespace Presentation.Controllers
         {
             if (!ModelState.IsValid)
                 return View("Create", model);
+            
+            foreach(var item in model.Itens){
+                var mappedItem = Mapper.Map<Item>(model);
 
-            var item = Mapper.Map<Item>(model);
-            _itemAppService.Add(item);
+                //RN: Um item sempre é criado com o status Disponível
+                mappedItem.Status = ItemStatus.Avaliable;
+
+                mappedItem.NF = item.NF;
+                mappedItem.SerialNumber = item.SerialNumber;
+                mappedItem.Patrimonio = item.Patrimonio;
+
+                _itemAppService.Add(mappedItem);
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Edit(Guid id)
+        {
+            var item = _itemAppService.GetById(id);
+            var model = Mapper.Map<EditItemViewModel>(item);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(EditItemViewModel model)
+        {
+            if (!ModelState.IsValid)
+                return View("Edit", model);
+
+            var dataBaseItem = _itemAppService.GetById(model.Id);
+            var item = Mapper.Map<EditItemViewModel, Item>(model, dataBaseItem);
+            _itemAppService.Update(item);
 
             return RedirectToAction("Index");
         }

@@ -1,9 +1,12 @@
-@model Presentation.ViewModels.Item.CreateItemViewModel
+@using Presentation.ViewModels.Item 
+@model CreateItemViewModel 
 @{ 
-	ViewBag.Title = "Criar Novo Ativo";
+	ViewBag.Title = "Criar Novo Ativo"; 
 }
 
-<div class="x_panel">
+<script type="text/javascript" src="/js/controllers/CreateItemCtrl.js"> </script>
+
+<div class="x_panel" ng-controller="CreateItemCtrl">
 	<div class="x_title">
 		<h2>
 			Cadastrar Novo Ativo
@@ -12,7 +15,7 @@
 		<div class="clearfix"></div>
 	</div>
 	<div class="x_content">
-		<form method="post" asp-controller="Itens" and asp-action="Create">
+		<form method="post" name="itensForm" asp-controller="Itens" and asp-action="Create">
 
 			<div class="form-group">
 				<div class="row">
@@ -34,40 +37,37 @@
 				</div>
 			</div>
 
-			<div class="form-group">
-				<div class="row">
-					<label asp-for="NF" class="col-md-2 control-label"></label>
-					<div class="col-md-6">
-						<input type="text" asp-for="NF" class="form-control" />
-						<span asp-validation-for="NF" class="text-danger"></span>
-					</div>
-				</div>
-			</div>
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>Nota Fiscal</th>
+						<th>Número Serial</th>
+						<th>Patrimônio</th>
+						<th><button type="button" class="btn btn-block fa fa-plus" ng-click="addItem()"></button></th>
+					</tr>
+				</thead>
+				<tbody id="tableContent">
+					<tr ng-repeat="item in ItensList">
+						<td>
+							<input name="Itens[{{$index}}].NF" type="text" class="form-control" required/>
+						</td>
+						<td>
+							<input name="Itens[{{$index}}].SerialNumber" type="text" class="form-control" required/>
+						</td>
+						<td>
+							<input name="Itens[{{$index}}].Patrimonio" type="text" class="form-control" required/>
+						</td>
+						<td>
+							<button type="button" class="btn btn-block fa fa-trash" ng-click="rmItem($index)" />
+						</td>
+					</tr>
+				</tbody>
+			</table>
 
 			<div class="form-group">
 				<div class="row">
-					<label asp-for="SerialNumber" class="col-md-2 control-label"></label>
-					<div class="col-md-6">
-						<input type="text" asp-for="SerialNumber" class="form-control" />
-						<span asp-validation-for="SerialNumber" class="text-danger"></span>
-					</div>
-				</div>
-			</div>
-
-			<div class="form-group">
-				<div class="row">
-					<label asp-for="Patrimonio" class="col-md-2 control-label"></label>
-					<div class="col-md-6">
-						<input type="text" asp-for="Patrimonio" class="form-control" />
-						<span asp-validation-for="Patrimonio" class="text-danger"></span>
-					</div>
-				</div>
-			</div>
-
-			<div class="form-group">
-				<div class="row">
-					<div class="col-md-offset-2 col-md-10">
-						<input type="submit" value="Cadastrar" class="btn btn-success" />
+					<div class="col-md-2">
+						<input type="submit" value="Cadastrar" class="btn btn-success btn-block" />
 					</div>
 				</div>
 			</div>
