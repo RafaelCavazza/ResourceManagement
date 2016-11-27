@@ -1,0 +1,76 @@
+@using Presentation.ViewModels.Item 
+@model CreateItemViewModel 
+@{ 
+	ViewBag.Title = "Criar Novo Ativo"; 
+}
+
+<script type="text/javascript" src="/js/controllers/CreateItemCtrl.js"> </script>
+
+<div class="x_panel" ng-controller="CreateItemCtrl">
+	<div class="x_title">
+		<h2>
+			Cadastrar Novo Ativo
+		</h2>
+
+		<div class="clearfix"></div>
+	</div>
+	<div class="x_content">
+		<form method="post" name="itensForm" asp-controller="Itens" and asp-action="Create">
+
+			<div class="form-group">
+				<div class="row">
+					<label asp-for="ProductId" class="col-md-2 control-label"></label>
+					<div class="col-md-6">
+						<select class="form-control" asp-for="ProductId" asp-items="@Model.Products"></select>
+						<span asp-validation-for="ProductId" class="text-danger"></span>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="row">
+					<label asp-for="PurchasedOn" class="col-md-2 control-label"></label>
+					<div class="col-md-6">
+						<input type="date" asp-for="PurchasedOn" class="form-control" />
+						<span asp-validation-for="PurchasedOn" class="text-danger"></span>
+					</div>
+				</div>
+			</div>
+
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>Nota Fiscal</th>
+						<th>Número Serial</th>
+						<th>Patrimônio</th>
+						<th><button type="button" class="btn btn-block fa fa-plus" ng-click="addItem()"></button></th>
+					</tr>
+				</thead>
+				<tbody id="tableContent">
+					<tr ng-repeat="item in ItensList">
+						<td>
+							<input name="Itens[{{$index}}].NF" type="text" class="form-control" required/>
+						</td>
+						<td>
+							<input name="Itens[{{$index}}].SerialNumber" type="text" class="form-control" required/>
+						</td>
+						<td>
+							<input name="Itens[{{$index}}].Patrimonio" type="text" class="form-control" required/>
+						</td>
+						<td>
+							<button type="button" class="btn btn-block fa fa-trash" ng-click="rmItem($index)" />
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<div class="form-group">
+				<div class="row">
+					<div class="col-md-2">
+						<input type="submit" value="Cadastrar" class="btn btn-success btn-block" />
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

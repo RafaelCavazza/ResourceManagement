@@ -8,11 +8,16 @@ namespace Infra.Data.EntityConfig
         public static void Configure(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Item>(b =>
-                {
-                    b.HasKey(p=> p.Id);
-                    b.Property(p=> p.CreatedOn).IsRequired();
-                    b.Property(p=> p.ModifiedOn).IsRequired();
-                });
+            {
+                b.HasKey(p => p.Id);
+                b.Property(p => p.PurchasedOn).IsRequired();
+                b.Property(p => p.NF).IsRequired();
+                b.Property(p => p.SerialNumber).IsRequired();
+                b.Property(p => p.Patrimonio).IsRequired();
+                b.Property(p => p.Status).IsRequired();
+                b.Property(p => p.CreatedOn).IsRequired();
+                b.Property(p => p.ModifiedOn).IsRequired();
+            });
         }
     }
 }
