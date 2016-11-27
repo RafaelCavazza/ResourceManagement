@@ -4,7 +4,7 @@ using System.IO;
 
 namespace Aplication.Services.FileOperations
 {
-    public static class FileUpload
+    public static class FileReader
     {
         public static string ReadStringFormFile(IFormFile file)
         {

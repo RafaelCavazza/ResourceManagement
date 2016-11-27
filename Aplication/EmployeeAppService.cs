@@ -38,7 +38,7 @@ namespace Aplication
 
         public IEnumerable<Tuple<string,bool>> ImportEmployees(IFormFile file)
         {
-            var content = FileUpload.ReadStringFormFile(file);
+            var content = FileReader.ReadStringFormFile(file);
             Console.WriteLine(content);
 
             //Separar o arquivo em uma lista de Objetos com os valores
