@@ -2,7 +2,7 @@ using Aplication.Interfaces;
 using Domain.Entities;
 using Domain.Interfaces.Services;
 
-namespace Aplication
+namespace Aplication 
 {
     public class ProductAppService  : AppServiceBase<Product>, IProductAppService
     {
