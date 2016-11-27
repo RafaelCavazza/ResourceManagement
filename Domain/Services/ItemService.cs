@@ -12,5 +12,11 @@ namespace Domain.Services
         {
             _itemRepository = itemRepository;
         }
+
+        public override void Add(Item item)
+        {
+            item.Status = ItemStatus.Avaliable;
+            _itemRepository.Add(item);
+        }
     }
 }

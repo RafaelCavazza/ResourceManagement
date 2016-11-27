@@ -14,7 +14,7 @@ namespace Presentation.ViewModels.Item
         [DisplayAttribute(Name = "Data de compra")]
         [DataType(DataType.Date)]
         [Required(ErrorMessage = "O campo Data de compra é obrigatório")]
-        public DateTime PurchasedOn { get; set; }
+        public DateTime? PurchasedOn { get; set; }
 
         [DisplayAttribute(Name = "Nota fiscal")]
         [DataType(DataType.Text)]

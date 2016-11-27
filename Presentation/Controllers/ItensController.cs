@@ -42,10 +42,6 @@ namespace Presentation.Controllers
                 return View("Create", model);
 
             var item = Mapper.Map<Item>(model);
-            
-            //RN: Um item sempre é criado com o status Disponível
-            item.Status = ItemStatus.Avaliable;
-            
             _itemAppService.Add(item);
 
             return RedirectToAction("Index");
