@@ -4,11 +4,6 @@ namespace Domain.Entities
 {
     public class Item
     {
-        public Item()
-        {
-            this.Status = ItemStatus.Avaliable;
-        }
-
         public Guid Id { get; set; }
         public DateTime PurchasedOn { get; set; }
         public string NF { get; set; }
