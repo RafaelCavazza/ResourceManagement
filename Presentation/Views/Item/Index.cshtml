@@ -1,0 +1,50 @@
+@using Domain.Entities
+@model IEnumerable<Item>
+@{ ViewBag.Title = "Ativos"; }
+
+<div class="container">
+	<div class="x_title">
+		<h2>
+			Ativos Cadastrados
+		</h2>
+		<div class="text-right">
+			<i class="fa fa-plus" aria-hidden="true">
+			<a asp-controller="Itens" asp-action="Create">
+				Adicionar Novo Ativo
+			</a>
+		</i>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+
+	<div class="x_content">
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Número Serial</th>
+					<th>Patrimônio</th>
+					<th>Ações</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach(var item in Model) {
+				<tr>
+					<td>@item.SerialNumber</td>
+					<td>@item.Patrimonio</td>
+					<td>
+						<i class="fa fa-pencil" aria-hidden="true">
+							<a asp-controller="Itens" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+						</i>
+						<i class="fa fa-info" aria-hidden="true">
+							<a asp-controller="Itens" asp-action="Details" asp-route-id="@item.Id">Detalhes</a>
+						</i>
+					</td>
+				</tr>
+				}
+			</tbody>
+		</table>
+		<div class="col-md-offset-5">
+			<pager />
+		</div>
+	</div>
+</div>
