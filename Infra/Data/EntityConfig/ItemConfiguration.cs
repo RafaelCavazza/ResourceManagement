@@ -18,6 +18,8 @@ namespace Infra.Data.EntityConfig
                 b.Property(p => p.CreatedOn).IsRequired();
                 b.Property(p => p.ModifiedOn).IsRequired();
             });
+
+            modelBuilder.Entity<Item>().HasMany(p=> p.Loans).WithOne(p=> p.Item).HasForeignKey(p=> p.ItemId);
         }
     }
 }

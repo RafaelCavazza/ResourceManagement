@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Domain.Entities
 {
@@ -15,5 +16,6 @@ namespace Domain.Entities
         public DateTime ModifiedOn { get; set; }
         
         public virtual Product Product { get; set; }
+        public virtual ICollection<Loan> Loans {get; set;}
     }
 }

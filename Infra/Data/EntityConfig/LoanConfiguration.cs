@@ -13,8 +13,8 @@ namespace Infra.Data.EntityConfig
                     b.Property(p=> p.StartDate).IsRequired();
                     b.Property(p=> p.EndDate).IsRequired();
                     b.Property(p=> p.ItemId).IsRequired();
-                    b.Property(p=> p.Employee).IsRequired();
-                });            
+                    b.Property(p=> p.EmployeeId).IsRequired();
+                }); 
         }
     }
 }
