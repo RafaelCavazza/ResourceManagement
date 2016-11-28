@@ -1,0 +1,63 @@
+@using Domain.Entities
+@model IEnumerable<Presentation.ViewModels.Loan.LoanViewModel>
+
+@{ ViewBag.Title = "Empréstimos"; }
+
+<div class="container">
+	<div class="x_title">
+		<h2>
+			Empréstimos
+		</h2>
+		<div class="text-right">
+			<i class="fa fa-plus" aria-hidden="true">
+			<a asp-controller="Loan" asp-action="Create">
+				Adicionar Novo Empréstimo
+			</a>
+		</i>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+
+	<div class="x_content">
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Funcionário</th>
+					<th>Produto</th>
+					<th>Patrimônio</th>
+					<th>Data de Início</th>
+					<th>Data Fim</th>
+					<th>Data de Criação</th>
+					<th>Data de Modificação</th>
+					<th>Ações</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach(var loan in Model) 
+				{
+					<tr>
+						<td>@loan.Employee</td>
+						<td>@loan.Product</td>
+						<td>@loan.Patrimonio</td>
+						
+						<td>@product.StartDate.ToString("dd/MM/yyyy HH:mm:ss")</td>
+						<td>@product.EndDate.ToString("dd/MM/yyyy HH:mm:ss")</td>
+						<td>@product.CreatedOn.ToString("dd/MM/yyyy HH:mm:ss")</td>
+						<td>@product.ModifiedOn.ToString("dd/MM/yyyy HH:mm:ss")</td>
+						<td>
+							<i class="fa fa-pencil" aria-hidden="true">
+								<a asp-controller="Loan" asp-action="Edit" asp-route-id="@loan.Id">Editar</a>
+							</i>
+							<i class="fa fa-info" aria-hidden="true">
+								<a asp-controller="Loan" asp-action="Details" asp-route-id="@loan.Id">Detalhes</a>
+							</i>
+						</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+		<div class="col-md-offset-5">
+			<pager />
+		</div>
+	</div>
+</div>
