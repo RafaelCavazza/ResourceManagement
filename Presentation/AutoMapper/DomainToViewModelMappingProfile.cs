@@ -4,6 +4,7 @@ using Presentation.ViewModels.Branch;
 using Presentation.ViewModels.Employee;
 using Presentation.ViewModels.Item;
 using Presentation.ViewModels.Product;
+using Presentation.ViewModels.Loan;
 
 namespace Presentation.AutoMapper
 {
@@ -31,6 +32,12 @@ namespace Presentation.AutoMapper
             CreateMap<Item, CreateItemViewModel>().ForMember(x => x.Products, opt => opt.Ignore());
             CreateMap<Item, CreateItemViewModel>().ForMember(x => x.Itens, opt => opt.Ignore());
             CreateMap<Item, EditItemViewModel>();
+
+            //Loan
+            CreateMap<Loan, LoanViewModel>()
+            .ForMember(l => l.Employee, lw => lw.MapFrom( m => m.Employee.Name))
+            .ForMember(l => l.Product, lw => lw.MapFrom( m => m.Item.Product.Name))
+            .ForMember(l => l.Patrimonio, lw => lw.MapFrom( m => m.Item.Patrimonio));
         }
     }
 }

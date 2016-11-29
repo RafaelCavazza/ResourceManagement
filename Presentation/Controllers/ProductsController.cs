@@ -11,16 +11,16 @@ namespace Presentation.Controllers
     [Authorize]
     public class ProductsController : BaseController
     {
-        private readonly IProductAppService _productsAppService;
+        private readonly IProductAppService _productAppService;
 
-        public ProductsController(IProductAppService productsAppService)
+        public ProductsController(IProductAppService productAppService)
         {
-            _productsAppService = productsAppService;
+            _productAppService = productAppService;
         }
 
         public IActionResult Index(int page = 1)
         {
-            var products = _productsAppService.GetPaged(page);
+            var products = _productAppService.GetPaged(page);
             return View(products);
         }
 
@@ -37,14 +37,14 @@ namespace Presentation.Controllers
                 return View(model);
             
             var product = Mapper.Map<Product>(model);
-            _productsAppService.Add(product);     
+            _productAppService.Add(product);     
 
             return RedirectToAction("Index");
         }
 
         public IActionResult Edit(Guid id)
         { 
-            var product = _productsAppService.GetById(id);
+            var product = _productAppService.GetById(id);
             var model = Mapper.Map<EditProductViewModel>(product);
             return View(model);
         }
@@ -53,15 +53,15 @@ namespace Presentation.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(EditProductViewModel model)
         {
-            var product = _productsAppService.GetById(model.Id);
+            var product = _productAppService.GetById(model.Id);
             var domainProduct = Mapper.Map<EditProductViewModel, Product>(model, product);
-            _productsAppService.Update(domainProduct);
+            _productAppService.Update(domainProduct);
             return RedirectToAction("Index");
         }
 
         public IActionResult Details(Guid id)
         {
-            var product = _productsAppService.GetById(id);
+            var product = _productAppService.GetById(id);
             var model = Mapper.Map<ProductViewModel>(product);
             return View(model);
         }

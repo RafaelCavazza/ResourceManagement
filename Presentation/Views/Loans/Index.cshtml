@@ -1,5 +1,5 @@
 @using Domain.Entities
-@model IEnumerable<Presentation.ViewModels.Loan.LoanViewModel>
+@model IEnumerable<Domain.Entities.Loan>
 
 @{ ViewBag.Title = "Empréstimos"; }
 
@@ -36,14 +36,14 @@
 				@foreach(var loan in Model) 
 				{
 					<tr>
-						<td>@loan.Employee</td>
-						<td>@loan.Product</td>
-						<td>@loan.Patrimonio</td>
+						<td>@loan.Employee.Name</td>
+						<td>@loan.Item.Product.Name</td>
+						<td>@loan.Item.Patrimonio</td>
 						
-						<td>@product.StartDate.ToString("dd/MM/yyyy HH:mm:ss")</td>
-						<td>@product.EndDate.ToString("dd/MM/yyyy HH:mm:ss")</td>
-						<td>@product.CreatedOn.ToString("dd/MM/yyyy HH:mm:ss")</td>
-						<td>@product.ModifiedOn.ToString("dd/MM/yyyy HH:mm:ss")</td>
+						<td>@loan.StartDate.ToString("dd/MM/yyyy HH:mm:ss")</td>
+						<td>@loan.EndDate.ToString("dd/MM/yyyy HH:mm:ss")</td>
+						<td>@loan.CreatedOn.ToString("dd/MM/yyyy HH:mm:ss")</td>
+						<td>@loan.ModifiedOn.ToString("dd/MM/yyyy HH:mm:ss")</td>
 						<td>
 							<i class="fa fa-pencil" aria-hidden="true">
 								<a asp-controller="Loan" asp-action="Edit" asp-route-id="@loan.Id">Editar</a>

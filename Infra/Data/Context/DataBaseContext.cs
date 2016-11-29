@@ -12,6 +12,7 @@ namespace Infra.Data.Context
         public DbSet<Branch> Branch {get; set;}
         public DbSet<Item> Item {get; set;}
         public DbSet<Product> Product {get; set;}
+        public DbSet<Loan> Loan {get; set;}
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionBuilder)
         {
@@ -26,6 +27,7 @@ namespace Infra.Data.Context
             BranchConfiguration.Configure(modelBuilder);
             ItemConfiguration.Configure(modelBuilder);
             ProductConfiguration.Configure(modelBuilder);
+            LoanConfiguration.Configure(modelBuilder);
             base.OnModelCreating(modelBuilder);
         }
 

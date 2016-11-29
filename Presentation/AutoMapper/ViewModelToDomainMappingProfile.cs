@@ -4,6 +4,7 @@ using Presentation.ViewModels.Branch;
 using Presentation.ViewModels.Employee;
 using Presentation.ViewModels.Item;
 using Presentation.ViewModels.Product;
+using Presentation.ViewModels.Loan;
 
 namespace Presentation.AutoMapper
 {
