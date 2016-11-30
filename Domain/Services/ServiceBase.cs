@@ -14,7 +14,7 @@ namespace Domain.Services
             _repository = repository;
         }
 
-        public void Add(TEntity entity)
+        public virtual void Add(TEntity entity)
         {
             _repository.Add(entity);
         }

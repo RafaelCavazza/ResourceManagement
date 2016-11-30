@@ -19,5 +19,6 @@ namespace Domain.Entities
         public Branch Branch {get; set;}
 
         public virtual ICollection<User> Users {get; set;}
+        public virtual ICollection<Loan> Loans {get; set;}
     }
 }

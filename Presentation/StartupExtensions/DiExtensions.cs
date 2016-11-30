@@ -18,6 +18,7 @@ namespace Presentation.StartupExtensions
             services.AddScoped(typeof(IUserService), typeof(UserService));
             services.AddScoped(typeof(IItemService), typeof(ItemService));
             services.AddScoped(typeof(IProductService), typeof(ProductService));
+            services.AddScoped(typeof(ILoanService), typeof(LoanService));
         }
 
         public static void InfraDi(this IServiceCollection services)
@@ -28,6 +29,7 @@ namespace Presentation.StartupExtensions
             services.AddScoped(typeof(IUserRepository), typeof(UserRepository));
             services.AddScoped(typeof(IItemRepository), typeof(ItemRepository));
             services.AddScoped(typeof(IProductRepository), typeof(ProductRepository));
+            services.AddScoped(typeof(ILoanRepository), typeof(LoanRepository));
         }
 
         public static void AplicationDi(this IServiceCollection services)
@@ -38,6 +40,7 @@ namespace Presentation.StartupExtensions
             services.AddScoped(typeof(IUserAppService), typeof(UserAppService));
             services.AddScoped(typeof(IItemAppService), typeof(ItemAppService));
             services.AddScoped(typeof(IProductAppService), typeof(ProductAppService));
+            services.AddScoped(typeof(ILoanAppService), typeof(LoanAppService));
         }
     }
 }

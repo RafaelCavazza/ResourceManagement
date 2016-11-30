@@ -44,10 +44,7 @@ namespace Presentation.Controllers
             
             foreach(var item in model.Itens){
                 var mappedItem = Mapper.Map<Item>(model);
-
-                //RN: Um item sempre é criado com o status Disponível
-                mappedItem.Status = ItemStatus.Avaliable;
-
+                
                 mappedItem.NF = item.NF;
                 mappedItem.SerialNumber = item.SerialNumber;
                 mappedItem.Patrimonio = item.Patrimonio;

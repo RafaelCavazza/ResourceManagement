@@ -8,9 +8,9 @@ namespace Domain.Services
     {
         private readonly IProductRepository _productRepository;
 
-        public ProductService(IProductRepository repository) : base(repository)
+        public ProductService(IProductRepository productRepository) : base(productRepository)
         {
-            _productRepository = repository;
+            _productRepository = productRepository;
         }
     }
 }
