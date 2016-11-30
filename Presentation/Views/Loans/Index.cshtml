@@ -10,7 +10,7 @@
 		</h2>
 		<div class="text-right">
 			<i class="fa fa-plus" aria-hidden="true">
-			<a asp-controller="Loan" asp-action="Create">
+			<a asp-controller="Loans" asp-action="Create">
 				Adicionar Novo Empréstimo
 			</a>
 		</i>
@@ -45,9 +45,6 @@
 						<td>@loan.CreatedOn.ToString("dd/MM/yyyy HH:mm:ss")</td>
 						<td>@loan.ModifiedOn.ToString("dd/MM/yyyy HH:mm:ss")</td>
 						<td>
-							<i class="fa fa-pencil" aria-hidden="true">
-								<a asp-controller="Loan" asp-action="Edit" asp-route-id="@loan.Id">Editar</a>
-							</i>
 							<i class="fa fa-info" aria-hidden="true">
 								<a asp-controller="Loan" asp-action="Details" asp-route-id="@loan.Id">Detalhes</a>
 							</i>

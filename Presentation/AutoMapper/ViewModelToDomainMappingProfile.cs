@@ -27,6 +27,11 @@ namespace Presentation.AutoMapper
             //Item
             CreateMap<CreateItemViewModel, Item>().ForMember(x => x.Product, opt => opt.Ignore());
             CreateMap<EditItemViewModel, Item>().ForMember(x => x.Product, opt => opt.Ignore());
+
+            //Loan
+            CreateMap<CreateLoanViewModel, Loan>()
+            .ForMember(x => x.Employee, opt => opt.Ignore())
+            .ForMember(x => x.Item, opt => opt.Ignore());
         }
     }
 }

@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using Domain.Entities;
 using Domain.Interfaces.Repositories;
 using Domain.Interfaces.Services;
@@ -17,6 +19,11 @@ namespace Domain.Services
         {
             item.Status = ItemStatus.Avaliable;
             _itemRepository.Add(item);
+        }
+
+        public IEnumerable<Item> GetAllAvailableForLoan()
+        {
+            return _itemRepository.GetAllAvailableForLoan();
         }
     }
 }
