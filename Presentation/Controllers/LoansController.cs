@@ -2,9 +2,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Aplication.Interfaces;
 using Presentation.ViewModels.Loan;
-using AutoMapper;
-using System.Collections.Generic;
-using Domain.Entities;
 
 namespace Presentation.Controllers
 {
@@ -24,5 +21,17 @@ namespace Presentation.Controllers
             return View(loans);
         }
 
+        public IActionResult Create()
+        {
+            var model = new CreateLoanViewModel();
+            
+            return View(null);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(CreateLoanViewModel model)
+        {
+        }
     }
 }

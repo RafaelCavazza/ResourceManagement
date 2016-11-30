@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Domain.Entities
 {
@@ -17,5 +18,10 @@ namespace Domain.Entities
         
         public virtual Product Product { get; set; }
         public virtual ICollection<Loan> Loans {get; set;}
+
+        public bool IsAvailableForLoan()
+        {
+            return Loans.All(p=> p.HasFinished);
+        }
     }
 }
