@@ -12,5 +12,10 @@ namespace Aplication
         {
             _branchService = branchService;
         }
+
+        public Branch GetByName(string name)
+        {
+            return _branchService.GetByName(name);
+        }
     }
 }
