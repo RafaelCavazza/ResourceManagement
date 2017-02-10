@@ -1,5 +1,3 @@
-
-using Domain.Entities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,7 +10,7 @@ namespace Infra.Data.Context
         {
             using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
-                var context = serviceScope.ServiceProvider.GetService<DataBaseContext>();                var y  = context.;
+                var context = serviceScope.ServiceProvider.GetService<DataBaseContext>();
                 context.Database.Migrate();                
             }
         }
