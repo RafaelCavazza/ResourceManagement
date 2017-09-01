@@ -16,8 +16,8 @@ namespace Infra.Data.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionBuilder)
         {
-            //optionBuilder.UseSqlite("Filename=database.db");
-            optionBuilder.UseSqlServer("Server=ec2-52-67-112-140.sa-east-1.compute.amazonaws.com;Database=Aplication;User Id=sa;Password=A1a2$bcde;");
+            optionBuilder.UseSqlite("Filename=database.db");
+            //optionBuilder.UseSqlServer("Server=ec2-52-67-112-140.sa-east-1.compute.amazonaws.com;Database=Aplication;User Id=sa;Password=A1a2$bcde;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

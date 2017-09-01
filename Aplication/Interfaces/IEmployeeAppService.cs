@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Domain.Entities;
+using Microsoft.AspNetCore.Http;
 
 namespace Aplication.Interfaces
 {
@@ -12,6 +13,8 @@ namespace Aplication.Interfaces
 
         void Enable(Guid id);
 
-         IEnumerable<Employee> GetAllWithoutUser();
+        IEnumerable<Employee> GetAllWithoutUser();
+
+        IEnumerable<Tuple<string,bool>> ImportEmployees(IFormFile file);
     }
 }

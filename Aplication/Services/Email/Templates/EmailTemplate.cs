@@ -9,21 +9,29 @@ namespace Aplication.Services.Email.Templates
 
         public static string GetTemplate(string templateName, Dictionary<string, string> placeholders)
         {
+            var templateContent = ReadTemplate(templateName);
+            return ReplaceTemplatePlaceHolders(templateContent, placeholders);
+        } 
+
+        private static string ReadTemplate(string templateName)
+        {
             templateName = templateName.Replace(".html","");
             var templateLocation = CurrentLocation + "/HtmlTemplates/" + templateName + ".html";
-            
             using (var reader = File.OpenText(templateLocation))
             {
-                var fileContent = reader.ReadToEnd();
-                foreach(var placeHolder in placeholders)
-                {
-                    var key = placeHolder.Key.Replace("{#","").Replace("}","");
-                    key = "{#" +  key + "}";
-
-                    fileContent = fileContent.Replace(key, placeHolder.Value);
-                }
-                return fileContent;
+                return reader.ReadToEnd();
             }
-        } 
+        }
+ 
+        private static string ReplaceTemplatePlaceHolders(string templateContent, Dictionary<string, string> placeholders)
+        {
+            foreach(var placeHolder in placeholders)
+            {
+                var key = placeHolder.Key.Replace("{#","").Replace("}","");
+                key = "{#" +  key + "}";
+                templateContent = templateContent.Replace(key, placeHolder.Value);
+            }
+            return templateContent;
+        }
     }
 }

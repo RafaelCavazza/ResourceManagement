@@ -12,5 +12,10 @@ namespace Domain.Services
         {
             _branchRepository = branchRepository;
         }
+
+        public Branch GetByName(string name)
+        {
+            return _branchRepository.GetByName(name);
+        }
     }
 }

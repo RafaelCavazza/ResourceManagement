@@ -3,7 +3,6 @@
 bin/
 obj/
 .vs/
-.vscode/
 artifacts/
 
 #Extensões de Arquivos de Ambiente

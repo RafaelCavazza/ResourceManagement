@@ -106,7 +106,7 @@ namespace Presentation.Controllers
         [HttpPost]
         public async Task<IActionResult> ResetPassword(ResetPasswordUserViewModel model)
         {
-            if(!ModelState.IsValid || model.Password != model.ConfirmPassword)
+            if(!ModelState.IsValid)
                 return View(model);
 
             var user = await _userManager.FindByEmailAsync(model.Email);

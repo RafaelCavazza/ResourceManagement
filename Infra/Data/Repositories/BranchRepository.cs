@@ -12,5 +12,10 @@ namespace Infra.Data.Repositories
         {
             return dbContext.Branch.Include(o => o.Employees).FirstOrDefault(p => p.Id == id);
         }
+
+        public Branch GetByName(string name)
+        {
+            return dbContext.Branch.FirstOrDefault(b => b.Name == name);
+        }
     }
 }
