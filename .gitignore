@@ -10,3 +10,4 @@ artifacts/
 *.xproj
 *.sln
 *.xproj.user
+ResourceManagement\.userprefs
