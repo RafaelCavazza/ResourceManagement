@@ -1,0 +1,37 @@
+@model System.Collections.Generic.IEnumerable<Tuple<string,bool>>
+
+@{
+    ViewBag.Title = "Importar Funcionários";
+}
+
+
+<div class="container">
+	<div class="x_title">
+		<h2>
+			Funcionários Importados
+		</h2>
+		<div class="clearfix"></div>
+	</div>
+
+	<div class="x_content">
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Detalhes</th>
+					<th>Status</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach(var item in Model) 
+				{
+					<tr>
+						<td>@item.Item1</td>
+						<td>@(item.Item2 ? "Sucesso" : "Erro") </td>
+					</tr>
+				}
+			</tbody>
+		</table>
+		<div class="col-md-offset-5">
+		</div>
+	</div>
+</div>

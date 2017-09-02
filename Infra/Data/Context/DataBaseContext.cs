@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using Domain.Entities;
 using Infra.Data.EntityConfig;
+using Domain.Entities;
 
 namespace Infra.Data.Context
 {
@@ -14,10 +14,10 @@ namespace Infra.Data.Context
         public DbSet<Product> Product {get; set;}
         public DbSet<Loan> Loan {get; set;}
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionBuilder)
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //optionBuilder.UseSqlite("Filename=database.db");
-            optionBuilder.UseSqlServer("Server=ec2-52-67-112-140.sa-east-1.compute.amazonaws.com;Database=Aplication;User Id=sa;Password=A1a2$bcde;");
+            optionsBuilder.UseSqlite("Filename=database.db");
+            //optionBuilder.UseSqlServer("Server=ec2-52-67-112-140.sa-east-1.compute.amazonaws.com;Database=Aplication;User Id=sa;Password=A1a2$bcde;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

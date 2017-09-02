@@ -13,6 +13,8 @@ using Presentation.StartupExtensions;
 using Sakura.AspNetCore.Mvc;
 using Aplication.Services.Email.Clients;
 using Aplication.Services.Email.Interfaces;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace Presentation
 {
@@ -36,7 +38,7 @@ namespace Presentation
             // Add framework services.
             services.AddMvc();
             services.AddDbContext<DataBaseContext>();
-            services.AddIdentity<User, Role>().AddEntityFrameworkStores<DataBaseContext, Guid>().AddDefaultTokenProviders();
+            services.AddIdentity<User, Role>().AddEntityFrameworkStores<DataBaseContext>().AddDefaultTokenProviders();
             services.AddLogging();
             services.AddAutoMapper(p => AutoMapperConfig.RegisterMapping());
             services.AddSession();
@@ -55,11 +57,18 @@ namespace Presentation
                 // Use default pager options.
                 options.ConfigureDefault();
             });
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
+            {
+                options.LoginPath = new PathString("/Users/Login/");
+                options.AccessDeniedPath = new PathString("/Users/Login/");
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            var seed = new SeedDevDatabase();
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
@@ -70,6 +79,7 @@ namespace Presentation
             {
                 app.UseDeveloperExceptionPage();
                 app.UseBrowserLink();
+                seed.Seed(app);
             }
             else
             {
@@ -78,18 +88,9 @@ namespace Presentation
 
             app.UseStaticFiles();
 
-            app.UseIdentity();
+            app.UseAuthentication();
 
             app.UseSession();
-
-            app.UseCookieAuthentication(new CookieAuthenticationOptions()
-            {
-                AuthenticationScheme = "CookieMiddlewareInstance",
-                LoginPath = new PathString("/Users/Login/"),
-                AccessDeniedPath = new PathString("/Users/Login/"),
-                AutomaticAuthenticate = true,
-                AutomaticChallenge = true
-            });
 
             app.UseMvc(routes =>
             {

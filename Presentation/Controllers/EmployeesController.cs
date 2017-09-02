@@ -65,12 +65,13 @@ namespace Presentation.Controllers
         }
 
         [HttpPost]
-        public IActionResult Import(ImportEmployeeViewModel file)
+        public IActionResult Import(ImportEmployeeViewModel model)
         {
             if(!ModelState.IsValid)
-                return View();
-
-            return View();
+                return View(model);
+            
+            var result = _employeeAppService.ImportEmployees(model.FileToImport);
+            return View("ImportResult", result);
         }
 
         public IActionResult Details(Guid id)
