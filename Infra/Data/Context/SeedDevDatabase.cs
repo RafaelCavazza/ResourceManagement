@@ -12,11 +12,6 @@ namespace Infra.Data.Context
     {
         private IUserAppService _userAppService;
 
-        public SeedDevDatabase()
-        {
-            
-        }
-
         public void Seed(IApplicationBuilder app)
         {
             using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())

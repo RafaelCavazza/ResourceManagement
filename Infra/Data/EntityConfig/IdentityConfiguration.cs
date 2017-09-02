@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Domain.Entities;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using System;
+using Microsoft.AspNetCore.Identity;
 
 namespace Infra.Data.EntityConfig
 {

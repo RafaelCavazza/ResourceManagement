@@ -7,7 +7,6 @@
     <AssemblyName>Presentation</AssemblyName>
     <OutputType>Exe</OutputType>
     <PackageId>Presentation</PackageId>
-    <PackageTargetFallback>$(PackageTargetFallback);dotnet5.6;dnxcore50;portable-net45+win8</PackageTargetFallback>
   </PropertyGroup>
 
   <ItemGroup>
@@ -45,10 +44,6 @@
     <PackageReference Include="Sakura.AspNetCore.PagedList" Version="2.0.2" />
     <PackageReference Include="Sakura.AspNetCore.Mvc.PagedList" Version="2.0.12" />
   </ItemGroup>
-
-  <Target Name="PrecompileScript" BeforeTargets="BeforeBuild">
-    <Exec Command="dotnet bundle" />
-  </Target>
 
   <Target Name="PrepublishScript" BeforeTargets="PrepareForPublish">
     <Exec Command="bower install" />
