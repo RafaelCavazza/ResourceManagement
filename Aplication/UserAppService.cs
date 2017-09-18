@@ -31,12 +31,13 @@ namespace Aplication
             _emailSender = emailSender;
         }
 
-        public async Task<IdentityResult> Register(Guid employeeId)
+        public async Task<IdentityResult> Register(Guid employeeId, string password = null)
         {
             var user = InstantiateUserFromEmployee(employeeId);
-            var result = await _userManager.CreateAsync(user, User.GenerateRandomPassword());
+            password = string.IsNullOrWhiteSpace(password) ? User.GenerateRandomPassword() : password;
+            var result = await _userManager.CreateAsync(user, password);
 
-            if (result.Succeeded)
+            if (result.Succeeded && string.IsNullOrWhiteSpace(password) == false)
                 SendResetPasswordEmail(user, await _userManager.GeneratePasswordResetTokenAsync(user));
 
             return result;
@@ -77,9 +78,10 @@ namespace Aplication
             var encodedToken = System.Net.WebUtility.UrlEncode(resetPasswordToken);
             var aplicationUrl = "http://localhost:5000/Users/ResetPassword?userId=" + user.Id +"&resetPasswordToken=" + encodedToken;
 
-            return new Dictionary<string,string>(){
-                {"UserName", employee.Name},
-                {"Link", aplicationUrl}
+            return new Dictionary<string,string>()
+            {
+                { "UserName", employee.Name},
+                { "Link", aplicationUrl}
             };
         }
     }

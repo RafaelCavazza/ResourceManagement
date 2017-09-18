@@ -6,14 +6,12 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Infra.Data.Context
 {
-    //TODO: Verificar a melhor maneira de semear o banco em Desenvolvimento
-
     public class SeedDevDatabase
     {
-        private IUserAppService _userAppService;
-
         public void Seed(IApplicationBuilder app)
         {
+            var _userAppService = app.ApplicationServices.GetRequiredService<IUserAppService>();
+
             using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
                 var context = serviceScope.ServiceProvider.GetService<DataBaseContext>();
@@ -21,7 +19,7 @@ namespace Infra.Data.Context
                 {
                     var branchId = CreateDevBranc(context);
                     var employeeId  = CreateDevEmployee(context, branchId);
-                    _userAppService.Register(employeeId);
+                    _userAppService.Register(employeeId, "Qwerty@123");
                 }
             }
         }
@@ -50,7 +48,7 @@ namespace Infra.Data.Context
                 Cpf = "",
                 Identifier = "",
                 AdmissionDate = DateTime.Now,
-                Email = "desenvolvedor@testeInterno.com.br",
+                Email = "development4832@yopmail.com", //Disposable Email
                 Active = true,
                 BranchId = branchId
             };

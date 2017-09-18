@@ -7,7 +7,7 @@ namespace Aplication.Interfaces
 {
     public interface IUserAppService : IAppServiceBase<User>
     {
-        Task<IdentityResult> Register(Guid employeeId);
+        Task<IdentityResult> Register(Guid employeeId, string password = null);
         void ForgotPassword(Guid userId);
     }
 }
