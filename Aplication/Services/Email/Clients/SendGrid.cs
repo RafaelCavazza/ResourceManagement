@@ -15,7 +15,7 @@ namespace Aplication.Services.Email.Clients
 
         public SendGrid()
         {
-            ApiKey = "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";
+            ApiKey = "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";
         }
 
         public string MountRequestBody(string from, List<string> to, string subject, string content, EmailContentType type)

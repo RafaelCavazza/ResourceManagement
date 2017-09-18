@@ -1,4 +1,4 @@
-#Diretórios de Ambiente
+﻿#Diretórios de Ambiente
 
 bin/
 obj/
@@ -8,4 +8,7 @@ artifacts/
 
 #Extensões de Arquivos de Ambiente
 *.lock.json
+*.DS_Store
+*.csproj.user
+*.db
 ResourceManagement\.userprefs
