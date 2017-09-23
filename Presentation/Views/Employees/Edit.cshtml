@@ -1,14 +1,14 @@
 @model Presentation.ViewModels.Employee.EditEmployeeViewModel
 
 <div class="x_panel">
-  <div class="x_title">
+  <div class="row">
     <h2>
       Editando o usuário: @Model.Name
     </h2>
     
     <div class="clearfix"></div>
   </div>
-  <div class="x_content"> 
+  <div class="row"> 
     <form method="post" asp-controller="Employees" and asp-action="Edit">
       <div class="form-group">
         <div class="row">

@@ -7,14 +7,14 @@
 <script type="text/javascript" src="/js/controllers/CreateItemCtrl.js"> </script>
 
 <div class="x_panel" ng-controller="CreateItemCtrl">
-	<div class="x_title">
+	<div class="row">
 		<h2>
 			Cadastrar Novo Ativo
 		</h2>
 
 		<div class="clearfix"></div>
 	</div>
-	<div class="x_content">
+	<div class="row">
 		<form method="post" name="itensForm" asp-controller="Itens" and asp-action="Create">
 
 			<div class="form-group">
@@ -37,7 +37,7 @@
 				</div>
 			</div>
 
-			<table class="table table-bordered">
+			<table class="bordered">
 				<thead>
 					<tr>
 						<th>Nota Fiscal</th>
