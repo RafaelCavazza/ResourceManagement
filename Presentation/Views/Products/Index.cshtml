@@ -3,15 +3,14 @@
 @{ ViewBag.Title = "Produtos"; }
 	<div class="container">
 		<div class="row">
-			<h2>
+			<h5>
 				Produtos
-			</h2>
+			</h5>
 			<a class="waves-effect waves-light btn" asp-controller="Products" asp-action="Create">
 				<i class="fa fa-plus" aria-hidden="true">
-					Adicionar Novo Produto
+					Novo Produto
 				</i>
 			</a>
-			<div class="clearfix"></div>
 		</div>
 
 		<div class="row">
@@ -44,7 +43,7 @@
 					}
 				</tbody>
 			</table>
-			<div class="col-md-offset-5">
+			<div class="center-align">
 				<pager />
 			</div>
 		</div>

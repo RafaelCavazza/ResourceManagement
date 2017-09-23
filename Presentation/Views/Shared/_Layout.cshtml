@@ -87,6 +87,7 @@
 			<li><a href="/Branches/Index"> Unidades </a></li>
 			<li><a href="/Products/Index"> Produtos </a></li>
 			<li><a href="/Itens/Index"> Ativos </a></li>
+			<li><a href="/Loans/Index"> Empréstimos </a></li>
 		</ul>
 	</header>
 
@@ -102,9 +103,20 @@
 		</div>
 	</footer>
 
-	<script type="text/javascript">
-		$("#menuButton").sideNav();
-		$(".dropdown-button").dropdown();
+	<script type="application/javascript">
+		$(document).ready(function(){
+			$("#menuButton").sideNav();
+			$(".dropdown-button").dropdown();
+			var pag = $('.pagination span');
+			if(!pag.length)
+				return;
+			angular.forEach(pag, function(e){ 
+				if($(e).parent().hasClass('active'))
+					$(e).replaceWith($('<a class="blue lighten-1">' + e.innerHTML + '</a>'));
+				else
+					$(e).replaceWith($('<a>' + e.innerHTML + '</a>'));
+			});
+		});
 	</script>
 
 </body>

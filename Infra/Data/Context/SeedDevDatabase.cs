@@ -15,11 +15,12 @@ namespace Infra.Data.Context
             using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
                 var context = serviceScope.ServiceProvider.GetService<DataBaseContext>();
-                if(context.Database.EnsureCreated())           
+                if (context.Database.EnsureCreated())
                 {
                     var branchId = CreateDevBranc(context);
-                    var employeeId  = CreateDevEmployee(context, branchId);
+                    var employeeId = CreateDevEmployee(context, branchId);
                     _userAppService.Register(employeeId, "Qwerty@123");
+                    CreateProducts(context);
                 }
             }
         }
@@ -28,7 +29,7 @@ namespace Infra.Data.Context
         {
             var devBranch = new Branch
             {
-                Id =  Guid.NewGuid(),
+                Id = Guid.NewGuid(),
                 Name = "Empresa de Desenvolvimento",
                 Cnpj = "17.884.050/0001-81"
             };
@@ -57,6 +58,24 @@ namespace Infra.Data.Context
             dbContext.SaveChanges();
 
             return devEmployee.Id;
+        }
+
+        private int CreateProducts(DataBaseContext dbContext)
+        {
+            for (int i = 0; i <= 50; i++)
+            {
+                var newProduct = new Product
+                {
+                    Id = Guid.NewGuid(),
+                    CreatedOn = DateTime.Now,
+                    ModifiedOn = DateTime.Now,
+                    Description = "Product " + i,
+                    Name = "Product " + i
+                };
+
+                dbContext.Product.Add(newProduct);
+            }
+            return dbContext.SaveChanges();
         }
     }
 }
