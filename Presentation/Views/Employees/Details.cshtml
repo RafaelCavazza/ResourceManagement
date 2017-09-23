@@ -1,7 +1,7 @@
 @model Presentation.ViewModels.Employee.DetailsEmployeeViewModel
 
 
-<div class="col-md-6 col-xs-12"> 
+<div class="col m6 col-xs-12"> 
   <div class="x_panel">
     <div class="row">
       <h5>
@@ -11,8 +11,8 @@
     <div class="row"> 
       <div class="form-group">
         <div class="row">
-          <label asp-for="Name" class="col-md-2 control-label"></label>
-          <div class="col-md-6">
+          <label asp-for="Name" class="col m2 control-label"></label>
+          <div class="col m6">
             <input asp-for="Name" class="form-control" disabled="disabled"/>
           </div>
         </div>
@@ -20,8 +20,8 @@
       
       <div class="form-group">
         <div class="row">
-          <label asp-for="Cpf" class="col-md-2 control-label"></label>
-          <div class="col-md-6">
+          <label asp-for="Cpf" class="col m2 control-label"></label>
+          <div class="col m6">
             <input asp-for="Cpf" class="form-control" disabled="disabled"/>
           </div>
         </div>
@@ -29,8 +29,8 @@
 
       <div class="form-group">
         <div class="row">
-          <label asp-for="Identifier" class="col-md-2 control-label"></label>
-          <div class="col-md-6">
+          <label asp-for="Identifier" class="col m2 control-label"></label>
+          <div class="col m6">
             <input asp-for="Identifier" class="form-control" disabled="disabled"/>
           </div>
         </div>
@@ -38,8 +38,8 @@
 
       <div class="form-group">
         <div class="row">
-          <label asp-for="Email" class="col-md-2 control-label"></label>
-          <div class="col-md-6">
+          <label asp-for="Email" class="col m2 control-label"></label>
+          <div class="col m6">
             <input asp-for="Email" class="form-control" disabled="disabled"/>
           </div>
         </div>
@@ -47,8 +47,8 @@
 
       <div class="form-group">
         <div class="row">
-          <label asp-for="AdmissionDate" class="col-md-2 control-label"></label>
-          <div class="col-md-6">
+          <label asp-for="AdmissionDate" class="col m2 control-label"></label>
+          <div class="col m6">
             <input value="@Model.AdmissionDate.ToString("dd/MM/yyyy")" class="form-control" disabled="disabled" />
           </div>
         </div>
@@ -56,8 +56,8 @@
 
       <div class="form-group">
         <div class="row">
-          <label asp-for="CreatedOn" class="col-md-2 control-label"></label>
-          <div class="col-md-6">
+          <label asp-for="CreatedOn" class="col m2 control-label"></label>
+          <div class="col m6">
             <input value="@Model.CreatedOn.ToString("dd/MM/yyyy hh:mm:ss")" class="form-control" disabled="disabled" />
           </div>
         </div>
@@ -65,8 +65,8 @@
 
       <div class="form-group">
         <div class="row">
-          <label asp-for="ModifiedOn" class="col-md-2 control-label"></label>
-          <div class="col-md-6">
+          <label asp-for="ModifiedOn" class="col m2 control-label"></label>
+          <div class="col m6">
             <input value="@Model.ModifiedOn.ToString("dd/MM/yyyy hh:mm:ss")" class="form-control" disabled="disabled" />
           </div>
         </div>
@@ -74,8 +74,8 @@
 
       <div class="form-group">
         <div class="row">
-          <label asp-for="Active" class="col-md-2 control-label"></label>
-          <div class="col-md-6">
+          <label asp-for="Active" class="col m2 control-label"></label>
+          <div class="col m6">
             <input value="@(Model.Active ? "Ativo" : "Inativo")" class="form-control" disabled="disabled" /> 
           </div>
         </div>
@@ -83,8 +83,8 @@
 
       <div class="form-group">
         <div class="row">
-          <label asp-for="Branch" class="col-md-2 control-label"></label>
-          <div class="col-md-6">
+          <label asp-for="Branch" class="col m2 control-label"></label>
+          <div class="col m6">
             <input asp-for="Branch" class="form-control" disabled="disabled" />
           </div>
         </div>
@@ -94,7 +94,7 @@
 </div>
 
 
-<div class="col-md-6 col-xs-12"> 
+<div class="col m6 col-xs-12"> 
   <div class="x_panel">
     <div class="row">
       <h5>
@@ -104,8 +104,8 @@
     <div class="row"> 
       <div class="form-group">
         <div class="row">
-          <label class="col-md-2 control-label"> Alterar Status? </label>
-          <div class="col-md-6">
+          <label class="col m2 control-label"> Alterar Status? </label>
+          <div class="col m6">
             @{
                 if(Model.Active)
                 {

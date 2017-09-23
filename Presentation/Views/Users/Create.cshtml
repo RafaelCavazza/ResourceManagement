@@ -4,18 +4,16 @@
   Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="x_panel">
+<div class="container">
   <div class="row">
     <h5>
       Criar Usuário
     </h5>
   </div>
-  <div class="row"> 
     <form method="post" asp-controller="Users" and asp-action="Create">
-    
       <div class="form-group">
         <div class="row">
-          <label class="col-md-6 control-label" style="padding-top:15px">
+          <label class="col m6 control-label">
             <p>
               <span class="text-warning">
                 ATENÇÃO: Os dados do usuário serão derivados do Funcionário vinculado.
@@ -27,8 +25,8 @@
 
       <div class="form-group">
         <div class="row">
-          <label asp-for="Employee" class="col-md-2 control-label"></label>
-          <div class="col-md-6">
+          <label asp-for="Employee" class="col m2 control-label"></label>
+          <div class="col m6">
             <select class="form-control" asp-for="EmployeeId" asp-items="@Model.Employee"></select>
             <span asp-validation-for="EmployeeId" class="text-danger"></span>
           </div>
@@ -37,11 +35,10 @@
 
       <div class="form-group">
         <div class="row">
-          <div class="col-md-offset-2 col-md-10">
+          <div class="offset-m2 col m10">
             <input type="submit" value="Cadastrar" class="btn btn-success" />
           </div>
         </div>
       </div>
     </form>
-  </div>
 </div>

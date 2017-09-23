@@ -34,7 +34,7 @@
 
 	<header>
 		<!-- Navbar -->
-		<nav class="blue lighten-1">
+		<nav class="light-blue darken-2">
 			<div class="nav-wrapper">
 				<a href="#" class="brand-logo center">Resource Manager</a>
 				<ul id="nav-mobile" class="left hide-on-med-and-down">
@@ -95,7 +95,7 @@
 		@RenderBody()
 	</main>
 
-	<footer class="page-footer blue lighten-1">
+	<footer class="page-footer light-blue darken-2">
 		<div class="container">
 			<div class="row">
 				© 2017 Copyright
@@ -107,12 +107,13 @@
 		$(document).ready(function(){
 			$("#menuButton").sideNav();
 			$(".dropdown-button").dropdown();
+			$('select').material_select();
 			var pag = $('.pagination span');
 			if(!pag.length)
 				return;
 			angular.forEach(pag, function(e){ 
 				if($(e).parent().hasClass('active'))
-					$(e).replaceWith($('<a class="blue lighten-1">' + e.innerHTML + '</a>'));
+					$(e).replaceWith($('<a class="light-blue darken-2">' + e.innerHTML + '</a>'));
 				else
 					$(e).replaceWith($('<a>' + e.innerHTML + '</a>'));
 			});

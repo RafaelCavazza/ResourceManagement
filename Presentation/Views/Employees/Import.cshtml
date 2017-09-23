@@ -15,8 +15,8 @@
 
       <div class="form-group">
         <div class="row">
-          <label asp-for="FileToImport" class="col-md-2 control-label"></label>
-          <div class="col-md-6">
+          <label asp-for="FileToImport" class="col m2 control-label"></label>
+          <div class="col m6">
             <input asp-for="FileToImport" class="form-control"/>
             <span asp-validation-for="FileToImport" class="text-danger"></span>
           </div>
@@ -25,7 +25,7 @@
       
       <div class="form-group">
         <div class="row">
-          <div class="col-md-offset-2 col-md-10">
+          <div class="offset-m2 col m10">
             <p>
               O arquivo a deve estar no formato csv ou txt separado por ';' ou ','
             </p>
@@ -42,7 +42,7 @@
 
       <div class="form-group">
         <div class="row">
-          <div class="col-md-offset-2 col-md-10">
+          <div class="offset-m2 col m10">
             <input type="submit" value="Importar" class="btn btn-success" />
           </div>
         </div>

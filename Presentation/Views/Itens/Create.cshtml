@@ -17,8 +17,8 @@
 
 			<div class="form-group">
 				<div class="row">
-					<label asp-for="ProductId" class="col-md-2 control-label"></label>
-					<div class="col-md-6">
+					<label asp-for="ProductId" class="col m2 control-label"></label>
+					<div class="col m6">
 						<select class="form-control" asp-for="ProductId" asp-items="@Model.Products"></select>
 						<span asp-validation-for="ProductId" class="text-danger"></span>
 					</div>
@@ -27,8 +27,8 @@
 
 			<div class="form-group">
 				<div class="row">
-					<label asp-for="PurchasedOn" class="col-md-2 control-label"></label>
-					<div class="col-md-6">
+					<label asp-for="PurchasedOn" class="col m2 control-label"></label>
+					<div class="col m6">
 						<input type="date" asp-for="PurchasedOn" class="form-control" />
 						<span asp-validation-for="PurchasedOn" class="text-danger"></span>
 					</div>
@@ -64,7 +64,7 @@
 
 			<div class="form-group">
 				<div class="row">
-					<div class="col-md-2">
+					<div class="col m2">
 						<input type="submit" value="Cadastrar" class="btn btn-success btn-block" />
 					</div>
 				</div>
