@@ -14,6 +14,5 @@
   },
   "_source": "https://github.com/angular/bower-angular.git",
   "_target": "v1.6.7-build.5465+sha.efaf59f",
-  "_originalSource": "angular",
-  "_direct": true
+  "_originalSource": "angular"
 }

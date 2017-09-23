@@ -2,7 +2,7 @@
   "name": "presentation",
   "private": true,
   "dependencies": {
-    "bootstrap": "v4.0.0-beta",
+    "bootstrap": "3.x",
     "jquery": "3.2.1",
     "jquery-validation": "1.17.0",
     "jquery-validation-unobtrusive": "3.2.6",
@@ -14,7 +14,6 @@
     "angular-input-masks": "2.6.0"
   },
   "resolutions": {
-    "bootstrap": "v4.0.0-beta",
     "jquery": "3.2.1",
     "font-awesome": "v4.7.0",
     "jquery-validation": "1.17.0"
