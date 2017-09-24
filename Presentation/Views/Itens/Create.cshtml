@@ -7,20 +7,18 @@
 <script type="text/javascript" src="/js/controllers/CreateItemCtrl.js"> </script>
 
 <div class="x_panel" ng-controller="CreateItemCtrl">
-	<div class="x_title">
-		<h2>
+	<div class="row">
+		<h5>
 			Cadastrar Novo Ativo
-		</h2>
-
-		<div class="clearfix"></div>
+		</h5>
 	</div>
-	<div class="x_content">
+	<div class="row">
 		<form method="post" name="itensForm" asp-controller="Itens" and asp-action="Create">
 
 			<div class="form-group">
 				<div class="row">
-					<label asp-for="ProductId" class="col-md-2 control-label"></label>
-					<div class="col-md-6">
+					<label asp-for="ProductId" class="col m2 control-label"></label>
+					<div class="col m6">
 						<select class="form-control" asp-for="ProductId" asp-items="@Model.Products"></select>
 						<span asp-validation-for="ProductId" class="text-danger"></span>
 					</div>
@@ -29,15 +27,15 @@
 
 			<div class="form-group">
 				<div class="row">
-					<label asp-for="PurchasedOn" class="col-md-2 control-label"></label>
-					<div class="col-md-6">
+					<label asp-for="PurchasedOn" class="col m2 control-label"></label>
+					<div class="col m6">
 						<input type="date" asp-for="PurchasedOn" class="form-control" />
 						<span asp-validation-for="PurchasedOn" class="text-danger"></span>
 					</div>
 				</div>
 			</div>
 
-			<table class="table table-bordered">
+			<table class="bordered">
 				<thead>
 					<tr>
 						<th>Nota Fiscal</th>
@@ -66,7 +64,7 @@
 
 			<div class="form-group">
 				<div class="row">
-					<div class="col-md-2">
+					<div class="col m2">
 						<input type="submit" value="Cadastrar" class="btn btn-success btn-block" />
 					</div>
 				</div>

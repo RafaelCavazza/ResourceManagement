@@ -3,22 +3,19 @@
 @{ ViewBag.Title = "Funcionários"; }
 
 <div class="container">
-	<div class="x_title">
-		<h2>
+	<div class="row">
+		<h5>
 			Funcionários Cadastrados
-		</h2>
-		<div class="text-right">
+		</h5>
+		<a class="waves-effect waves-light btn" asp-controller="Employees" asp-action="Create">
 			<i class="fa fa-plus" aria-hidden="true">
-				<a asp-controller="Employees" asp-action="Create">
-				Adicionar Novo Usuário
-				</a>
+				Novo Funcionário
 			</i>
-		</div>
-		<div class="clearfix"></div>
+		</a>
 	</div>
 
-	<div class="x_content">
-		<table class="table table-bordered">
+	<div class="row">
+		<table class="bordered">
 			<thead>
 				<tr>
 					<th>Nome</th>
@@ -49,7 +46,7 @@
 				}
 			</tbody>
 		</table>
-		<div class="col-md-offset-5">
+		<div class="center-align">
 			<pager />
 		</div>
 	</div>

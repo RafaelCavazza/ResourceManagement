@@ -20,5 +20,15 @@ namespace Infra.Data.Repositories
         {
             return dbContext.Item.Include(p => p.Product).ToPagedList(pageSize, pageIndex);
         }
+
+        public int GetAvailableItensForDonationCount()
+        {
+            return dbContext.Item.Count(o => o.Status == ItemStatus.AvaliableForDonation);
+        }
+
+        public int GetAvailableItensForLoanCount()
+        {
+            return dbContext.Item.Count(o => o.Status == ItemStatus.Avaliable);
+        }
     }
 }

@@ -5,20 +5,18 @@
 }
 
 <div class="x_panel">
-  <div class="x_title">
-    <h2>
+  <div class="row">
+    <h5>
       Editar Ativo
-    </h2>
-
-    <div class="clearfix"></div>
+    </h5>
   </div>
-  <div class="x_content">
+  <div class="row">
     <form method="post" asp-controller="Itens" and asp-action="Edit">
 
       <div class="form-group">
         <div class="row">
-          <label asp-for="NF" class="col-md-2 control-label"></label>
-          <div class="col-md-6">
+          <label asp-for="NF" class="col m2 control-label"></label>
+          <div class="col m6">
             <input type="text" asp-for="NF" class="form-control" />
             <span asp-validation-for="NF" class="text-danger"></span>
           </div>
@@ -27,8 +25,8 @@
 
       <div class="form-group">
         <div class="row">
-          <label asp-for="SerialNumber" class="col-md-2 control-label"></label>
-          <div class="col-md-6">
+          <label asp-for="SerialNumber" class="col m2 control-label"></label>
+          <div class="col m6">
             <input type="text" asp-for="SerialNumber" class="form-control" />
             <span asp-validation-for="SerialNumber" class="text-danger"></span>
           </div>
@@ -37,8 +35,8 @@
 
       <div class="form-group">
         <div class="row">
-          <label asp-for="Patrimonio" class="col-md-2 control-label"></label>
-          <div class="col-md-6">
+          <label asp-for="Patrimonio" class="col m2 control-label"></label>
+          <div class="col m6">
             <input type="text" asp-for="Patrimonio" class="form-control" />
             <span asp-validation-for="Patrimonio" class="text-danger"></span>
           </div>
@@ -47,7 +45,7 @@
 
       <div class="form-group">
         <div class="row">
-          <div class="col-md-offset-2 col-md-10">
+          <div class="offset-m2 col m10">
             <input type="submit" value="Atualizar" class="btn btn-success" />
           </div>
         </div>

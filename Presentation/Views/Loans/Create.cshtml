@@ -1,20 +1,18 @@
 @model Presentation.ViewModels.Loan.CreateLoanViewModel
 
 <div class="x_panel">
-  <div class="x_title">
-    <h2>
+  <div class="row">
+    <h5>
         Cadastrar Novo Empréstimo
-    </h2>
-    
-    <div class="clearfix"></div>
+    </h5>
   </div>
-  <div class="x_content"> 
+  <div class="row"> 
     <form method="post" asp-controller="Loans" and asp-action="Create">  
       
       <div class="form-group">
 				<div class="row">
-					<label asp-for="ItemId" class="col-md-2 control-label"></label>
-					<div class="col-md-6">
+					<label asp-for="ItemId" class="col m2 control-label"></label>
+					<div class="col m6">
             @{
               var items = Model.Items.Select(p=> new { p.Id, Name = p.Product.Name + " - " + p.Patrimonio });
               var itemSelectList = new SelectList(items, "Id", "Name");
@@ -27,8 +25,8 @@
 
       <div class="form-group">
 				<div class="row">
-					<label asp-for="EmployeeId" class="col-md-2 control-label"></label>
-					<div class="col-md-6">
+					<label asp-for="EmployeeId" class="col m2 control-label"></label>
+					<div class="col m6">
             <select class="form-control" asp-for="EmployeeId" asp-items="@(new SelectList(Model.Employees,"Id","Name") )"></select>
 						<span asp-validation-for="EmployeeId" class="text-danger"></span>
 					</div>
@@ -37,8 +35,8 @@
 
       <div class="form-group">
         <div class="row">
-          <label asp-for="StartDate" class="col-md-2 control-label"></label>
-          <div class="col-md-6">
+          <label asp-for="StartDate" class="col m2 control-label"></label>
+          <div class="col m6">
             <input asp-for="StartDate" class="form-control" />
             <span asp-validation-for="StartDate" class="text-danger"></span>
           </div>
@@ -47,8 +45,8 @@
 
       <div class="form-group">
         <div class="row">
-          <label asp-for="EndDate" class="col-md-2 control-label"></label>
-          <div class="col-md-6">
+          <label asp-for="EndDate" class="col m2 control-label"></label>
+          <div class="col m6">
             <input asp-for="EndDate" class="form-control" />
             <span asp-validation-for="EndDate" class="text-danger"></span>
           </div>
@@ -57,7 +55,7 @@
       
       <div class="form-group">
         <div class="row">
-          <div class="col-md-offset-2 col-md-10">
+          <div class="offset-m2 col m10">
             <input type="submit" value="Cadastrar" class="btn btn-success" />
           </div>
         </div>
