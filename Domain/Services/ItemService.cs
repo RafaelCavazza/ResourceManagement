@@ -25,5 +25,15 @@ namespace Domain.Services
         {
             return _itemRepository.GetAllAvailableForLoan();
         }
+
+        public int GetAvailableItensForDonationCount()
+        {
+            return _itemRepository.GetAvailableItensForDonationCount();
+        }
+
+        public int GetAvailableItensForLoanCount()
+        {
+            return _itemRepository.GetAvailableItensForLoanCount();
+        }
     }
 }

@@ -6,5 +6,9 @@ namespace Domain.Interfaces.Services
     public interface IItemService : IServiceBase<Item>
     {
         IEnumerable<Item> GetAllAvailableForLoan();
+
+        int GetAvailableItensForLoanCount();
+
+        int GetAvailableItensForDonationCount(); 
     }
 }
