@@ -12,5 +12,15 @@ namespace Aplication
         {
             _loanService = loanService;
         }
+
+        public int GetLateLoansCount()
+        {
+            return _loanService.GetLateLoansCount();
+        }
+
+        public int GetNotLateLoansCount()
+        {
+            return _loanService.GetNotLateLoansCount();
+        }
     }
 }

@@ -1,36 +1,31 @@
-@using Domain.Entities
+@using Domain.Entities 
 @model IEnumerable<Product>
 @{ ViewBag.Title = "Produtos"; }
-
-<div class="container">
-	<div class="x_title">
-		<h2>
-			Produtos
-		</h2>
-		<div class="text-right">
-			<i class="fa fa-plus" aria-hidden="true">
-			<a asp-controller="Products" asp-action="Create">
-				Adicionar Novo Produto
+	<div class="container">
+		<div class="row">
+			<h5>
+				Produtos
+			</h5>
+			<a class="waves-effect waves-light btn" asp-controller="Products" asp-action="Create">
+				<i class="fa fa-plus" aria-hidden="true">
+					Novo Produto
+				</i>
 			</a>
-		</i>
 		</div>
-		<div class="clearfix"></div>
-	</div>
 
-	<div class="x_content">
-		<table class="table table-bordered">
-			<thead>
-				<tr>
-					<th>Nome</th>
-					<th>Descrição</th>
-					<th>Data de Criação</th>
-					<th>Data de Modificação</th>
-					<th>Ações</th>
-				</tr>
-			</thead>
-			<tbody>
-				@foreach(var product in Model) 
-				{
+		<div class="row">
+			<table class="bordered">
+				<thead>
+					<tr>
+						<th>Nome</th>
+						<th>Descrição</th>
+						<th>Data de Criação</th>
+						<th>Data de Modificação</th>
+						<th>Ações</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach(var product in Model) {
 					<tr>
 						<td>@product.Name</td>
 						<td>@product.Description</td>
@@ -45,11 +40,11 @@
 							</i>
 						</td>
 					</tr>
-				}
-			</tbody>
-		</table>
-		<div class="col-md-offset-5">
-			<pager />
+					}
+				</tbody>
+			</table>
+			<div class="center-align">
+				<pager />
+			</div>
 		</div>
 	</div>
-</div>

@@ -1,19 +1,17 @@
 @model Presentation.ViewModels.Employee.EditEmployeeViewModel
 
-<div class="x_panel">
-  <div class="x_title">
-    <h2>
+<div class="container">
+  <div class="row">
+    <h5>
       Editando o usuário: @Model.Name
-    </h2>
-    
-    <div class="clearfix"></div>
+    </h5>
   </div>
-  <div class="x_content"> 
+  <div class="row"> 
     <form method="post" asp-controller="Employees" and asp-action="Edit">
       <div class="form-group">
         <div class="row">
-          <label asp-for="Name" class="col-md-2 control-label"></label>
-          <div class="col-md-6">
+          <label asp-for="Name" class="col m2 control-label"></label>
+          <div class="col m6">
             <input asp-for="Name" class="form-control" />
             <span asp-validation-for="Name" class="text-danger"></span>
           </div>
@@ -22,8 +20,8 @@
       
       <div class="form-group">
         <div class="row">
-          <label asp-for="Cpf" class="col-md-2 control-label"></label>
-          <div class="col-md-6">
+          <label asp-for="Cpf" class="col m2 control-label"></label>
+          <div class="col m6">
             <input asp-for="Cpf" class="form-control" ng-model="initializedCpf" ui-br-cpf-mask />
             <span asp-validation-for="Cpf" class="text-danger"></span>
           </div>
@@ -32,8 +30,8 @@
 
       <div class="form-group">
         <div class="row">
-          <label asp-for="Identifier" class="col-md-2 control-label"></label>
-          <div class="col-md-6">
+          <label asp-for="Identifier" class="col m2 control-label"></label>
+          <div class="col m6">
             <input asp-for="Identifier" class="form-control" />
             <span asp-validation-for="Identifier" class="text-danger"></span>
           </div>
@@ -42,8 +40,8 @@
 
       <div class="form-group">
         <div class="row">
-          <label asp-for="Email" class="col-md-2 control-label"></label>
-          <div class="col-md-6">
+          <label asp-for="Email" class="col m2 control-label"></label>
+          <div class="col m6">
             <input asp-for="Email" class="form-control" />
             <span asp-validation-for="Email" class="text-danger"></span>
           </div>
@@ -52,8 +50,8 @@
 
       <div class="form-group">
         <div class="row">
-          <label asp-for="AdmissionDate" class="col-md-2 control-label"></label>
-          <div class="col-md-6">
+          <label asp-for="AdmissionDate" class="col m2 control-label"></label>
+          <div class="col m6">
             <input asp-for="AdmissionDate" class="form-control" />
             <span asp-validation-for="AdmissionDate" class="text-danger"></span>
           </div>
@@ -62,8 +60,8 @@
 
       <div class="form-group">
         <div class="row">
-          <label asp-for="Branch" class="col-md-2 control-label"></label>
-          <div class="col-md-6">
+          <label asp-for="Branch" class="col m2 control-label"></label>
+          <div class="col m6">
             <select class="form-control" asp-for="BranchId" asp-items="@Model.Branch"></select>
             <span asp-validation-for="BranchId" class="text-danger"></span>
           </div>
@@ -72,7 +70,7 @@
 
       <div class="form-group">
         <div class="row">
-          <div class="col-md-offset-2 col-md-10">
+          <div class="offset-m2 col m10">
             <span asp-validation-for="CustomErrors" class="text-danger"></span>
           </div>
         </div>
@@ -80,7 +78,7 @@
 
       <div class="form-group">
         <div class="row">
-          <div class="col-md-offset-2 col-md-1">
+          <div class="offset-m2 col m1">
             <input type="submit" value="Salvar" class="btn btn-success" />
           </div>
         </div>

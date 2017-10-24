@@ -1,25 +1,21 @@
-@using Domain.Entities
+@using Domain.Entities 
 @model IEnumerable<Domain.Entities.Loan>
-
 @{ ViewBag.Title = "Empréstimos"; }
 
 <div class="container">
-	<div class="x_title">
-		<h2>
+	<div class="row">
+		<h5>
 			Empréstimos
-		</h2>
-		<div class="text-right">
+		</h5>
+		<a class="waves-effect waves-light btn" asp-controller="Loans" asp-action="Create">
 			<i class="fa fa-plus" aria-hidden="true">
-			<a asp-controller="Loans" asp-action="Create">
-				Adicionar Novo Empréstimo
-			</a>
-		</i>
-		</div>
-		<div class="clearfix"></div>
+				Novo Empréstimo
+			</i>
+		</a>
 	</div>
 
-	<div class="x_content">
-		<table class="table table-bordered">
+	<div class="row">
+		<table class="bordered">
 			<thead>
 				<tr>
 					<th>Funcionário</th>
@@ -33,27 +29,26 @@
 				</tr>
 			</thead>
 			<tbody>
-				@foreach(var loan in Model) 
-				{
-					<tr>
-						<td>@loan.Employee.Name</td>
-						<td>@loan.Item.Product.Name</td>
-						<td>@loan.Item.Patrimonio</td>
-						
-						<td>@loan.StartDate.ToString("dd/MM/yyyy HH:mm:ss")</td>
-						<td>@loan.EndDate.ToString("dd/MM/yyyy HH:mm:ss")</td>
-						<td>@loan.CreatedOn.ToString("dd/MM/yyyy HH:mm:ss")</td>
-						<td>@loan.ModifiedOn.ToString("dd/MM/yyyy HH:mm:ss")</td>
-						<td>
-							<i class="fa fa-info" aria-hidden="true">
-								<a asp-controller="Loan" asp-action="Details" asp-route-id="@loan.Id">Detalhes</a>
-							</i>
-						</td>
-					</tr>
+				@foreach(var loan in Model) {
+				<tr>
+					<td>@loan.Employee.Name</td>
+					<td>@loan.Item.Product.Name</td>
+					<td>@loan.Item.Patrimonio</td>
+
+					<td>@loan.StartDate.ToString("dd/MM/yyyy HH:mm:ss")</td>
+					<td>@loan.EndDate.ToString("dd/MM/yyyy HH:mm:ss")</td>
+					<td>@loan.CreatedOn.ToString("dd/MM/yyyy HH:mm:ss")</td>
+					<td>@loan.ModifiedOn.ToString("dd/MM/yyyy HH:mm:ss")</td>
+					<td>
+						<i class="fa fa-info" aria-hidden="true">
+							<a asp-controller="Loan" asp-action="Details" asp-route-id="@loan.Id">Detalhes</a>
+						</i>
+					</td>
+				</tr>
 				}
 			</tbody>
 		</table>
-		<div class="col-md-offset-5">
+		<div class="center-align">
 			<pager />
 		</div>
 	</div>

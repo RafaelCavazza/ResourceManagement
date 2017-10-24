@@ -19,5 +19,15 @@ namespace Aplication
         {
             return _itemService.GetAllAvailableForLoan();
         }
+
+        public int GetAvailableItensForDonationCount()
+        {
+            return _itemService.GetAvailableItensForDonationCount();
+        }
+
+        public int GetAvailableItensForLoanCount()
+        {
+            return _itemService.GetAvailableItensForLoanCount();
+        }
     }
 }

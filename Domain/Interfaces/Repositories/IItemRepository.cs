@@ -6,5 +6,9 @@ namespace Domain.Interfaces.Repositories
     public interface IItemRepository : IRepositoryBase<Item>
     {
         IEnumerable<Item> GetAllAvailableForLoan();
+
+        int GetAvailableItensForLoanCount();
+
+        int GetAvailableItensForDonationCount(); 
     }
 }

@@ -12,5 +12,15 @@ namespace Domain.Services
         {
             _loanRepository = loanRepository;
         }
+
+        public int GetLateLoansCount()
+        {
+            return _loanRepository.GetLateLoansCount();
+        }
+
+        public int GetNotLateLoansCount()
+        {
+            return _loanRepository.GetNotLateLoansCount();
+        }
     }
 }

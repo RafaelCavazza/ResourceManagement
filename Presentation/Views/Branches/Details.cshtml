@@ -1,62 +1,60 @@
 @model Presentation.ViewModels.Branch.DetailsBranchViewModel
 
-@if(TempData["Error"] != null){
-  <div class="alert alert-danger">
-    <strong>Erro!</strong> @TempData["Error"]
-  </div>
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">
+        <strong>Erro!</strong> @TempData["Error"]
+    </div>
 }
 
-<div class="col-xs-12"> 
-  <div class="x_panel">
-    <div class="x_title">
-      <h2>
-        Detalhes da Unidade: @Model.Name 
-      </h2>
-      <div class="clearfix"></div>
+<div class="container">
+    <div class="row">
+        <h5>
+            Detalhes da Unidade: @Model.Name
+        </h5>
     </div>
-    <div class="x_content"> 
-      <div class="form-group">
-        <div class="row">
-          <label asp-for="Name" class="col-md-2 control-label"></label>
-          <div class="col-md-6">
-            <input asp-for="Name" class="form-control" disabled="disabled"/>
-          </div>
-          <div class="col-md-4">
-            <a class="btn btn-danger btn-md pull-right" asp-controller="Branches" asp-action="Delete" asp-route-id="@Model.Id">
-              <span class="fa fa-trash"/>
-              Deletar
-            </a>
-          </div>
+    <div class="row">
+        <div class="form-group">
+            <div class="row">
+                <label asp-for="Name" class="col m2 control-label"></label>
+                <div class="col m6">
+                    <input asp-for="Name" class="form-control" disabled="disabled" />
+                </div>
+                <div class="col m4">
+                    <a class="btn btn-danger btn-md pull-right" asp-controller="Branches" asp-action="Delete" asp-route-id="@Model.Id">
+                        <span class="fa fa-trash" />
+                        Deletar
+                    </a>
+                </div>
+            </div>
         </div>
-      </div>
-      
-      <div class="form-group">
-        <div class="row">
-          <label asp-for="Cnpj" class="col-md-2 control-label"></label>
-          <div class="col-md-6">
-            <input asp-for="Cnpj" class="form-control" disabled="disabled"/>
-          </div>
-        </div>
-      </div>
 
-      <div class="form-group">
-        <div class="row">
-          <label asp-for="CreatedOn" class="col-md-2 control-label"></label>
-          <div class="col-md-6">
-            <input value="@Model.CreatedOn.ToString("dd/MM/yyyy hh:mm:ss")" class="form-control" disabled="disabled" />
-          </div>
+        <div class="form-group">
+            <div class="row">
+                <label asp-for="Cnpj" class="col m2 control-label"></label>
+                <div class="col m6">
+                    <input asp-for="Cnpj" class="form-control" disabled="disabled" />
+                </div>
+            </div>
         </div>
-      </div>
 
-      <div class="form-group">
-        <div class="row">
-          <label asp-for="ModifiedOn" class="col-md-2 control-label"></label>
-          <div class="col-md-6">
-            <input value="@Model.ModifiedOn.ToString("dd/MM/yyyy hh:mm:ss")" class="form-control" disabled="disabled" />
-          </div>
+        <div class="form-group">
+            <div class="row">
+                <label asp-for="CreatedOn" class="col m2 control-label"></label>
+                <div class="col m6">
+                    <input value="@Model.CreatedOn.ToString("dd/MM/yyyy hh:mm:ss")" class="form-control" disabled="disabled" />
+                </div>
+            </div>
         </div>
-      </div>
+
+        <div class="form-group">
+            <div class="row">
+                <label asp-for="ModifiedOn" class="col m2 control-label"></label>
+                <div class="col m6">
+                    <input value="@Model.ModifiedOn.ToString("dd/MM/yyyy hh:mm:ss")" class="form-control" disabled="disabled" />
+                </div>
+            </div>
+        </div>
 
     </div>
-  </div>
 </div>

@@ -21,6 +21,9 @@ namespace Domain.Entities
 
         public bool IsAvailableForLoan()
         {
+            if (Loans == null)
+                return true;
+
             return Loans.All(p=> p.HasFinished);
         }
     }
